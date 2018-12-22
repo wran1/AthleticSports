@@ -1,0 +1,20 @@
+﻿@using Services
+@using Web.Helpers
+@model string
+
+@{
+    var id = CommonCodeGenerator.GenerateRandomInt(100, 1000);
+}
+<div>
+    @Html.HiddenFor(a => a, new { @id = id + "IndustryId" })
+    <select id="@(id + "IndustryId1")" class="form-control" data-show-subtext="true" data-live-search="true" data-size="auto" disabled="disabled"></select>
+    <select id="@(id + "IndustryId2")" class="form-control" style="display: none" data-show-subtext="true" data-live-search="true" data-size="auto" disabled="disabled"></select>
+
+    <script src="~/Scripts/SelectFunctions.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            InitialSelectors(getIndestryDatsUrl, "#@id","IndustryId","@(string.IsNullOrEmpty(Model) ? "" : Model)");
+    });
+    </script>
+</div>

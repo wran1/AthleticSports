@@ -1,0 +1,69 @@
+﻿@using Models.CmsModels
+@using Web.Helpers
+@model PagedList<CmsArtical>
+
+@{
+    ViewBag.Title = "资讯列表 资讯速递";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置 : </span>
+            <span><a href="/Home/Home">首页</a> <i class="fa fa-angle-right fastyle"></i> <a href="/Cms">资讯速递</a> <i class="fa fa-angle-right fastyle"></i> </span>
+            <span>@(Request["tab"] == null ? "展览活动" : Request["tab"])</span>
+        </div>
+        <!--搜索-->
+        <form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text"  id="searchfor"  placeholder="资讯搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" />
+            <a href="javascript:void(0)" onclick="SearchSumit()"><img src="~/Content/images/search-but.png" /></a>
+            @*<button type="submit"><img src="~/Content/images/search-but.png" /></button>*@
+        </form>
+        <div class="clearfix"></div>
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("_LeftMenu")
+        <section class="menu-content">
+            <div class="top"><span>@(Request["tab"] == null ? "展览活动" : Request["tab"])</span></div>
+            <div>
+                <ul class="information-list list-unstyled">
+                    @foreach (CmsArtical item in Model)
+                    {
+                        <li>
+                            <a target="_blank" href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = Request["tab"], index = "info" }))">
+                                <div class="information-list-date pull-right">@(item.PublishTime?.ToString("yyyy-MM-dd"))</div>
+                                <article>@item.Title</article>
+                                <div class="information-border"></div>
+                            </a>
+                        </li>
+                    }
+                </ul>
+                <!--分页-->
+                <nav aria-label="Page navigation" class="text-center">
+                    @Html.Raw(Html.MikePager(Model))
+                </nav>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+    </section>
+    <script>
+        //初始化左侧目录
+        LeftMenu([
+            '资讯速递',
+            [{ 'name': '展览活动', 'url': '@Url.Action("ArticleList", "Index", new { area = "Cms", tab = "展览活动", index = "info" })', 'current': @(Request["tab"] == null || Request["tab"] == "展览活动" ? "true" : "false") },
+                { 'name': '泰达动态', 'url': '@Url.Action("ArticleList", "Index", new { area = "Cms", tab = "泰达动态", index = "info" })', 'current': @(Request["tab"] == "泰达动态" ? "true" : "false") },
+                { 'name': '活动报道', 'url': '@Url.Action("ArticleList", "Index", new { area = "Cms", tab = "活动报道", index = "info" })', 'current': @(Request["tab"] == "活动报道" ? "true" : "false") },
+                { 'name': '企业采风', 'url': '@Url.Action("ArticleList", "Index", new { area = "Cms", tab = "企业采风", index = "info" })', 'current': @(Request["tab"] == "企业采风" ? "true" : "false") }]
+        ]);
+
+        function SearchSumit() {
+            var content = $("#searchfor").val();
+            var type = '@Html.Raw(Request["tab"])';
+            window.location.href = decodeURI("/WebsitePage/Search/Index?type=")+type + decodeURI("&keyword=" + content);
+        }
+    </script>
+</div>

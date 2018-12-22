@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutForHome.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+</head>
+<body>
+    @Html.Partial("header")
+    @RenderBody()
+    
+    @Html.Partial("footer")
+</body>
+</html>

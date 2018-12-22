@@ -1,0 +1,454 @@
+﻿@using Models.Dictionary
+@using Models.CmsModels
+@using Models.WebsiteManagement
+@using Web.Helpers
+@using Web.Controllers
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	int i = 0;
+}
+<div class="row p15">
+    <div class="col-xs-12 col-sm-6"><a href="/Cms/Index/Details/721779fc-607c-4719-b836-be237e031e12?tab=泰达动态&index=info"><img src="~/Content/images/20171027-banner_1.jpg" class="img-responsive" /></a></div>
+    <div class="col-xs-12 col-sm-6"><a href="/Cms/Index/Details/26d93617-7bd9-4803-a80f-37a8fc7be689?tab=展览活动&index=info"><img src="~/Content/images/20171027-banner_2.jpg" class="img-responsive" /></a></div>
+    @*<div class="col-xs-12"><img src="~/Content/images/20170925-banner.jpg" class="img-responsive" /></div>*@
+
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6">
+		<style>
+			
+		</style>
+		<div id="swiper1" class="swiper-container">
+			<div class="swiper-wrapper">
+				@foreach (CmsArtical item in ViewBag.Newslist)
+				{
+					<div class="swiper-slide" data-hash="slide1">
+						<div>
+							<a target="_blank" href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = item.CmsCategory.Name, index = "info" })">
+								<img src='@(string.IsNullOrEmpty(item.CoverImage) ? "/content/images/slide-1.jpg" : item.CoverImage)' />
+							</a>
+						</div>
+						<div class="sw-text"><a target="_blank" href="@Url.Action("Details", "Index", new { id = item.Id, area = "Cms", tab = item.CmsCategory.Name, index = "info" })">@item.Title</a></div>
+					</div>
+				}
+                @*@foreach (CmsArtical item in ViewBag.ActivityReportTop)
+                {
+                    <div class="swiper-slide" data-hash="slide1">
+                        <div>
+                            <a target="_blank" href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = item.CmsCategory.Name, index = "info" })">
+                                <img src='@(string.IsNullOrEmpty(item.CoverImage) ? "/content/images/slide-1.jpg" : item.CoverImage)' />
+                            </a>
+                        </div>
+                        <div class="sw-text"><a target="_blank" href="@Url.Action("Details", "Index", new { id = item.Id, area = "Cms", tab = item.CmsCategory.Name, index = "info" })">@item.Title</a></div>
+                    </div>
+                }*@
+			</div>
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+		<div id="swiper-but" class="swiper-container">
+			<div class="swiper-wrapper">
+				@foreach (CmsArtical item in ViewBag.Newslist)
+				{
+					<div class="swiper-slide swiper-item-@i current-slide" onclick="getItem(@i)">
+						<img src='@(string.IsNullOrEmpty(item.CoverImage) ? "/content/images/slide-1.jpg" : item.CoverImage)' />
+					</div>
+                    i++;
+                }
+                @*@foreach (CmsArtical item in ViewBag.ActivityReportTop)
+                {
+                    <div class="swiper-slide swiper-item-@i current-slide" onclick="getItem(@i)">
+                        <img src='@(string.IsNullOrEmpty(item.CoverImage) ? "/content/images/slide-1.jpg" : item.CoverImage)' />
+                    </div>
+                    i++;
+                }*@
+			</div>
+		</div>
+		<!-- Add Pagination -->
+		<script>
+			var swiperBut = new Swiper('#swiper-but', {
+				slidesPerView: 4,
+				spaceBetween: 4
+			});
+			var setbut = function (e) {
+				$('#swiper-but .swiper-slide').removeClass('current-slide');
+				$('#swiper-but .swiper-item-' + e).addClass('current-slide');
+				if (e > 3) {
+					swiperBut.slideTo(e - 3, 500, false);
+				} else {
+					swiperBut.slideTo(0, 500, false);
+				}
+			}
+			var swiper1 = new Swiper('#swiper1', {
+				autoplay: 2000,
+				nextButton: '.swiper-button-next',
+				prevButton: '.swiper-button-prev',
+				spaceBetween: 10,
+				autoplayDisableOnInteraction: false,
+				onSlideChangeEnd: function (swiper) {
+					setbut(swiper.activeIndex);
+				}
+			});
+			var getItem = function (num) {
+				swiper1.slideTo(num, 500, false);
+				setbut(num);
+			}
+		</script>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		<div class="bgWhite">
+			<div class="classLine">
+				@*<a  href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "展览活动", index = "info" })" class="className">
+						展览活动
+						<i class="fa fa-play"></i>
+					</a>*@
+				<ul class="nav nav-tabs classtabs" role="tablist">
+					<li role="presentation" class="active"><a href="#zhanhui" aria-controls="zhanhui" role="tab" data-toggle="tab" onclick="changeUrl('zhanhui');" class="className">展览活动</a></li>
+					<li role="presentation"><a href="#huodong" aria-controls="huodong" role="tab" data-toggle="tab" onclick="changeUrl('huodong');" class="className"> 泰达动态</a></li>
+                    <li role="presentation"><a href="#guowu" aria-controls="huodong" role="tab" data-toggle="tab" onclick="changeUrl('guowu');" class="className"> 国务院信息</a></li>
+					@*<span class="more pull-right"><a id="cmslist_more" href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "最新公告", curr = "News" })" style="line-height:normal;">更多 <i class="fa fa-angle-double-right"></i></a></span>*@
+					<a id="cmslist_more" href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "展览活动", index = "info" })" class="more pull-right">
+						MORE <i class="fa fa-angle-double-right"></i>
+					</a>
+				</ul>
+
+
+			</div>
+			<!-- Tab panes -->
+			<div class="tab-content i_tabCont">
+				<div role="tabpanel" class="tab-pane active" id="zhanhui">
+					<ul class="newsList">
+						@foreach (CmsArtical item in ViewBag.ExhibitionNotice)
+						{
+							<li>
+								<a href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = "展览活动", index = "info" })">
+									@if (item.IsNew)
+									{
+										<img src="~/Content/images/inco-new.gif" class="inco-hot" />
+									}
+									else if (item.IsHot)
+									{
+										<img src="~/Content/images/inco-hot.gif" class="inco-hot" />
+									}
+									@item.Title.CutString(40, true)
+								</a><span class="pull-right">@(item.PublishTime?.ToString("yyyy-MM-dd"))</span>
+							</li>
+						}
+					</ul>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="huodong">
+					<ul class="newsList">
+						@foreach (CmsArtical item in ViewBag.ActivityNotice)
+						{
+							<li>
+								<a href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = "泰达动态", index = "info" })">
+									@if (item.IsNew)
+									{
+										<img src="~/Content/images/inco-new.gif" class="inco-hot" />
+									}
+									else if (item.IsHot)
+									{
+										<img src="~/Content/images/inco-hot.gif" class="inco-hot" />
+									}
+									@item.Title.CutString(40, true)
+								</a><span class="pull-right">@(item.PublishTime?.ToString("yyyy-MM-dd"))</span>
+							</li>
+						}
+					</ul>
+				</div>
+                <div role="tabpanel" class="tab-pane" id="guowu">
+                    <ul class="newsList">
+                        @foreach (StateCouncil item in ViewBag.guowu)
+                        {
+                            <li>
+                                <a href="@item.Url">
+                                    @item.Title.CutString(48, true)
+                                </a><span class="pull-right">@(item.PublishTime?.ToString("yyyy-MM-dd"))</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="h_20"></div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6">
+		<div class="bgWhite">
+			<div class="classLine">
+				<a href="@Url.Action("ProfessionalService", "AboutUs", new { area = "", index = "aboutUs" })" class="className">
+					年度计划
+					<i class="fa fa-play"></i>
+				</a>
+				<a href="@Url.Action("ProfessionalService", "AboutUs", new { area = "", index = "aboutUs" })" class="more pull-right">
+					MORE <i class="fa fa-angle-double-right"></i>
+				</a>
+			</div>
+			<ul class="newsList jihua">
+				@foreach (AnnualPlan item in ViewBag.AnnualPlan)
+				{
+					@*<li><a href="@(string.IsNullOrEmpty(item.DetailPageLink) ? "/AboutUs/ProfessionalService?index=aboutUs" : Html.Raw(item.DetailPageLink).ToString())">@item.Name.CutString(40, true)</a><span class="pull-right"><i class="fa fa-map-marker"></i>@item.ActivityPlace<i class="fa fa-clock-o"></i>@item.ActivityStartTime.ToString("MM月")</span></li>*@
+					<li><a href="@(string.IsNullOrEmpty(item.DetailPageLink) ? "/AboutUs/ProfessionalService?index=aboutUs" : Html.Raw(item.DetailPageLink).ToString())">@item.Name.CutString(40, true)</a><span class="pull-right"><i class="icon-icon-16"></i>@item.ActivityPlace<i class="icon-icon-17"></i>@item.ActivityStartTime.ToString("MM月")</span></li>
+
+				}
+			</ul>
+		</div>
+		<div class="h_20 clearfix"></div>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		<div class="bgWhite bgHeight">
+			<div class="classLine">
+				<a href="@Url.Action("Window","Focus",new { area = "Websitepage",index = "focus"})" class="className">
+					企业之窗
+					<i class="fa fa-play"></i>
+				</a>
+				<a href="@Url.Action("Window","Focus",new { area = "Websitepage",index = "focus"})" class="more pull-right">
+					MORE <i class="fa fa-angle-double-right"></i>
+				</a>
+			</div>
+			<div class="qiyeForm">
+				@using (Html.BeginForm("Home", "Home", FormMethod.Post, new { @id = "form4search" }))
+				{
+					<div class="row">
+						<label class="col-xs-6 col-md-3">
+							<input type="radio" name="searchType" id="searchType" value="company" onclick="keyword4search('company');" /> <i class="icon-icon-15"></i> 企业
+						</label>
+						<label class="col-xs-6 col-md-3">
+							<input type="radio" name="searchType" id="searchType" value="product" onclick="keyword4search('product');" /> <i class="icon-icon-23"></i> 产品
+						</label>
+						<script>document.getElementsByName("searchType")[0].checked = "checked";</script>
+						<label class="col-xs-12  col-md-5 col-md-offset-1">
+							<select class="form-control roundborder" id="industryId" name="industryId">
+								<option value="" selected>请选择</option>
+								@foreach (IndustryOwned item in ViewBag.IndustryList)
+								{
+									<option value="@item.SystemId">@item.Name</option>
+								}
+								@*<option value="电子通讯" selected>电子通讯</option>*@
+							</select>
+						</label>
+					</div>
+							<div class="h_1em"></div>
+							<div class="input-group col-xs-12">
+								<input type="text" class="form-control" name="keyword" placeholder="请输入关键字" style="border-top-left-radius:17px; border-bottom-left-radius:17px;">
+								<span class="input-group-btn">
+									<button class="btn btn-default btn-success" type="button" style="border-top-right-radius:17px; border-bottom-right-radius:17px; text-shadow:none;" onclick="document.getElementById('form4search').submit();"><i class="fa fa-search"></i> 搜 索</button>
+								</span>
+							</div>
+				}
+				@*<form>*@
+
+				<div class="h_1em"></div>
+				<div class="row hotkeywords">
+					<div class="col-xs-12 col-md-4 col-lg-3">
+						<strong>热门关键词</strong>
+					</div>
+					<div class="col-xs-12 col-md-8 col-lg-9">
+						@*@foreach (string item in ViewBag.keywords)
+							{
+								<a >@item</a>
+							}*@
+						<span id="product4key" style="display:none">
+							@foreach (string item in ViewBag.keywords)
+							{
+								<a href="@Url.Action("ChanpinSearch", "Search", new { area = "WebsitePage", keyword = item })">@item</a>
+							}
+						</span>
+						<span id="company4key">
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "汽车"})">汽车</a>
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "电子"})">电子</a>
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "食品"})">食品</a>
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "机械"})">机械</a>
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "化工"})">化工</a>
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "医疗"})">医疗</a>
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "石油"})">石油</a>
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "服务"})">服务</a>
+							<a href="@Url.Action("Window","Focus",new { area="WebsitePage",companyname = "物流"})">物流</a>
+						</span>
+
+
+					</div>
+				</div>
+				@*</form>*@
+			</div>
+			<div class="h_20 clearfix"></div>
+		</div>
+
+	</div>
+</div>
+<div class="row">
+	<div class="h_20 clearfix"></div>
+	@*<div class="col-xs-12">
+			<img src="~/Content/images/i_banner4.jpg" class="img-responsive" />
+		</div>
+		<div class="h_20 clearfix"></div>*@
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<div class="bgWhite" style="min-height: 285px;">
+			<div class="classLine">
+				<a href="@Url.Action("NewProduct", "Focus",new { area = "WebsitePage", type = "new", index = "focusTeda"})" class="className">
+					泰达产品推介
+					<i class="fa fa-play"></i>
+				</a>
+				<a href="@Url.Action("NewProduct", "Focus",new { area = "WebsitePage", type = "new", index = "focusTeda"})" class="more pull-right">
+					MORE <i class="fa fa-angle-double-right"></i>
+				</a>
+			</div>
+			<article id="teda-newpro-rec" class="swiper-container">
+				<article class="swiper-wrapper">
+					@foreach (Product item in ViewBag.NewProduct)
+					{
+						<div class="swiper-slide">
+							<div class="row newPro" style="margin-top:7px;">
+								<div class="col-xs-12 col-sm-5">
+									<div class="h_20"></div>
+									<a href="@Url.Action("NewProductDetails","Focus",new { area = "WebsitePage", id=item.Id, type = "new", index = "focusTeda"})">
+										<img src="@(string.IsNullOrEmpty(item.ProductImgUrl) ? "/Content/images/i_product.jpg" : item.ProductImgUrl)" class="img-responsive" style="margin:0 auto;" />
+									</a>
+
+								</div>
+								<div class="col-xs-12 col-sm-7">
+									<h2>@(item.CompanyInfo?.CompanyName)</h2>
+									<h3>@item.ProductName</h3>
+									<p class="hidden-xs">@(item.CompanyInfo?.MainBusiness)</p>
+								</div>
+							</div>
+							<div class="h_20"></div>
+						</div>
+					}
+				</article>
+			</article>
+		</div>
+	</div>
+	<div class="h_20 no-display1"></div>
+	<div class="col-xs-12 col-md-6">
+		<div class="bgWhite">
+			<div class="classLine">
+				<a href="@Url.Action("Index", "TradeTeda",new { area = "WebsitePage", index = "tradeTeda"})" class="className">
+					《贸易泰达》专区
+					<i class="fa fa-play"></i>
+				</a>
+				<a href="@Url.Action("Index", "TradeTeda",new { area = "WebsitePage", index = "tradeTeda"})" class="more pull-right">
+					MORE <i class="fa fa-angle-double-right"></i>
+				</a>
+			</div>
+			<div class="img-trade">
+				@foreach (ProductBook item in ViewBag.ProductBook)
+				{
+					<img src="@(string.IsNullOrEmpty(item.TopImage) ? "/Content/images/i-trade.jpg" : item.TopImage)" />
+									<a href="@item.OnlineUrl" class="a-trade1">在线阅读 <i class="fa fa-caret-right"></i></a>
+					if (!string.IsNullOrEmpty(item.AttachFile))
+					{
+						//List<FilesController.UserUploadFile> files = Json.Decode(item.AttachFile, typeof(List<FilesController.UserUploadFile>));
+						<a href="@item.AttachFile" class="a-trade2">免费下载 <i class="fa fa-caret-right"></i></a>
+					}
+					else
+					{
+						<a href="javascript:;" class="a-trade2">免费下载 <i class="fa fa-caret-right"></i></a>
+					}
+				}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="h_20"></div>
+
+<div class="h_20"></div>
+
+
+@*<div class="go no-display" style="top:40%;">
+		@if (Request.IsAuthenticated)
+		{
+			<a href="@Url.Action("Index","Research",new { area = "" })" class="leftce1"> <i class="icon-icon-19"></i><br />调查征集</a>
+		}
+		else
+		{
+			<a href="javascript:;" onclick="UserLoginModal();" class="leftce1"> <i class="icon-icon-19"></i><br />调查征集</a>
+		}
+		@if (Request.IsAuthenticated)
+		{
+			<a href="@Url.Action("Index","MessageBoard",new { area = "" })" class="leftce2"><i class="icon-icon-21"></i><br />政务咨询</a>
+		}
+		else
+		{
+			<a href="javascript:;" onclick="UserLoginModal();" class="leftce2"><i class="icon-icon-21"></i><br />政务咨询</a>
+		}
+	</div>*@
+<div class="floating_ck hidden-xs">
+	<dl>
+		<dt style="margin-top:260px;"></dt>
+		<dd class="consult">
+			<div class="floating_left">
+					<a href="@Url.Action("Index","Research",new { area = "" })" style="position: absolute;top: 35px;right: -2px;font-size: 14px;width: 40px; color:#014099; font-weight: bold;">调查征集</a>
+					@*<i class="fa fa-play"></i>*@
+			</div>
+		</dd>
+		<dd class="words">
+			<div class="floating_left">
+				<a href="@Url.Action("Index","MessageBoard",new { area = "" })" style="position: absolute; top:35px; right: -2px;width: 40px; color:#014099; font-weight: bold; font-size: 14px;">政务咨询</a>@*<i class="fa fa-play"></i>*@
+			</div>
+		</dd>
+
+	</dl>
+</div>
+
+<script>
+    if(window.localStorage.aa && window.localStorage.aa != 'null'){
+        document.getElementById("userloginbtn").click();
+        window.localStorage.clear();
+    } else {
+        window.localStorage.aa = "null";
+    }
+
+	var mySwiper2 = new Swiper('#teda-newpro-rec', {
+		loop: true,
+		autoplay: 2000,
+		autoplayDisableOnInteraction: false
+	})
+	function redirect2url(e) {
+		var isMobile = IsMobile();
+		if (isMobile == true) {
+			if (e != '') window.open(e, "_self");
+		}
+		else {
+			if (e != '') window.open(e);
+		}
+	}
+	function IsMobile() {
+		if (/iPhone/i.test(window.navigator.userAgent)) {
+			return true;
+		}
+		if (/Android/i.test(window.navigator.userAgent)) {
+			return true;
+		}
+		return false;
+	}
+	function changeUrl(e) {
+		if (e == 'zhanhui') {
+			document.getElementById("cmslist_more").href = "/Cms/Index/ArticleList?tab=展览活动&index=info";
+		}
+		else if (e == 'huodong') {
+			document.getElementById("cmslist_more").href = "/Cms/Index/ArticleList?tab=泰达动态&index=info";
+        } else if (e == 'guowu') {
+            document.getElementById("cmslist_more").href = "http://www.gov.cn/pushinfo/v150203/index.htm";
+        }
+	}
+	function keyword4search(searchType) {
+		if (searchType == "product") {
+			document.getElementById("company4key").style.display = "none";
+			document.getElementById("product4key").style.display = "block";
+		}
+		else {
+			document.getElementById("company4key").style.display = "block";
+			document.getElementById("product4key").style.display = "none";
+		}
+	}
+    function SearchSumit() {
+        var content = $("#searchfor").val();
+        window.location.href = "/WebsitePage/Search/Index?keyword=" + content
+    }
+</script>

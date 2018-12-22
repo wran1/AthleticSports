@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "中心简介";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--中心简介-->
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置</span>
+            <span>首页></span>
+            <span>关于我们></span>
+            <span>中心简介</span>
+        </div>
+        <!--搜索-->
+        @*<form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" /><button type="submit"><img src="~/Content/images/search-but.png" /></button>
+        </form>
+        <div class="clearfix"></div>*@
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("leftMenu")
+        <section class="menu-content">
+            <div class="top"><span>中心简介</span></div>
+            <div class="tai_mian">
+                <div style="min-height:175px;">
+                    <div class="col-md-6 col-xs-12 no_left">
+                        <p>开发区贸易促进中心成立于2003年5月29日，是天津经济技术开发区管委会贸发局的所属部门。</p>
+                        <p>开发区贸易促进中心工作宗旨：立足开发区，以滨海新区为依托，全面服务于天津，借助网络资源、会议展览、商务考察等方式，构筑商贸平台，全力推广企业的产品与服务，为企业在全球范围内寻求更多的商机，构建良好的营商环境。</p>
+                    </div>
+                    <div class="col-md-6 col-xs-12 no_right">
+                        <img src="~/Content/images/gaishu_3.jpg" class="img-responsive" />
+                    </div>
+                </div>
+                <p style="margin-top:10px;">开发区贸易促进中心的主要工作内容：为区内企业提供商贸信息和贸易活动的培训服务；并与国内外商贸机构加强交流合作，为企业提供商贸机遇；建设和管理贸易促进网站和国际制造业配套网站；同时，结合开发区内产业结构提供国内外顶级展会信息并协助组织区内企业参展。</p>
+
+                <div class="col-md-12 col-xs-12 no_padding" style="margin-top:40px; font-weight:bold;">
+                    开发区贸易促进中心由<span style="color:#003F99;">会展部</span>和<span style="color:#003F99;">商贸资讯部</span>组成：
+                </div>
+                <div class="col-md-6 col-xs-12 tai_margin10">
+                    <span class="tai_span"><img src="~/Content/images/inco-huiyi.jpg" />会展部职责</span>
+                    <ul class="list-tai">
+                        <li>代表天津开发区参加全国各类政府性展览会</li>
+                        <li>组织区内企业参加境外展会</li>
+                        <li>结合我区优势，自办展会</li>
+                        <li>扶植、监督、管理开发区会展业</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-xs-12 tai_margin10">
+                    <span class="tai_span"><img src="~/Content/images/inco-shangmao.jpg" />商贸咨询部职责</span>
+                    <ul class="list-tai">
+                        <li>搭建网络</li>
+                        <li>建立商贸联盟，开拓贸易新渠道</li>
+                        <li>加强调研，深入了解区内企业市场需求</li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+    </section>
+</div>
+<script>
+		//初始化左侧目录
+		LeftMenu([
+			'关于我们',
+                [{ 'name': '中心简介','url': '#','current': true},
+                 { 'name': '专业服务','url': '#','current': false}]
+		]);
+</script>

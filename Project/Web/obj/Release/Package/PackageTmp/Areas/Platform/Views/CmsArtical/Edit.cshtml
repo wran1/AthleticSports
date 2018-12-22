@@ -1,0 +1,93 @@
+﻿@using Models.CmsModels
+@using Resources
+@using Web.Helpers
+
+@{
+    //Layout = "../Shared/_LayoutForm.cshtml";
+    CmsCategory category = ViewBag.Category;
+}
+
+<script>
+    $(function () {
+        if ("@category.Picture" != "True"){
+            $("#CoverImage").parent().parent().hide();
+        }
+        if ("@category.Album" != "True"){
+            $("#ImgAlbum").parent().parent().parent().hide();
+        }
+        if ("@category.Video" != "True"){
+            $("#VideoUrl").parent().parent().hide();
+        }
+        if ("@category.Audio" != "True"){
+            $("#AudioUrl").parent().parent().hide();
+        }
+        if ("@category.SubColumn" != "True"){
+            $("#CmsCategoryId").parent().parent().hide();
+        }
+        if ("@category.VideoAttachFile" != "True"){
+            $("#VideoAttachFile").parent().parent().parent().hide();
+        }
+         if ("@category.VoiceAttachFile" != "True"){
+             $("#VoiceAttachFile").parent().parent().parent().hide();
+        }
+        if ("@category.ByImage" != "True"){
+            $("#ByImage").parent().parent().hide();
+         }
+        if ("@category.Byname" != "True"){
+            $("#Byname").parent().parent().hide();
+        }
+          if ("@category.Externallinks" != "True"){
+            $("#Externallinks").parent().parent().hide();
+        }
+    });
+</script>
+<div class="content-heading">
+    <div class="pull-right">
+        @Html.Partial("Button_Back_List")
+    </div>
+
+    @category.Name -
+
+    @{
+        var action = (string)HttpContext.Current.Request.RequestContext.RouteData.Values["action"];
+        if (action == "Details")
+        {
+            @Lang.Details
+        }
+        if (action == "Edit")
+        {
+            if (ViewContext.RouteData.Values["id"] == null)
+            {
+                <span>@Lang.Create</span>
+            }
+            else
+            {
+                <span>@Lang.Edit</span>
+            }
+        }
+    }
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-body form-horizontal">
+        @using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "Main" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                @Html.Partial("_alerts")
+                @Html.Partial("_validationSummary")
+            </div>
+
+            <div class="row">
+                @Html.EditorForModel()
+            </div>
+            <div class="row">
+                @Html.Partial("Button_Submit")
+            </div>
+        }
+
+    </div>
+</div>
+

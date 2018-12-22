@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "开发区企业经营困难需求调查问卷";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="formBox">
+        <h1>调查问卷</h1>
+        <div class="info">注册会员，随时发布融资项目，提升项目浏览量</div>
+        <form class="form-inline col-md-8 col-md-offset-2">
+            
+            <div class="col-xs-12 p-sm">
+                1、您企业是否在开发区内注册？
+            </div>
+            <div class="col-xs-12">
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="zhuce" name="zhuce" value="是"> 是
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="zhuce" name="zhuce" value="否"> 否
+                </label>
+            </div>
+            <div class="clearfix"></div>
+            <hr />
+            <div class="clearfix"></div>
+            <div class="col-xs-12 p-sm">
+                2、企业经济类型
+            </div>
+            <div class="col-xs-12">
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="leixing" name="leixing" value="国有企业"> 国有企业
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="leixing" name="leixing" value="股份制企业"> 股份制企业
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="leixing" name="leixing" value="民营企业 "> 民营企业 
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="leixing" name="leixing" value="外资/合资企业"> 外资/合资企业
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="leixing" name="leixing" value="外资/其它"> 外资/其它
+                </label>
+            </div>
+            <div class="clearfix"></div>
+            <hr />
+            <div class="clearfix"></div>
+            <div class="col-xs-12 p-sm">
+                3、企业所处的发展阶段
+            </div>
+            <div class="col-xs-12">
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="jieduan" name="jieduan" value="创业期"> 创业期
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="jieduan" name="jieduan" value="成长期"> 成长期
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="jieduan" name="jieduan" value="稳定发展期 "> 稳定发展期
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="jieduan" name="jieduan" value="转型期"> 转型期
+                </label>
+                <label class="radio-inline col-xs-6 col-md-4">
+                    <input type="radio" id="jieduan" name="jieduan" value="其它"> 其它
+                </label>
+            </div>
+            <div class="clearfix"></div>
+            <hr />
+            <div class="clearfix"></div>
+            <div class="col-xs-12 p-sm">
+                4、前企业发展面对的最大困难  （可多选）
+            </div>
+            <div class="col-xs-12">
+                <label class="checkbox-inline col-xs-6 col-md-4">
+                    <input type="checkbox" id="kunnan[]" value="人才短缺"> 人才短缺
+                </label>
+                <label class="checkbox-inline  col-xs-6 col-md-4">
+                    <input type="checkbox" id="kunnan[]" value="技术设备不够"> 技术设备不够
+                </label>
+                <label class="checkbox-inline  col-xs-6 col-md-4">
+                    <input type="checkbox" id="kunnan[]" value="资金不足 "> 资金不足
+                </label>
+                <label class="checkbox-inline col-xs-6 col-md-4">
+                    <input type="checkbox" id="kunnan[]" value="信息不畅"> 信息不畅
+                </label>
+                <label class="checkbox-inline col-xs-6 col-md-4">
+                    <input type="checkbox" id="kunnan[]" value="其它"> 其它
+                </label>
+            </div>
+            <div class="clearfix"></div>
+            <hr />
+            <div class="clearfix"></div>
+            <div class="col-xs-12 p-sm">
+                5、联系人及联系方式
+            </div>
+            <div class="col-xs-12">
+                <div class="input-group col-xs-12 col-md-5">
+                    <div class="input-group-addon">您的姓名</div>
+                    <input type="text" class="form-control" id="name" placeholder="">
+                </div>
+                <div class="input-group  col-xs-12 col-md-5">
+                    <div class="input-group-addon">联系电话</div>
+                    <input type="text" class="form-control" id="phone" placeholder="">
+                </div>
+            </div>
+            <div class="h_1em"></div>
+            <div class="col-xs-12 text-center p-lg">
+                <button type="submit" class="btn btn-primary btn-group-lg">　提 交　</button>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="formSucc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content text-center">
+                        <div class="formSucc">调查征集提交成功！</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+

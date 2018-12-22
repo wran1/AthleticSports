@@ -1,0 +1,31 @@
+﻿@using Services
+@using Web.Helpers
+@model string
+@{
+    var id = CommonCodeGenerator.GenerateRandomInt();
+}
+
+@Html.TextBoxFor(a => a, new { @class = "form-control" })
+<span class="btn btn-success fileinput-button">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>上传文件</span>
+    <input id=@("fileupload"+id) type="file" name="files[]" multiple="">
+</span>
+<div id="files" class="files"></div>
+<script>
+    $('#@("fileupload"+id)').fileupload({
+        autoUpload: true,//是否自动上传
+        url: "/BlobFileUpload/UploadFile",//上传地址
+        dataType: 'json',
+        done: function (e, data) {
+            var result = eval(data.result);
+            //console.log(result);
+            if (result.error === 0) {
+                var url = result.Uri;
+                $('#@Html.NameFor(a => a)').val(url);
+            } else {
+                alert(result.message);
+            }
+        }
+    });
+</script>

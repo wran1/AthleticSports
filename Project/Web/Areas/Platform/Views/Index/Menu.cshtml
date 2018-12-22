@@ -1,0 +1,69 @@
+﻿@using Models.CmsModels
+@model IEnumerable<Models.SysModels.SysController>
+
+@{ 
+    List<CmsCategory> cmsCategory = ViewBag.CmsCategory;
+}
+<div class="aside-inner">
+    <nav class="sidebar">
+        <ul class="nav nav1">
+            <li class="nav-heading">
+                <span>菜单</span>
+            </li>
+            @foreach (var item in Model.Where(a => a.SystemId.Length == 3))
+            {
+                <li>
+                    <a href="#@item.Id" title="@item.Name" data-toggle="collapse" >
+                        <div class="label label-info  pull-right">@Model.Count(a => a.SystemId.Length == 6 && a.SystemId.StartsWith(item.SystemId))</div>
+                        <i class="fa fa-fw @item.Ico"></i>
+                        <span>@item.Name</span>
+                    </a>
+                    <ul id="@item.Id" class="nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header" >@item.Name</li>
+                        @if (item.SystemId == "200")
+                        {
+                            foreach (var category in cmsCategory)
+                            {
+                                <li>
+                                    <a title="@category.Name" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#Main" style="font-size: 12px;" href="@Url.Action("Index", "CmsArtical", new { parameter = category.SystemId })">
+                                        <i class="fa fa-fw @(string.IsNullOrEmpty(category.Ico) ? "fa-list-ul" : category.Ico)" id="gt1" ></i>
+                                        @Html.DisplayFor(a => category.Name)
+                                    </a>
+                                </li>
+                            }
+                        }
+                        @foreach (var item1 in Model.Where(a => a.SystemId.Length == 6 && a.SystemId.StartsWith(item.SystemId)))
+                        {
+                            <li>
+                                <a title="@item1.Name" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#Main" style="font-size: 12px;"  href="@Url.Action(item1.ActionName, item1.ControllerName, new { parameter = item1.Parameter})">
+                                    <i class="fa fa-fw @item1.Ico" id="gt1"></i>
+                                    @Html.DisplayFor(a => item1.Name)
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+<script type="text/javascript">
+        $(document).ready(function() {
+            $("ul li:first").addClass('red');
+            $("ul li").click(function () {
+                $(this).addClass('red').siblings().removeClass('red'); 
+                $(this).removeClass('red1');
+            });
+        });
+        $(document).ready(function() {
+            $("ul li:first").addClass('red1');
+            $("ul li").click(function() {
+                $(this).addClass('red1').siblings().removeClass('red1');
+            });
+        });
+</script>
+<style>
+    .nav1 li ul li.red1 > a, .nav1 li ul li.red1 > a > #gt1 {
+        color: #23b7e5 !important;
+    }
+</style>

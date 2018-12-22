@@ -1,0 +1,37 @@
+﻿<section id="left-menu" class="pull-left">
+	<ul id="left-menu-list" class="menu list-unstyled"></ul>
+	<div class="left-menu-tel">
+		<div>
+			<span>《贸易泰达》领取方式</span>
+			<div></div>
+		</div>
+		<div>领取热线：</div>
+		<p>022-25201091</p>
+		<div>自助领取地点:</div>
+		<ul class="list-unstyled">
+			<li>管委会A区三楼贸易促进中心</li>
+			<li>管委会一楼前台（天津经济技术开发区宏达街19号）</li>
+			<li>报税大厅（天津经济技术开发区宏达街19号）</li>
+			<li>行政服务中心（天津经济技术开发区第二大街泰达MSD-A1二层）</li>
+		</ul>
+	</div>
+</section>
+<script>
+	function LeftMenu(result) {
+		var list = [];
+		list.push("<li>" + result[0] + "</li>");
+		for (i in result[1]) {
+			if (result[1][i].current) {
+				list.push("<li class='list current'>");
+			} else {
+				list.push("<li class='list'>");
+			}
+			list.push("<a href=" + result[1][i].url + ">");
+			list.push("<div></div>");
+			list.push("<span>" + result[1][i].name + "</span>");
+			list.push("</a>");
+			list.push("</li >");
+		}
+		document.getElementById('left-menu-list').innerHTML = list.join('');
+	}
+</script>

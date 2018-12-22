@@ -1,0 +1,36 @@
+﻿@using Models.CmsModels;
+@using Web.Helpers
+@model PagedList<CmsArtical>
+
+@{
+    ViewBag.Title = "搜索结果";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IQueryable<CmsCategory> cmsCategory = ViewBag.Category;
+}
+<div class="container">
+    <ol class="breadcrumb">
+        当前位置：
+        <li><a href="@Url.Action("Home","Home")">首页</a></li>
+        <li><span class="blue">全文搜索</span></li>
+    </ol>
+    <div class="searchResultInfo">
+        您搜索的”<span class="green">@Request["keyword"]</span>“，共有 <span class="green">@Model.Count()</span>条 查询结果。
+</div>
+    <div class="searchResult">
+        
+            @foreach (CmsArtical item in Model)
+            {
+                <dl>
+                    <dt><a href="@Url.Action("Details","Index",new { area="Cms",id=item.Id})" class="blue">[@item.CmsCategory.Name]</a> <a href="@Url.Action("Details","Index",new { area="Cms",id=item.Id})">@item.Title</a></dt>
+                    <dd>@item.Abstract</dd>
+                    <small>来源：@item.Sourse　 发布时间：@item.PublishTime</small>
+                  
+                </dl>
+            }
+      
+        <nav aria-label="Page navigation" class="text-center">
+            @Html.Raw(Html.MikePager(Model))
+        </nav>
+    </div>
+</div>
+

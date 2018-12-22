@@ -1,0 +1,102 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "会员注册";
+}
+
+
+<div class="row p15">
+    <div class="col-xs-8 hui_nav">
+        <span>当前位置：</span><a href="@Url.Action("Home", "Home", new { area = "" })">首页</a> > <a href="@Url.Action("Index","AboutUs",new { area = "",index = "aboutUs" })">关于我们</a>  > <a href="@Url.Action("UserDeclaration","Account",new { area = "" })">成为会员</a>
+    </div>
+</div>
+<div style="background:#fff;">
+    <div class="row p15">
+        <div class="col-xs-12 hui_title text-center">会员注册<div class="h_20 hui_bottom"></div></div>
+    </div>
+    <div class="h_20"></div>
+
+    <div class="">
+        <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">会员服务</h3>
+                </div>
+                <div class="panel-body">
+                    <p>1、在泰达贸促网上免费发布产品、供求、公司资料、联系方式等信息吸引买家/供应商，让生意自动找上门。</p>
+                    <p>2、在泰达贸促网会员操作平台查看企业的商业往来，如供求留言、招商反馈、询盘留言等。</p>
+                    <p>3、在泰达贸促网上交商友、看商情，搜索到更多资源，享受到更多服务。</p>
+                    <p>4、在泰达贸促网上发布的最新享受政策支持的活动与展会优先收到电话、邮件、短信等多渠道提醒。</p>
+                    <p>5、拥有一个属于您的企业黄页，可做为贵企业的网上门户对外宣传推广，以增加企业的知名度。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">义务责任</h3>
+                </div>
+                <div class="panel-body">
+                    <p>欢迎阅读”泰达贸促网”服务条款协议(下称”本协议”)。本协议阐述之条款和条件适用于您使用”泰达贸促网”网站所提供的各种服务(下称”服务”)。您的年龄必须在十八周岁或以上，才可使用本网站服务。如不符合本项条件，请勿使用”服务”。</p>
+                    <p>1、根据“泰达贸促网”网址所刊载的会员资料表格的要求，提供关于您或贵公司的真实、准确、完整和反映当前情况的资料。
+                    <p>2、 维持并及时更新会员资料，使其保持真实、准确、完整和反映当前情况。倘若您提供任何不真实、不准确、不完整或不能反映当前情况的资料，或“泰达贸促网”有合理理由怀疑该等资料不真实、不准确、不完整或不能反映当前情况，“泰达贸促网”有权暂停或终止您的注册身份及资料，并拒绝您在目前或将来对”服务”(或其任何部份) 以任何形式使用。如您代表一家公司或其他法律主体在本网站登记，则您声明和保证，您有权使该公司或其他法律主体受本协议”条款”约束。</p>
+                    <p>3、在登记过程中，您将选择会员注册名和密码。您须自行负责对您的会员注册名和密码保密，且须对您在会员注册名和密码下发生的所有活动承担责任。“泰达贸促网”不能也不会对因您未能遵守本款规定而发生的任何损失或损毁负责。</p>
+                    <p>4、您在注册、交易过程中、在任何公开信息场合或通过任何电子邮件形式，向网站或其他用户提供的任何资料，包括数据、文本、照片、图画、影像、词句或其他材料。</p>
+                    <p>“泰达贸促网”没有责任去认定或决定您提交给本网站的资料哪些是应当受到保护的，对享有”服务”的其他用户使用”您的资料”，本网站也不必负责。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">免责声明</h3>
+                </div>
+                <div class="panel-body">
+                    <p>“泰达贸促网”不对因下述任一情况而发生的任何损害赔偿承担责任，包括但不限於利润、商誉、使用、数据等方面的损失或其他无形损失的损害赔偿 (无论“泰达贸促网”是否已被告知该等损害赔偿的可能性)：</p>
+                    <p>1、使用或未能使用“服务”；</p>
+                    <p>2、因通过或从“服务”购买或获取任何产品或服务；</p>
+                    <p>3、未经批准接入或更改您的传输资料或数据；</p>
+                    <p>4、任何第三者对“服务”的声明或关於“服务”的行为；</p>
+                    <p>5、因任何原因而引起的与“服务”有关的任何其他事宜，包括疏忽。</p>
+                    <p class="panel_p">关于解释权</p>
+                    <p class="panel_p">本网站之声明以及其修改权、更新权及最终解释权均属本站所有</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("UserDeclaration", "Account", FormMethod.Post, new { role = "form", id = "form4useragree" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="">
+            <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-12 register-checkbox">
+                <span class="checkbox c-checkbox">
+                    <label>
+                        <input id="isAgree" name="isAgree" type="checkbox" value="True">
+                        <span class="fa fa-check"></span>
+                    </label>
+                </span>
+                <label for="xieyi" class="hui_lable">我同意以上，开始注册</label>
+            </div>
+            <div class="col-md-5 col-sm-6 col-xs-12 text-right">
+                <input class="btn btn-md btn-success hui_button" type="submit" onclick="return userAgree()" value="注册">
+            </div>
+        </div>
+        <div class="h_20"></div>
+    }
+</div>
+<div class="h_20"></div>
+<div class="h_20"></div>
+<script>
+    function userAgree() {
+        if ($("#isAgree").is(":checked")) {
+            return true;
+        }
+        else {
+            alert("请同意用户声明！");
+            return false;
+        }
+    }
+</script>

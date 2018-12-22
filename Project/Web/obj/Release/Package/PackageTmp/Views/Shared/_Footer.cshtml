@@ -1,0 +1,62 @@
+﻿<section class="foot">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-7 no-display">
+                <div class="col-xs-8 col-sm-2 col-md-3 col-lg-2">
+                    <h2>聚焦泰达</h2>
+                    <a href="@Url.Action("Summary","Focus",new { area="WebsitePage",index="focus"})">泰达概述</a>
+                    <a href="@Url.Action("Window","Focus",new { area="WebsitePage",index="focus"})">企业之窗</a>
+                    <a href="@Url.Action("NewProduct","Focus",new { area="WebsitePage",index="focus", type = "new"})">泰达产品</a>
+                    <a href="@Url.Action("NewProduct","Focus",new { area="WebsitePage",index="focus", type = "last"})">终端产品</a>
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-3 col-lg-2">
+                    <h2>资讯速递</h2>
+                    <a href="@Url.Action("ArticleList","Index",new { area="Cms",index="info",tab="展览活动"})">展览活动</a>
+                    <a href="@Url.Action("ArticleList","Index",new { area="Cms",index="info",tab="泰达动态"})">泰达动态</a>
+                    <a href="@Url.Action("ArticleList","Index",new { area="Cms",index="info",tab="活动报道"})">活动报道</a>
+                    <a href="@Url.Action("ArticleList","Index",new { area="Cms",index="info",tab="企业采风"})">企业采风</a>
+                </div>
+                <div class="col-xs-8 col-sm-4 col-md-5 col-lg-5">
+                    <h2>《贸易泰达》专区</h2>
+                    <a href="/WebsitePage/TradeTeda?type=汽车产品、装备制造&index=tradeTeda">汽车产品、装备制造</a>
+                    <a href="/WebsitePage/TradeTeda?type=电子产品&index=tradeTeda">电子产品</a>
+                    <a href="/WebsitePage/TradeTeda?type=现代服务业&index=tradeTeda">现代服务业</a>
+                    <a href="/WebsitePage/TradeTeda?type=石油化工、食品饮料、生物医药、新能源新材料&index=tradeTeda">石油化工、食品饮料、生物医药、新能源新材料</a>
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-4 col-lg-3">
+                    <h2>关于我们</h2>
+                    <a href="@Url.Action("Index","AboutUs",new { area = "", index = "aboutUs" })">贸易促进中心简介</a>
+                    <a href="@Url.Action("ZhuanService", "AboutUs", new { area = "", index = "aboutUs" })">专业服务</a>
+                    <a href="@Url.Action("ProfessionalService", "AboutUs", new { area = "", index = "aboutUs" })">年度计划</a>
+                    <a href="@Url.Action("UserDeclaration","Account",new { area = "" })">成为会员</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-4 col-md-offset-1 no-display1 text-center">
+                    <a href="@Url.Action("Index","Research",new { area = "" })" class="leftce1"> <i class="icon-icon-19"></i><br />调查征集</a>              
+                    <a href="@Url.Action("Index","MessageBoard",new { area = "" })" class="leftce2"><i class="icon-icon-21"></i><br />政务咨询</a>
+               
+            </div>
+            <div class="col-xs-12 col-md-4 col-md-offset-1 mail-center">
+                <span>E-MAIL</span><br />
+                tradeteda@foxmail.com<br />
+                <span>TEL</span><br />
+                022-25201091 / 25202242 / 25202237 / 25202123<br />
+                <div class="clearfix h_1em"></div>
+                <div class="col-md-4 col-xs-4 text-center " style="padding-left:0;">
+                    <img src="~/Content/images/weibo_b.jpg" class="img-responsive" />微博
+                </div>
+                <div class="col-md-4 col-xs-4 text-center" style="padding-left:0;">
+                    <img src="~/Content/images/weixin_b.jpg" class="img-responsive" />微信
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div style="margin-bottom:8px;">
+                <span id="_ideConac" style="display: inline-block;"><a href="//bszs.conac.cn/sitename?method=show&amp;id=5BA4512928E5EBD0E053022E1AACE734" target="_blank"><img id="imgConac" vspace="0" hspace="0" border="0" src="//dcs.conac.cn/image/blue.png" data-bd-imgshare-binded="1"></a></span>
+                <script id="_jiucuo_" sitecode='1201160031' src='http://pucha.kaipuyun.cn/exposure/jiucuo.js'></script>
+            </div>
+            网站标识码：1201160031  &nbsp;备案序号：津ICP备05007992号 <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12019002000196" target="_blank" style="display: inline-block; margin-left: 5px;"><img src="~/Content/images/inco-gongan.png" />津公网安备 12019002000196号</a><br />
+            主办单位/版权所有： 天津经济技术开发区贸易促进中心 &nbsp;技术支持：天津精一科技发展股份有限公司
+        </div>
+    </div>
+</section>

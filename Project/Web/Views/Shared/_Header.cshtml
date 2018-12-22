@@ -1,0 +1,163 @@
+﻿
+<section class="head header-menu">
+  
+
+    @*<ul class="nav nav-pills mainNav no-display">
+        <li role="presentation" class="@(Request["index"] == null ? "active" : "")">
+			<a href="/Home/Home">首页</a>
+		</li>
+        <li role="presentation" class="@(Request["index"] == "focus" ? "active" : "")">
+			<a href="@Url.Action("Index","Focus",new { area = "Websitepage",index = "focus" })">
+				<span>聚焦泰达</span>
+				<p class="second-menu"></p>
+				<div class="second-menu">
+					<ul class="list-unstyled">
+						<li><a href="@Url.Action("Summary","Focus",new { area = "Websitepage",index = "focus"})">泰达概述</a></li>
+						<li><a href="@Url.Action("Window","Focus",new { area = "Websitepage",index = "focus"})">企业之窗</a></li>
+						<li><a href="@Url.Action("NewProduct","Focus",new { area = "Websitepage", type = "new",index = "focus"})">泰达产品</a></li>
+						<li><a href="@Url.Action("NewProduct","Focus",new { area = "Websitepage", type = "last",index = "focus"})">终端产品</a></li>
+					</ul>
+					<div></div>
+				</div>
+			</a>
+		</li>
+        <li role="presentation" class="@(Request["index"] == "info" ? "active" : "")">
+			<a href="@Url.Action("Index","Index",new { area = "Cms",index = "info" })">
+				<span>资讯速递</span>
+				<p class="second-menu"></p>
+				<div class="second-menu">
+					<ul class="list-unstyled">
+						<li><a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "展览活动", index = "info" })">展览活动</a></li>
+						<li><a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "泰达动态", index = "info" })">泰达动态</a></li>
+						<li><a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "活动报道", index = "info" })">活动报道</a></li>
+						<li><a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "企业采风", index = "info" })">企业采风</a></li>
+					</ul>
+					<div></div>
+				</div>
+			</a>
+		</li>
+        <li role="presentation" class="@(Request["index"] == "tradeTeda" ? "active" : "")">
+			<a href="@Url.Action("Index","TradeTeda",new { area = "Websitepage",index = "tradeTeda" })">《贸易泰达》专区</a>
+		</li>
+        <li role="presentation" class="@(Request["index"] == "aboutUs" ? "active" : "")">
+			<a href="@Url.Action("Index","AboutUs",new { area = "",index = "aboutUs" })">
+				<span>关于我们</span>
+				<p class="second-menu"></p>
+				<div class="second-menu">
+					<ul class="list-unstyled">
+						<li><a href="@Url.Action("Index","AboutUs",new { area = "", index = "aboutUs" })">贸易促进中心简介</a></li>
+						<li><a href="@Url.Action("ZhuanService", "AboutUs", new { area = "", index = "aboutUs" })">专业服务</a></li>
+                        <li><a href="@Url.Action("ProfessionalService", "AboutUs", new { area = "", index = "aboutUs" })">年度计划</a></li>
+                        <li><a href="@Url.Action("UserDeclaration","Account",new { area = "" })">成为会员</a></li>
+                    </ul>
+					<div></div>
+				</div>
+			</a>
+		</li>
+            <div class="pull-right search m_search hidden-xs">
+                <input type="text" id="searchforH" class="m_input" value="请输入搜索关键字"/>
+                <a href="javascript:void(0)" onclick="SearchSumit()"><img src="~/Content/images/d_search.png" /></a>
+            </div>
+    </ul>*@
+   <div class="xiaomain no-display1">
+       <div class="col-xs-12 ">
+           <a href="/Home/Home" class="xiaofirst">首页</a>
+       </div>
+       <div class="col-xs-3 no_right">
+          <a href="@Url.Action("Index","Focus",new { area = "Websitepage",index = "focus" })" class="xiaofirst">聚焦泰达</a>
+          <a href="@Url.Action("Summary","Focus",new { area = "Websitepage",index = "focus"})">-泰达概述</a>
+          <a href="@Url.Action("Window","Focus",new { area = "Websitepage",index = "focus"})">-企业之窗</a>
+          <a href="@Url.Action("NewProduct","Focus",new { area = "Websitepage", type = "new",index = "focus"})">-泰达产品</a>
+          <a href="@Url.Action("NewProduct","Focus",new { area = "Websitepage", type = "last",index = "focus"})">-终端产品</a>
+       </div>
+       <div class="col-xs-3">
+           <a href="@Url.Action("Index","Index",new { area = "Cms",index = "info" })" class="xiaofirst">资讯速递</a>
+           <a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "展览活动", index = "info" })">-展览活动</a>
+           <a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "泰达动态", index = "info" })">-泰达动态</a>
+           <a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "活动报道", index = "info" })">-活动报道</a>
+           <a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "企业采风", index = "info" })">-企业采风</a>
+       </div>
+       <div class="col-xs-5 ">
+           <a href="@Url.Action("Index","AboutUs",new { area = "",index = "aboutUs" })" class="xiaofirst">关于我们</a>
+           <a href="@Url.Action("Index","AboutUs",new { area = "", index = "aboutUs" })">-贸易促进中心简介</a>
+           <a href="@Url.Action("ZhuanService", "AboutUs", new { area = "", index = "aboutUs" })">-专业服务</a>
+           <a href="@Url.Action("ProfessionalService", "AboutUs", new { area = "", index = "aboutUs" })">-年度计划</a>
+           <a href="@Url.Action("UserDeclaration","Account",new { area = "" })">-成为会员</a>
+
+       </div>
+       <div class="col-xs-12">
+           <a href="@Url.Action("Index","TradeTeda",new { area = "Websitepage",index = "tradeTeda" })" class="xiaofirst">《贸易泰达》专区</a>
+           <a href="/WebsitePage/TradeTeda?type=汽车产品、装备制造&index=tradeTeda" style="text-align:left;margin-left:5px;">-汽车产品、装备制造</a>
+           <a href="/WebsitePage/TradeTeda?type=电子产品&index=tradeTeda" style="text-align:left;margin-left:5px;">-电子产品</a>
+           <a href="/WebsitePage/TradeTeda?type=现代服务业&index=tradeTeda"  style="text-align:left;margin-left:5px;">-现代服务业</a>
+           <a href="/WebsitePage/TradeTeda?type=石油化工、食品饮料、生物医药、新能源新材料&index=tradeTeda" style="text-align:left;margin-left:5px;">-石油化工、食品饮料、生物医药、新能源新材料</a>
+       </div>
+       
+       <div class="clearfix"></div>
+   </div>
+</section>
+<script>
+	var showMenu = function () {
+		if (showMenu.isShow) {
+			$('.menu-click').removeClass("show-menu");
+			$('.header-menu').removeClass('show-header');
+		} else {
+			$('.menu-click').addClass("show-menu");
+			$('.header-menu').addClass('show-header');
+		}
+		showMenu.isShow = !showMenu.isShow;
+	}
+	showMenu.isShow = false;
+	$('.menu-click').on('click', function () {
+        showMenu();
+	});
+	$('ul.mainNav>li').mouseover(function () {
+		if (!isMobile()) {
+			$(this).find(".second-menu").css('display', 'block');
+		}
+	});
+	$('ul.mainNav>li').mouseleave(function () {
+		if (!isMobile()) {
+			$(this).find(".second-menu").css('display', 'none');
+		}
+    });
+    
+	var isMobile = function () {
+		if (/iPhone/i.test(window.navigator.userAgent)) {
+			return true;
+		}
+		if (/Android/i.test(window.navigator.userAgent)) {
+			return true;
+        }
+        return false;
+    }
+	$("#searchforH").focus(function () {
+		if ($(this).val() == '请输入搜索关键字') {
+			$(this).val('')
+		}
+	});
+    $("#searchforH").blur(function () {
+		if ($(this).val() == '') {
+			$(this).val('请输入搜索关键字')
+		}
+	});
+
+	function SearchSumit() {
+        if ($("#searchforH").val() == '请输入搜索关键字') {
+			return;
+		};
+        var content = $("#searchforH").val();//$("#Search").text();
+		window.location.href = "/WebsitePage/Search/Index?keyword=" + content;
+	};
+    document.getElementById('searchforH').onkeydown = function (event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && e.keyCode == 13) { // enter 键
+            if ($("#searchforH").val() == '请输入搜索关键字') {
+				return;
+			};
+            var content = $("#searchforH").val();
+			//alert(1);
+			window.location.href = "/WebsitePage/Search/Index?keyword=" + content;
+		}
+	}; 
+</script>

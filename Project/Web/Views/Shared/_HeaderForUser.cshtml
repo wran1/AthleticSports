@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNet.Identity
+<div class="topbar">
+    <div class="container">
+        <div class="col-xs-6">
+            @DateTime.Now.Year 年 @DateTime.Now.Month 月 @DateTime.Now.Day 日 @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek)
+        </div>
+        <div class="col-xs-6 text-right userLink"  id="btn-xiala" >
+            @if (Request.IsAuthenticated)
+            {
+                <a href="@Url.Action("Index","Index",new { area = "User" })" class="text-white" data-toggle="dropdown">
+                    @User.Identity.GetUserName()  <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu ulmenu" role="menu" style="display: none;">
+                    <li><a href="@Url.Action("Index","Index",new { area = "User" })"><i class="icon-icon-30"></i>个人中心</a></li>
+                    <li><a href="@Url.Action("CompanyIntroduce","Index",new { area = "User" })"><i class="icon-icon-31"></i>公司介绍</a></li>
+                    <li><a href="@Url.Action("ProductManagement","Index",new { area = "User" })"><i class="icon-icon-29"></i>产品管理</a></li>
+                    <li><a href="@Url.Action("UserLogOff", "Account", new { area = "" })" title="注销"><i class="icon-icon-32"></i>退出</a></li>
+                </ul>
+                <span>，您好！欢迎登录泰达贸促网</span>
+                @*<a href="@Url.Action("UserLogOff", "Account", new { area = "" })" title="注销">
+                    退出账户
+                </a>*@
+            }
+            else
+            {
+                <a href="javascript:void(0)" @*data-toggle="modal" data-target="#login_modal"*@ onclick="UserLoginModal();" id="userloginbtn">登录</a>
+                <a href="@Url.Action("UserDeclaration","Account",new { area = "" })">注册</a>
+            }
+        </div>
+    </div>
+</div>
+@*<div class="container">
+    <section class="head">
+        <div class="row logo_share">
+            <div class="col-md-6 col-xs-12 col-sm-6 logBox">
+				<div class="menu-click hidden-sm hidden-md hidden-lg">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+                <a href="/"><img src="~/Content/images/logo1.png" class="img-responsive" /></a>
+			</div>
+            <div class="col-md-6 col-sm-6 text-right lang_share hidden-xs">
+                <div class="col-md-2 pull-right text-center"><img src="~/Content/images/weibo.png" class="img-responsive box-shadow" /><span style="padding-top: 5px; display: inline-block; font-size: 14px;">微博</span></div>
+                <div class="col-md-2 pull-right text-center"><img src="~/Content/images/weixin.png" class="img-responsive box-shadow" /><span style="padding-top: 5px; display: inline-block; font-size: 14px;">微信</span></div>
+            </div>           
+        </div>
+        <div class="clearfix"></div>
+    </section>
+</div>*@
+<div class="modal fade bs-example-modal-sm" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p class="modal-title" id="myModalLabel">用户登录</p>
+            </div>
+            <div class="modal-body" style="padding:20px;">
+                <div id="loginform">
+
+                </div>
+                <div class="input-group input-group-lg col-md-12 modal-border1">
+                    <a href="@Url.Action("ForgotPassword","Account", new { area = "" })" style="float:left;">忘记密码？</a>
+                    <a href="@Url.Action("UserDeclaration","Account", new { area = "" })" style="float:right;">新用户？<span style="color:#FF3F00;">立即注册！</span></a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#btn-xiala").mouseover(function () {
+            $("#btn-xiala .ulmenu").css('display', 'block');
+        });
+        $("#btn-xiala .ulmenu").mouseup(function () {
+            $(this).css('display', 'block');
+        });
+        $("#btn-xiala .ulmenu").mouseleave(function () {
+            $(this).css('display', 'none');
+        });
+    });
+</script>
+<script>
+    function UserLoginModal() {
+        $.get(
+            "@Url.Action("UserLogin", "Account", new { area = "", UpdateTargetId = "loginform" })",
+            function(data) {
+                $("#loginform").html(data);
+                $("#login_modal").modal();
+            });
+    }
+</script>

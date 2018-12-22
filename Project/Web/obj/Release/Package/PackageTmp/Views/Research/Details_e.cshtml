@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "2017年《贸易泰达—电子产品篇》企业信息调查问卷";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置</span>
+            <span><a href="/Home/Home">首页</a>></span>
+            <span>调查征集</span>
+        </div>
+        <!--搜索-->
+        @*<form class="pull-right search">
+                <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" />
+            </form>*@
+        <div class="clearfix"></div>
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("_LeftMenu")
+        <section class="menu-content">
+            <div class="top"><span>调查征集</span></div>
+            <div class="text-center liu_padding30 diao_title" id="researchtitle">2017年《贸易泰达—电子产品篇》企业信息调查问卷</div>
+            <div class="huo_time text-center" style="margin-bottom:20px;">
+                <span>发布日期：2017-06-05 09:33</span>
+            </div>
+            <div class="col-md-10 col-md-offset-1 diao_padding20" id="researchFormDetail">
+                <div class="col-xs-12 p-sm">
+                    天津经济技术开发区贸易促进中心持续多年来为企业举办多场采购配对会，2017年贸易促进中心将会邀请更多的采购商来区域采购。为了提高企业的采购配对率，贸易促进中心编辑该问卷调查，对问卷所获数据，未获得企业授权认可前不泄露给第三方或用作他途。                </div>
+                <div class="col-xs-12 p-sm">
+                    请填写以下问卷并回传到贸促中心官方邮箱tradeteda@foxmail.com。希望得到您的支持和配合！
+                </div>
+                <div class="h_20"></div>
+                <div class="h_20"></div>
+                <div class="clearfix"></div>
+                <hr />
+                <div class="col-xs-12 p-sm">
+                    <a href="~/Content/diaocha/diao-20170605.doc">附件：2017年《贸易泰达—电子产品篇》企业信息调查问卷</a>
+
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+
+            <div class="h_20"></div>
+
+        </section>
+        <div class="clearfix"></div>
+    </section>
+    <script>
+        //初始化左侧目录
+        LeftMenu([
+            '联系我们',
+            [{ 'name': '调查征集', 'url': '@Url.Action("Index", "Research", new { area = "" })', 'current': true },
+            { 'name': '政务咨询', 'url': '@Url.Action("Index", "MessageBoard", new { area = "" })', 'current': false }]
+        ]);
+    </script>
+</div>
+
+
+
+
+
+

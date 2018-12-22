@@ -1,0 +1,127 @@
+﻿@using Models.WebsiteManagement
+
+@model Product
+@{
+    Layout = null;
+    ViewBag.Title = "产品管理 会员中心";
+    var UpdateTargetId = Request.QueryString["UpdateTargetId"] ?? "UserInfo";
+    var id = Model.Id;
+}
+
+@*<div style="background:#fff;">
+    <div class="container">
+        <ul class="nav nav-pills col-md-offset-3 personav">
+            <li role="presentation"><a href="@Url.Action("Index","Index",new { area = "User" })">个人中心</a></li>
+            <li role="presentation"><a href="@Url.Action("CompanyIntroduce","Index",new { area = "User" })">公司介绍</a></li>
+            <li role="presentation" class="active"><a href="@Url.Action("ProductManagement","Index",new { area = "User" })">产品管理</a></li>
+        </ul>
+    </div>
+</div>
+<div class="h_20"></div>
+<div class="h_20"></div>*@
+
+@*<div class="container">*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="h_20"></div>
+                    <div class="ptitle">
+                        <span> 产品编辑 </span>
+                        <a class="pull-right ptitle-spa" href="@Url.Action("ProductList")" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#@UpdateTargetId">
+                            <i class="fa fa-reply" aria-hidden="true"></i>
+                            返回
+                        </a>
+                        @*<span class="pull-right ptitle-span"><i class="fa fa-reply" aria-hidden="true"></i>返回</span>*@
+                        <div class="h_20"></div>
+                    </div>
+                    <div class="h_20"></div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            当前状态：<span class="noshenhe">@Model.AuditState</span>
+                        </div>
+                    <div class="h_20"></div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        提示：*为必填项，本系统支持上传文件的格式为jpg、png、gif、jpeg、bmp
+                    </div>
+                    <div class="h_20"></div>
+                    <div class="col-md-7 col-xs-12 col-sm-12">
+                        @using (Ajax.BeginForm("ProductEdit", new { id = id }, ajaxOptions: new AjaxOptions { UpdateTargetId = UpdateTargetId }, htmlAttributes: new { @class = "form-horizontal" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="col-xs-12 no_left">
+                                <div style="position:relative;">
+                                    <span class="hui_xing">*</span>
+                                    <div class="input-group hui_input">
+                                        <span class="input-group-addon">产品名称</span>
+                                        @Html.EditorFor(model => model.ProductName, new { @class = "form-control" })
+                                        @*<span class="form-control"></span>*@
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 no_left">
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">产品型号</span>
+                                    @Html.EditorFor(model => model.Version, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Version, "", new { @class = "text-danger" })
+                            </div>
+
+
+                            <div class="col-xs-12 no_left">
+                                <div style="position:relative;">
+                                    <span class="hui_xing">*</span>
+                                    <div class="input-group hui_input">
+                                        <span class="input-group-addon"> 所属行业</span>
+                                        <input type="text" class="form-control" aria-label="@ViewBag.productownedName" value="@ViewBag.productownedName" disabled />
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                            @*<ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#">@ViewBag.productownedName</a></li>
+                                </ul>*@
+                                        </div><!-- /btn-group -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 no_left">
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">上传文件</span>
+                                    @Html.EditorFor(model => model.ProductImgUrl, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.ProductImgUrl, "", new { @class = "text-danger" })
+                            </div>
+
+
+
+                            <div class="col-xs-12 no_left">
+                                <div style="position:relative;">
+                                    <span class="hui_xing">*</span>
+                                    <div class="input-group hui_input">
+                                        <span class="input-group-addon">产品介绍</span>
+                                        @*<span class="form-control" style="min-height:100px;padding:15px;"> 晶体管发明并大量生产之后，各式固态半导体组件如二极管、晶体管等大量使用，取代了真空管在电路中的功能与角色。到了20世纪中后期半导体制造技术进步，使得集成电路成为可能。相对于手工组装电路使用个别的分立电子组件，集成电路可以把很大数量的微晶体管集成到一个小芯片，是一个巨大的进步。集成电路的规模生产能力，可靠性，电路设计的模块化方法确保了快速采用标准化IC 代替了设计使用离散晶体管。</span>*@
+                                        @Html.EditorFor(model => model.Description, new { @class = "form-control", @style = "min-height:100px;padding:15px;" })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="h_20"></div>
+                            <div class="text-center hui_zmargin">
+                                <input class="btn btn-md btn-success hui_button" type="submit" value="保存" />
+                            </div>
+                            <div class="h_20"></div>
+                            <div class="h_20"></div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+@*</div>*@

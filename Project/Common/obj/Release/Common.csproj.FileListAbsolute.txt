@@ -1,0 +1,14 @@
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\Common.dll.config
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\Common.dll
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\Common.pdb
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\EntityFramework.dll
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\EntityFramework.Extended.dll
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\EntityFramework.xml
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\EntityFramework.Extended.pdb
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\EntityFramework.Extended.xml
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\EntityFramework.Extended.dll.config
+D:\代码\NewbusinessWeChat\Project\Common\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\代码\NewbusinessWeChat\Project\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+D:\代码\NewbusinessWeChat\Project\Common\obj\Release\Common.csproj.CoreCompileInputs.cache
+D:\代码\NewbusinessWeChat\Project\Common\obj\Release\Common.dll
+D:\代码\NewbusinessWeChat\Project\Common\obj\Release\Common.pdb

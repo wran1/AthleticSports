@@ -1,0 +1,86 @@
+﻿@using Models.CmsModels;
+@using Web.Helpers;
+
+@model PagedList<CmsArtical>
+@{
+    ViewBag.Title = "搜索结果页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置</span>
+            <span>首页></span>
+            <span> 搜索结果</span>
+        </div>
+        <div class="clearfix"></div>
+        <!--搜索-->
+        @*<form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" /><button type="submit"><img src="~/Content/images/search-but.png" /></button>
+        </form>
+        <div class="clearfix"></div>*@
+    </section>
+    <div class="panel panel-default">
+       <div class="panel-body padding30">
+           <div class="search_top">
+               您搜索的<span>@Request["keyword"]</span>，共有 <span>@ViewBag.CmsArtical 条</span> 查询结果。
+           </div>
+           <div class="search_mian">
+               <ul class="list-unstyled search_ul">
+                   @foreach (CmsArtical item in Model)
+                   {
+                    <li>
+                        <a href="@Url.Action("Details","Index", new { area = "Cms", id = item.Id })">
+                            <div class=" pull-right">@item.PublishTime</div>
+                            <article>@item.Title</article>
+                        </a>
+                    </li>
+                   }
+                
+                   @*<li>
+                       <a href="">
+                           <div class=" pull-right">2017-02-25</div>
+                           <article>“2017‘<span>开发区</span>杯’青年创意设计大赛·全球”天津地区宣讲会暨两岸四地知名设计协会签约仪式</article>
+                       </a>
+                   </li>
+                   <li>
+                       <a href="">
+                           <div class=" pull-right">2017-02-25</div>
+                           <article>天河科技园在天津<span>开发区</span>揭牌成立</article>
+                       </a>
+                   </li>
+                   <li>
+                       <a href="">
+                           <div class=" pull-right">2017-02-25</div>
+                           <article>天津<span>开发区</span>“泰达大健康产业园运营方案”正式公布</article>
+                       </a>
+                   </li>*@
+               </ul>
+               <!--分页-->
+               <div class="h_20"></div>
+               <div class="h_20"></div>
+               <nav class="text-center" aria-label="Page navigation">
+                   @Html.Raw(Html.MikePager(Model))
+                   @*<ul class="pagination">
+                       <li>
+                           <a href="#" aria-label="Previous">
+                               <span aria-hidden="true"> < </span>
+                           </a>
+                       </li>
+                       <li><a href="#">1</a></li>
+                       <li><a href="#">2</a></li>
+                       <li><a href="#">3</a></li>
+                       <li><a href="#">4</a></li>
+                       <li><a href="#">5</a></li>
+                       <li>
+                           <a href="#" aria-label="Next">
+                               <span aria-hidden="true"> > </span>
+                           </a>
+                       </li>
+                   </ul>*@
+               </nav>
+           </div>
+       </div>
+    </div>
+

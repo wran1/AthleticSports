@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "调查征集";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置</span>
+            <span><a href="/Home/Home">首页</a>></span>
+            <span>调查征集</span>
+        </div>
+        <!--搜索-->
+        <!--form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" />
+        </form-->
+        <div class="clearfix"></div>
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("_LeftMenu")
+        <section class="menu-content">
+            <div class="top"><span>调查征集</span></div>
+            <div>
+                <ul class="information-list list-unstyled">
+                    <li>
+                        <a href="@Url.Action("Details_c")">
+                            <div class="information-list-date pull-right">2017-07-21</div>
+                            <article>《2018版贸易泰达—石油化工·生物医药·食品饮料·新能源新材料篇》企业信息调查问卷</article>
+                            <div class="information-border"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Details_b")">
+                            <div class="information-list-date pull-right">2017-06-21</div>
+                            <article>针对企业生产经营所遇困难调查问卷</article>
+                            <div class="information-border"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Details_d")">
+                            <div class="information-list-date pull-right">2017-06-08</div>
+                            <article>2017年《贸易泰达—电子产品篇》企业信息征集表</article>
+                            <div class="information-border"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Details_e")">
+                            <div class="information-list-date pull-right">2017-06-05</div>
+                            <article>2017年《贸易泰达—电子产品篇》企业信息调查问卷</article>
+                            <div class="information-border"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Details_a")">
+                            <div class="information-list-date pull-right">2017-04-20</div>
+                            <article>天津开发区贸易促进中心平台服务情况调查问卷</article>
+                            <div class="information-border"></div>
+                        </a>
+                    </li>
+                   <li>
+                        <a href="@Url.Action("Details")">
+                            <div class="information-list-date pull-right">2017-03-01</div>
+                            <article>贸易促进中心调查征集问卷</article>
+                            <div class="information-border"></div>
+                        </a>
+                    </li>
+                </ul>
+                <!--分页-->
+                <nav aria-label="Page navigation" class="text-center">
+                    @*@Html.Raw(Html.MikePager(Model))*@
+                </nav>
+            </div>
+
+            <div class="h_20"></div>
+
+        </section>
+        <div class="clearfix"></div>
+    </section>
+    <script>
+        //初始化左侧目录
+        LeftMenu([
+            '联系我们',
+            [{ 'name': '调查征集', 'url': '@Url.Action("Index", "Research", new { area = "" })', 'current': true },
+            { 'name': '政务咨询', 'url': '@Url.Action("Index", "MessageBoard", new { area = "" })', 'current': false }]
+        ]);
+    </script>
+</div>
+
+

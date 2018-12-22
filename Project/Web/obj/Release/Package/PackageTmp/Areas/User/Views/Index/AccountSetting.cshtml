@@ -1,0 +1,52 @@
+﻿@using Web.Areas.User.Models
+@model AccountEditModel
+
+@{
+    Layout = null;
+    ViewBag.Title = "账号及密码设置 会员中心";
+}
+@if (!Request.IsAuthenticated)
+{
+    <script>
+        window.localStorage.aa = "need2login";
+        alert("此页面需登录后再访问,现在将跳转回首页。。");
+        window.location.href = "/Home/Home";
+    </script>
+}
+@using (Ajax.BeginForm("AccountSetting", "Index", new { area = "User", UpdateTargetId = "accountformbody" }, ajaxOptions: new AjaxOptions { UpdateTargetId = "accountformbody" }, htmlAttributes: new { role = "form", id = "form4accountsetting" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group col-xs-12 col-sm-12">
+        <label for="" class="width10 control-label text-left">当前密码</label>
+        <div class="col-xs-8 col-md-5">
+            @Html.EditorFor(model => model.CurrentPassword, new { placeholder = "请输入当前密码", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CurrentPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="h_20"></div>
+    <div class="form-group col-xs-12 col-sm-12">
+        <label for="" class="width10 control-label text-left">新密码</label>
+        <div class="col-xs-8 col-md-5">
+            @Html.EditorFor(model => model.Password, new { placeholder = "请输入新密码", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+        <span class="span14">密码由6-20个英文字母或数字组成，区分大小写。</span>
+    </div>
+    <div class="h_20"></div>
+    <div class="form-group col-xs-12 col-sm-12">
+        <label for="" class="width10 control-label text-left">确认密码</label>
+        <div class="col-xs-8 col-md-5">
+            @Html.EditorFor(model => model.ConfirmPassword, new { placeholder = "请再次输入新密码", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="h_20"></div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-offset-1">
+        <button type="submit" class="btn btn-success btn-baocun text-center">保 存</button>
+        @*<button type="button" class="btn btn-success btn-baocun text-center" onclick="document.getElementById('form4accountsetting').submit();">保 存</button>*@
+        <a type="button" class="btn btn-quxiao text-center" href="@Url.Action("Account","Index",new { area = "User" })">取 消</a>
+    </div>
+}
+
+

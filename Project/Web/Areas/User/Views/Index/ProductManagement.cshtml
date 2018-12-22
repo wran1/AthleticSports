@@ -1,0 +1,31 @@
+﻿@using Models.WebsiteManagement
+
+@model Product
+@{
+    Layout = "~/Views/Shared/_LayoutForHome.cshtml";
+    ViewBag.Title = "产品管理 会员中心";
+}
+@if (!Request.IsAuthenticated)
+{
+    <script>
+        window.localStorage.aa = "need2login";
+        alert("此页面需登录后再访问,现在将跳转回首页。。");
+        window.location.href = "/Home/Home";
+    </script>
+}
+<div style="background:#fff;">
+    <div class="container">
+        <ul class="nav nav-pills col-md-offset-3 personav">
+            <li role="presentation"><a href="/">首页</a></li>
+            <li role="presentation"><a href="@Url.Action("Index","Index",new { area = "User" })">会员中心</a></li>
+            <li role="presentation"><a href="@Url.Action("CompanyIntroduce","Index",new { area = "User" })">公司介绍</a></li>
+            <li role="presentation" class="active"><a href="@Url.Action("ProductManagement","Index",new { area = "User" })">产品管理</a></li>
+        </ul>
+    </div>
+</div>
+<div class="h_20"></div>
+<div class="h_20"></div>
+
+<div class="container" id="UserInfo">
+    @{ Html.RenderAction("ProductList"); }
+</div>

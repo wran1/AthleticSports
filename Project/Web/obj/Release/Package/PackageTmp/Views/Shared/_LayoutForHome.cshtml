@@ -1,0 +1,43 @@
+﻿@using System.Configuration
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="@ConfigurationManager.AppSettings["SystemName"]">
+    <meta name="keywords" content="@ConfigurationManager.AppSettings["SystemName"]">
+    <title>@ViewBag.Title @ConfigurationManager.AppSettings["SystemName"]</title>
+    @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">*@
+    @Styles.Render("~/bundles/site")
+
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", false)
+    }
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="/Scripts/html5shiv.js"></script>
+        <script type="text/javascript" src="/Scripts/respond.js"></script>
+    <![endif]-->
+
+    @Scripts.Render("~/bundles/script")
+    @Scripts.Render("~/bundles/Angle")
+    @RenderSection("Scripts", false)
+    <script src="~/Scripts/main.js"></script>
+    <!--会员管理样式表-->
+    <link href="~/Content/css/leaguer.css" rel="stylesheet" />
+    <link href="~/Content/css/fontStyle.css" rel="stylesheet" />
+</head>
+<body>
+    @Html.Partial("~/Views/Shared/_HeaderForUser.cshtml")
+    @RenderBody()   
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+
+</body>
+</html>

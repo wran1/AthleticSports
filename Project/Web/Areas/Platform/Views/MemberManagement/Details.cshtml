@@ -1,0 +1,30 @@
+﻿@using System.Web.Mvc.Ajax
+@using Resources
+@using Web.Helpers
+@using Models.WebsiteManagement
+@using Models.SysModels
+
+@{
+    Layout = "../Shared/_LayoutForm.cshtml";
+}
+<div class="row">
+    @Html.DisplayForModel()
+</div>
+<div class="row text-center">
+    @if (Html.CheckControllerAction("Edit"))
+    {
+        @*@Ajax.ActionLink(Lang.Edit, "Edit", null, new { id = ViewContext.RouteData.Values["id"] }, new AjaxOptions { UpdateTargetId = "Main" }, new { @class = "btn btn-primary" })*@
+    }
+    @if (Model.AuditState != AuditState.审核通过)
+    {
+        @Ajax.ActionLink("通过", "Details", null, new { id = ViewContext.RouteData.Values["id"], updatedId = "Main", pass = true }, new AjaxOptions { UpdateTargetId = "Main", HttpMethod = "Post", Confirm = "确定通过审核？" }, new { @class = "btn btn-primary" })
+    }
+    @if (Model.AuditState != AuditState.审核未通过)
+    {
+        @Ajax.ActionLink("不通过", "Details", null, new { id = ViewContext.RouteData.Values["id"], updatedId = "Main", pass = false }, new AjaxOptions { UpdateTargetId = "Main", HttpMethod = "Post", Confirm = "确定不通过审核？" }, new { @class = "btn btn-danger" })
+    }
+    @if (Html.CheckControllerAction("Delete"))
+    {
+        @Ajax.ActionLink(Lang.Delete, "Delete", null, new { id = ViewContext.RouteData.Values["id"] }, new AjaxOptions { UpdateTargetId = "Main", HttpMethod = "Delete", Confirm = "您确定要删除该记录吗？该操作不可恢复！" }, new { @class = "btn btn-danger" })
+    }
+</div>

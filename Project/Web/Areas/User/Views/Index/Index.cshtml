@@ -1,0 +1,100 @@
+﻿@using Web.Helpers
+@using Models.SysModels
+@model PagedList<SysBroadcast>
+@{
+    Layout = "~/Views/Shared/_LayoutForHome.cshtml";
+    ViewBag.Title = "消息提醒 会员中心";
+}
+@if (!Request.IsAuthenticated)
+{
+    <script>
+        window.localStorage.aa = "need2login";
+        alert("此页面需登录后再访问,现在将跳转回首页。。");   
+        window.location.href = "/Home/Home";       
+    </script>
+}
+
+<div style="background:#fff;">
+    <div class="container">
+        <ul class="nav nav-pills col-md-offset-3 personav">
+            <li role="presentation"><a href="/">首页</a></li>
+            <li role="presentation" class="active"><a href="@Url.Action("Index","Index",new { area = "User" })">会员中心</a></li>
+            <li role="presentation"><a href="@Url.Action("CompanyIntroduce","Index",new { area = "User" })">公司介绍</a></li>
+            <li role="presentation"><a href="@Url.Action("ProductManagement","Index",new { area = "User" })">产品管理</a></li>
+        </ul>
+    </div>
+</div>
+<div class="h_20"></div>
+<div class="container no_padding5">
+    <div class="col-md-2 col-xs-12 no_padding" >
+        <ul class="list-inline list-left"style="background:#fff;">
+            <li role="presentation" class="active"><a href="@Url.Action("Index","Index",new { area = "User" })"><i class="icon-icon-12"></i>消息提醒 </a></li>
+            <li role="presentation"><a href="@Url.Action("Account","Index",new { area = "User" })"><i class="icon-icon-28"></i>账号及密码设置</a></li>
+            <li role="presentation"><a href="@Url.Action("DataManagement","Index",new { area = "User" })"><i class="icon-icon-24"></i>资料管理</a></li>
+        </ul>
+    </div>
+    <div class="col-md-10 no_padding5">
+        <div class="">
+            <div class="col-md-12 col-xs-12 no_padding">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p class="pwelcome"><i class="icon-icon-11"></i>尊敬的会员用户，欢迎您的登录！</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 no_padding">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="ptitle">
+                            消息提醒
+                            <div class="arrow_box">
+                                <span class="arrow_span">@Model.Count()</span>
+                            </div>
+                        </div>
+                        <ul class="list-message">
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="">@item.Content</a></li>
+                            }
+                            @*<li><a href="">您提交的产品—<span>芯片</span>于2017.5.17日9:45审核通过</a></li>
+                            <li><a href="">您提交的<span>资质证书</span>于2017.5.17日9:45审核通过</a></li>
+                            <li><a href="">您提交的产品—<span>芯片</span>于2017.5.17日9:45审核通过</a></li>
+                            <li><a href="">您提交的<span>资质证书</span>于2017.5.17日9:45审核通过</a></li>
+                            <li><a href="">您提交的产品—<span>芯片</span>于2017.5.17日9:45审核通过</a></li>
+                            <li><a href="">您提交的<span>资质证书</span>于2017.5.17日9:45审核通过</a></li>*@
+                        </ul>
+                        <nav class="col-md-12 text-center">
+                            @Html.Raw(Html.MikePager(Model))
+                        </nav>
+                        @*<nav class="text-center" aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true"> < </span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true"> > </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>*@
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

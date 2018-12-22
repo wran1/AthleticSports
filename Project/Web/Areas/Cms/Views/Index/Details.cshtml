@@ -1,0 +1,63 @@
+﻿@using Models.CmsModels
+@model CmsArtical
+
+@{
+    ViewBag.Title = Model.Title + " 资讯速递";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置 : </span>
+            <span><a href="/Home/Home">首页</a> <i class="fa fa-angle-right fastyle"></i> <a href="/Cms">资讯速递</a> <i class="fa fa-angle-right fastyle"></i> </span>
+            <span>@(Request["tab"] == null ? "展览活动" : Request["tab"])</span>
+        </div>
+        <!--搜索-->
+        @*<form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" /><button type="submit"><img src="~/Content/images/search-but.png" /></button>
+        </form>*@
+        <div class="clearfix"></div>
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("_LeftMenu")
+        <section class="menu-content">
+            <div class="top"><span>@(Request["tab"] == null ? "展览活动" : Request["tab"])</span></div>
+            <!--泰达动态内容-->
+            <div class="huo_mian">
+                <div class="huo_title text-center">
+                   @if (Request["tab"] == "企业采风")
+                   {
+                       <img src="@Model.CoverImage" style="width: 100px; height: auto;"/>
+                   }
+                    @Model.Title
+                </div>
+                <div class="huo_time text-center">
+                    <span>发布日期：@(Model.PublishTime?.ToString("yyyy/M/d HH:mm"))</span>      <span>访问次数：@Model.CmsArticalHits.Count()</span>
+                </div>
+                <div class="huo_xiangqing">
+                    @Html.DisplayFor(a => Model.Content)
+                    @if (!string.IsNullOrEmpty(Model.AttachFile))
+                    {
+                        <span>附件：</span>@Html.DisplayFor(a => Model.AttachFile)
+                    }
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+    </section>
+    <script>
+		//初始化左侧目录
+		LeftMenu([
+			'资讯速递',
+            [{ 'name': '展览活动', 'url': '@Url.Action("ArticleList", "Index", new { area = "Cms", tab = "展览活动", index = "info" })', 'current': @(Request["tab"] == null || Request["tab"] == "展览活动" ? "true" : "false") },
+                { 'name': '泰达动态', 'url': '@Url.Action("ArticleList", "Index", new { area = "Cms", tab = "泰达动态", index = "info" })', 'current': @(Request["tab"] == "泰达动态" ? "true" : "false") },
+                { 'name': '活动报道', 'url': '@Url.Action("ArticleList", "Index", new { area = "Cms", tab = "活动报道", index = "info" })', 'current': @(Request["tab"] == "活动报道" ? "true" : "false") },
+                { 'name': '企业采风', 'url': '@Url.Action("ArticleList", "Index", new { area = "Cms", tab = "企业采风", index = "info" })', 'current': @(Request["tab"] == "企业采风" ? "true" : "false") }]
+		]);
+    </script>
+</div>

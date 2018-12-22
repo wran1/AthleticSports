@@ -1,0 +1,110 @@
+﻿@using Models.WebsiteManagement
+@using Web.Helpers
+@using Web.Controllers
+@model PagedList<AnnualPlan>
+
+@{
+    ViewBag.Title = "专业服务 关于我们";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置 : </span> 
+            <span><a href="/Home/Home">首页</a></span> <i class="fa fa-angle-right fastyle"></i> 
+            <span><a href="@Url.Action("Index","AboutUs",new { area = "", index = "aboutUs" })">关于我们</a></span> <i class="fa fa-angle-right fastyle"></i> 
+            <span>年度计划</span>
+        </div>
+        <div class="clearfix"></div>
+        <!--搜索-->
+        @*<form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" /><button type="submit"><img src="~/Content/images/search-but.png" /></button>
+        </form>
+        <div class="clearfix"></div>*@
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("_LeftMenu")
+        <section class="menu-content">
+            <div class="top"><span>年度计划</span></div>
+            <div>
+                <div class="tai_mian" id="zhanshi">
+
+                    <!--会展/活动-->
+                    <div class="focus-window-table">
+                        <table>
+                            <tr>
+                                <th style="width:47%;">展会/活动</th>
+                                <th>时间</th>
+                                <th>地点</th>
+                                <th>行业范围</th>
+                                <th>附件</th>
+                                <th>状态</th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><div style="text-align:left;width:28em;"><a href="@(string.IsNullOrEmpty(item.DetailPageLink) ? "javascript:;" : Html.Raw(item.DetailPageLink).ToString())">@item.Name</a></div></td>
+                                    <td><div>@item.ActivityStartTime.ToString("M月")</div></td>
+                                    <td><div>@item.ActivityPlace</div></td>
+                                    <td><div>@(item.IndustryOwned?.Name)</div></td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.AttachFile))
+                                        {
+                                            try
+                                            {
+                                                List<FilesController.UserUploadFile> files = Json.Decode(item.AttachFile, typeof(List<FilesController.UserUploadFile>));
+                                                <div>
+                                                    <a href="@files[0].Url"><i class="icon-icon-22 i-table"></i>  附件下载</a>
+                                                </div>
+                                            }
+                                            catch
+                                            {
+                                                <div>
+                                                    <i class="icon-icon-22 i-table1"></i>  暂无附件
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <i class="icon-icon-22 i-table1" ></i>  暂无附件
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div>
+                                            @item.PlanStatus
+                                            @*@(item.ActivityStartTime > DateTime.UtcNow.AddHours(8) ? "未开始" : item.ActivityEndTime > DateTime.UtcNow.AddHours(8) ? "进行中" : "已结束")*@
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    <div class="h_20"></div>
+                    <div class="text-center" style="color:#656565;">更新日期：2017年09月29日 10:11</div>
+
+                    <nav aria-label="Page navigation" class="text-center">
+                        @Html.Raw(Html.MikePager(Model))
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+    </section>
+</div>
+
+<script>
+		//初始化左侧目录
+		LeftMenu([
+			'关于我们',
+            [{ 'name': '贸易促进中心简介', 'url': '@Url.Action("Index","AboutUs",new { area = "", index = "aboutUs" })', 'current': false },
+                { 'name': '专业服务', 'url': '@Url.Action("ZhuanService", "AboutUs", new { area = "", index = "aboutUs" })', 'current': false },
+                { 'name': '年度计划', 'url': '@Url.Action("ProfessionalService", "AboutUs", new { area = "", index = "aboutUs" })', 'current': true },
+         { 'name': '成为会员', 'url': '@Url.Action("UserDeclaration", "Account", new { area = "", index = "aboutUs" })', 'current': false }]
+    ]);
+</script>

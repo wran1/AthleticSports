@@ -1,0 +1,42 @@
+﻿@using Models.CmsModels
+@using Web.Helpers
+@model PagedList<CmsArtical>
+
+@{
+    ViewBag.Title = Request["tab"] == null ? "图片列表" : Request["tab"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <img src="~/Content/images/list_banner.jpg" class="img-responsive" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="list_thum">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-6 col-sm-3">
+                    <a href="@Url.Action("Details","Index",new { id = item.Id })"><img src="@(string.IsNullOrEmpty(item.CoverImage) ? "/Content/images/list_thum.jpg" : item.CoverImage)" class="img-responsive" /></a>
+                    <h4>
+                        <a href="@Url.Action("Details","Index",new { id = item.Id })">
+                            @if(item.CmsCategory.SystemId.Length == 6)
+                            {
+                                @("[" + item.CmsCategory.Name + "]")
+                            }
+                            @item.Title
+                        </a>
+                    </h4>
+                    <p>@(item.Abstract?.CutString(60,true))</p>
+                </div>
+            }
+            <div class="clearfix"></div>
+            <nav aria-label="Page navigation" class="text-center">
+                @Html.Raw(Html.MikePager(Model))
+            </nav>
+        </div>
+    </div>
+
+</div>
+

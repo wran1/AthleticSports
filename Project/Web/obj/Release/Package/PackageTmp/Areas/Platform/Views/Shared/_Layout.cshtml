@@ -1,0 +1,104 @@
+﻿@using System.Configuration
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="@ConfigurationManager.AppSettings["SystemName"]">
+    <meta name="keywords" content="@ConfigurationManager.AppSettings["SystemName"]">
+    <title>@ViewBag.Title @ConfigurationManager.AppSettings["SystemName"]</title>
+
+    @Styles.Render("~/bundles/site")
+
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", false)
+    }
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="/Scripts/html5shiv.js"></script>
+        <script type="text/javascript" src="/Scripts/respond.js"></script>
+    <![endif]-->
+
+    <style>
+        .navbar-nav li a {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    </style>
+
+    @Scripts.Render("~/bundles/script")
+    @Scripts.Render("~/bundles/Angle")
+    @RenderSection("Scripts", false)
+    @RenderSection("Styles", false)
+    <script src="~/Scripts/pace.js"></script>
+    <script src="/signalr/hubs"></script>
+    @*<script>
+        $(function () {
+            var messenger = $.connection.messenger; // generate the client-side hub proxy { Initialized to Exposed Hub }
+
+            messenger.client.add = function (message) {
+                if (message !== "" && message != null) {
+                    $.notify('<a href="/Platform?loadPage=MyMessage">' + message + "</a>", { "status": "danger", "pos": "bottom-right" });
+                }
+            };
+
+            // Start the Connection
+            $.connection.hub.start().done().fail(function () {
+                $.notify('消息推送服务启动失败！', { "status": "danger", "pos": "bottom-right" });
+            });
+        });
+    </script>*@
+
+    <script>
+        $.ajaxSetup({ cache: false });
+
+        $(document).ajaxStart(function () {
+            Pace.restart();
+        });
+
+        $(document).ajaxStop(function () {
+            //$('#Main input[type=text]:first').focus();
+            Pace.stop();
+        });
+
+        $(document).ajaxError(function (event, request) {
+            if (request.responseText === '' || request.responseText == undefined) {
+                $.notify('您的网络无法访问到服务器，请稍后再试！', { "status": "danger", "pos": "bottom-right" });
+            } else {
+                $.notify(request.responseText, { "status": "danger", "pos": "bottom-right" });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- top navbar-->
+        <header class="topnavbar-wrapper">
+            @Html.Partial("_TopNavbar")
+        </header>
+        <!-- sidebar-->
+        <aside class="aside">
+            @Html.Action("Menu", "Index")
+        </aside>
+        <!-- offsidebar-->
+        <aside class="offsidebar hide">
+            @Html.Partial("_Offsidebar")
+        </aside>
+        <!-- Main section-->
+        <section>
+            <!-- Page content-->
+            <div class="content-wrapper" id="Main">
+                @RenderBody()
+            </div>
+        </section>
+        <!-- Page footer-->
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+    </div>
+</body>
+</html>

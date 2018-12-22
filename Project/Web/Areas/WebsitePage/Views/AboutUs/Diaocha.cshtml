@@ -1,0 +1,533 @@
+﻿@{
+    ViewBag.Title = "调查征集";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置</span>
+            <span>首页></span>
+            <span>调查征集</span>
+        </div>
+        <!--搜索-->
+        @*<form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" /><button type="submit"><img src="~/Content/images/search-but.png" /></button>
+        </form>
+        <div class="clearfix"></div>*@
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("leftMenu")
+        <section class="menu-content">
+            <div class="top"><span>调查征集</span></div>
+            <div class="text-center liu_padding30 diao_title">调查征集问卷</div>
+            <div class="col-md-10 col-md-offset-1 diao_border diao_padding20">
+                <div class="col-xs-12 p-sm">
+                    1、企业在参加展会问题上的主要顾虑
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_1" name="dc_1" value="人员问题"> 人员问题
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_1" name="dc_1" value=" 财力问题">  财力问题
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_1" name="dc_1" value="展会效果"> 展会效果
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_1" name="dc_1" value="其他"> 其他
+                    </label>
+
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    2、如果开发区贸促中心提出对某些展会提供一部分经费补贴，企业是否会重新考虑参展
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-4">
+                        <input type="radio" id="dc_2" name="dc_2" value="会，重新考虑"> 会，重新考虑
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-4">
+                        <input type="radio" id="dc_2" name="dc_2" value=" 不会再考虑">  不会再考虑
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-4">
+                        <input type="radio" id="dc_2" name="dc_2" value="不好说"> 不好说
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    3、您是否愿意接受开发区贸促中心的相关展会信息，以及其他形式的展会推荐服务
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="radio" id="dc_3" name="dc_3" value="愿意接受">  愿意接受
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="radio" id="dc_3" name="dc_3" value=" 不愿意接受">  不愿意接受
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_3" name="dc_3" value="不好说，等了解活动后再作决定"> 不好说，等了解活动后再作决定
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    4、目前，贵单位是否已有固定参加的展会，请列出
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-12">
+                        <textarea name="dc_4" cols="60" rows="5"></textarea>
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    5、您希望贸促中心提供的服务种类
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 提供市场信息">  提供市场信息
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 组织专项培训">  组织专项培训
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 组织出国展览">  组织出国展览
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 组织参加国际会议">  组织参加国际会议
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 组织随国家领导人出访">  组织随国家领导人出访
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 举办经贸研讨会">  举办经贸研讨会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 业务洽谈会">  业务洽谈会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 专业学术会议">  专业学术会议
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 政府政策性会议">  政府政策性会议
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 利用贸促会驻外代表处协助外联">  利用贸促会驻外代表处协助外联
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_5" name="dc_5" value=" 其他">  其他
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    6、如不在区内采购，主要原因
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_6" name="dc_6" value="区内相关产品价格偏高"> 区内相关产品价格偏高
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_6" name="dc_6" value=" 区内企业多数只负责生产，不方便采购">  区内企业多数只负责生产，不方便采购
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_6" name="dc_6" value="区内没有该产品的生产商"> 区内没有该产品的生产商
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_6" name="dc_6" value="区内相应产品质量不达标"> 区内相应产品质量不达标
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    7、您的首选采购地区：
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-12">
+                        <textarea name="dc_7" cols="60" rows="5"></textarea>
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    8、贵单位主要通过什么形式拓展产品的销售渠道？
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="radio" id="dc_8" name="dc_8" value="媒体广告"> 媒体广告
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="radio" id="dc_8" name="dc_8" value="参加展会"> 参加展会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="radio" id="dc_8" name="dc_8" value="客户拜访"> 客户拜访
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="radio" id="dc_8" name="dc_8" value="其他"> 其他
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    9、现有区内主要客户
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-12">
+                        <textarea name="dc_9" cols="60" rows="5"></textarea>
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    10、区内是否存在同类客户，请列明
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-12">
+                        <textarea name="dc_10" cols="60" rows="5"></textarea>
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    11、填表人所属部门
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="市场部"> 市场部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="采购部"> 采购部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="生产管理部"> 生产管理部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="人力资源部"> 人力资源部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="企划部"> 企划部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="销售部"> 销售部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="研发、设计部"> 研发、设计部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="财务部"> 财务部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="工程部"> 工程部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="客户服务部"> 客户服务部
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_11" name="dc_11" value="其他"> 其他
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    12、贵处的企业类型
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="电子电器及通信设备制造业"> 电子电器及通信设备制造业
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="纺织、皮革及服装"> 纺织、皮革及服装
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="服务业"> 服务业
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="化工产业"> 化工产业
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="原木及竹木加工制品"> 原木及竹木加工制品
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="建筑材料等非金属制品"> 建筑材料等非金属制品
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="金属冶炼及加工制造"> 金属冶炼及加工制造
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="仪器仪表及文化、办公用机械制造"> 仪器仪表及文化、办公用机械制造
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="机械及器材制造"> 机械及器材制造
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="交通运输设备制造"> 交通运输设备制造
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="礼品、工艺品及其它制造"> 礼品、工艺品及其它制造
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="粮油食品饮料烟草"> 粮油食品饮料烟草
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="模具制造"> 模具制造
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="橡胶、塑料制品"> 橡胶、塑料制品
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="造纸及制品、印刷、文教体育用品"> 造纸及制品、印刷、文教体育用品
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_12" name="dc_12" value="其它"> 其它
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    13、您认为对于企业及产品信息最有效的推广途径是
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_13" name="dc_13" value="媒体宣传"> 媒体宣传
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_13" name="dc_13" value="参加展会"> 参加展会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_13" name="dc_13" value="业务人员推广"> 业务人员推广
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_13" name="dc_13" value="不好说，视产品本身而定"> 不好说，视产品本身而定
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_13" name="dc_13" value="其他"> 其他
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    14、希望贸促中心协助企业拓展销售渠道的方式
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_14" name="dc_14" value="展会"> 展会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_14" name="dc_14" value="产品新闻发布会"> 产品新闻发布会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_14" name="dc_14" value="销售人员沙龙"> 销售人员沙龙
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_14" name="dc_14" value="其他"> 其他
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    15、开发区贸促中心每年固定参加全球内近百个展会，您是否愿意通过贸促中心将贵处的企业及产品资料进行派发
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_15" name="dc_15" value="愿意"> 愿意
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_15" name="dc_15" value="不愿意"> 不愿意
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_15" name="dc_15" value="待定"> 待定
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_15" name="dc_15" value="不好说"> 不好说
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+            <div class="col-xs-12 p-sm">
+                16、开发区贸促中心将对区内企业及产品信息资料进行分类收集并免费对外派发宣传，您是否愿意参加此项活动
+            </div>
+            <div class="col-xs-12">
+                <label class="radio-inline col-xs-6 col-md-3">
+                    <input type="checkbox" id="dc_16" name="dc_16" value="愿意"> 愿意
+                </label>
+                <label class="radio-inline col-xs-6 col-md-3">
+                    <input type="checkbox" id="dc_16" name="dc_16" value="不愿意"> 不愿意
+                </label>
+                <label class="radio-inline col-xs-6 col-md-3">
+                    <input type="checkbox" id="dc_16" name="dc_16" value="待定"> 待定
+                </label>
+                <label class="radio-inline col-xs-6 col-md-3">
+                    <input type="checkbox" id="dc_16" name="dc_16" value="不好说"> 不好说
+                </label>
+            </div>
+            <div class="clearfix"></div>
+            <hr>
+
+                <div class="col-xs-12 p-sm">
+                    17、在贸促中心收集企业资料的过程中，您认为最大的顾虑是什么
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_17" name="dc_17" value="人力消耗"> 人力消耗
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_17" name="dc_17" value="物力消耗"> 物力消耗
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_17" name="dc_17" value="双方配合"> 双方配合
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-3">
+                        <input type="checkbox" id="dc_17" name="dc_17" value="其他"> 其他
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    18、企业对什么样的展会比较感兴趣
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_18" name="dc_18" value="政府性展会"> 政府性展会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_18" name="dc_18" value="行业知名展会"> 行业知名展会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_18" name="dc_18" value="有特定目标的展会（如：进出口展、技术交流展等）"> 有特定目标的展会（如：进出口展、技术交流展等）
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_18" name="dc_18" value="大型综合展会"> 大型综合展会
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_18" name="dc_18" value="其他"> 其他
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    19、企业比较看重展会的哪方面价值
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_19" name="dc_19" value="客户关系拓展及维护"> 客户关系拓展及维护
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_19" name="dc_19" value="宣传效果（企业形象、产品和技术的展示）"> 宣传效果（企业形象、产品和技术的展示）
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_19" name="dc_19" value="现场销售效益"> 现场销售效益
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_19" name="dc_19" value="了解市场动态和趋势"> 了解市场动态和趋势
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="checkbox" id="dc_19" name="dc_19" value="其他"> 其他
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    20、企业是否有需求参加各种相关展会
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_20" name="dc_20" value="愿意"> 愿意
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_20" name="dc_20" value="不好说"> 不好说
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_20" name="dc_20" value="不愿意"> 不愿意
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_20" name="dc_20" value="待定"> 待定
+                    </label>
+                   
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    21、贵处产品是否向开发区内企业提供？
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_21" name="dc_21" value="全部为区内企业提供"> 全部为区内企业提供
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_21" name="dc_21" value="只提供一部分"> 只提供一部分
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_21" name="dc_21" value="不提供"> 不提供
+                    </label>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    22、如不向区内企业供货，主要原因
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_22" name="dc_22" value="产品为最终产品，直接对外销售"> 产品为最终产品，直接对外销售
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_22" name="dc_22" value="没有渠道拓展业务"> 没有渠道拓展业务
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_22" name="dc_22" value="自身产品问题"> 自身产品问题
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_22" name="dc_22" value="区内没有该产品需求的企业"> 区内没有该产品需求的企业
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_22" name="dc_22" value="采购价格偏低"> 采购价格偏低
+                    </label>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="col-xs-12 p-sm">
+                    23、贵处产品的原料是否由开发区内企业提供？
+                </div>
+                <div class="col-xs-12">
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_23" name="dc_23" value="全部是区内企业供货"> 全部是区内企业供货
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_23" name="dc_23" value="只有部分"> 只有部分
+                    </label>
+                    <label class="radio-inline col-xs-6 col-md-6">
+                        <input type="radio" id="dc_23" name="dc_23" value="完全没有"> 完全没有
+                    </label>
+                   
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="text-center hui_zmargin">
+                    <input class="btn btn-md btn-success hui_button" type="button" value="提 交" />
+                </div>
+                <div class="h_20"></div>
+            </div>
+
+            <div class="h_20"></div>
+
+        </section>
+        <div class="clearfix"></div>
+    </section>
+    <script>
+		//初始化左侧目录
+		LeftMenu([
+			'联系我们',
+            [{ 'name': '调查征集', 'url': '#', 'current': true },
+                { 'name': '在线客服', 'url': '#', 'current': false },
+                { 'name': '留言板', 'url': '#', 'current': false } ]
+		]);
+    </script>
+</div>
+

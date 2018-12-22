@@ -1,0 +1,217 @@
+﻿
+@{
+    ViewBag.Title = "楼宇列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="col-xs-12">
+        <img src="~/Content/images/list_banner.jpg" class="img-responsive" />
+    </div>
+    <div class="clearfix"></div>
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs i_tab text-center" role="tablist">
+            <li role="presentation" class="active"><a href="#louyu" aria-controls="louyu" role="tab" data-toggle="tab">楼宇信息</a></li>
+            <li role="presentation"><a href="#kongzhi" aria-controls="kongzhi" role="tab" data-toggle="tab">热门空置</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content i_tabCont">
+            <div role="tabpanel" class="tab-pane active" id="louyu">
+                <div class="list_thum">
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>地址：开发区第二大街与新城东路交口<br />
+                        面积：6.1万㎡<br />
+                        经营方式：出租</p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <nav aria-label="Page navigation" class="text-center">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="kongzhi">
+                <div class="list_thum">
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">空置写字楼</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a href="@Url.Action("Detail")"><img src="~/Content/images/list_thum.jpg" class="img-responsive" /></a>
+                        <h4><a href="@Url.Action("Detail")">泰达MSD-B1座</a></h4>
+                        <p>
+                            地址：开发区第二大街与新城东路交口<br />
+                            面积：6.1万㎡<br />
+                            经营方式：出租
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <nav aria-label="Page navigation" class="text-center">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+

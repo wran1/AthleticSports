@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "留言板";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置</span>
+            <span>首页></span>
+            <span>留言板</span>
+        </div>
+        <!--搜索-->
+        @*<form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" /><button type="submit"><img src="~/Content/images/search-but.png" /></button>
+        </form>
+        <div class="clearfix"></div>*@
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("leftMenu")
+        <section class="menu-content">
+            <div class="top"><span>留言板</span></div>
+            <div class="liu_top">
+                已收到留言 <span>5</span> 封，已回复留言 <span>2</span> 封
+            </div>
+            <div class="liu_daoyu">尊敬的用户：感谢您对开发区贸促中心的工作支持和信任！为更多、更好的促进区内企业的贸易合作，如果您对我们的工作有任何意见建议，可通过下方提交留言信息，我们将及时反馈给您满意答复。</div>
+            <!--留言区域-->
+            <div class="liu_margin liu_padding30">
+                <div class="col-md-4 col-xs-12 no_left">
+                    <div class="input-group">
+                        <span class="input-group-addon liu_border">姓 名</span>
+                        <input type="text" class="form-control liu_radius" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12 no_left">
+                    <div class="input-group">
+                        <span class="input-group-addon liu_border">邮 箱</span>
+                        <input type="text" class="form-control liu_radius" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12 no_right">
+                    <div class="input-group ">
+                        <span class="input-group-addon liu_border">电 话</span>
+                        <input type="text" class="form-control liu_radius" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 no_padding liu_margin">
+                    <div class="input-group">
+                        <span class="input-group-addon liu_border">留 言</span>
+                        <textarea type="text" rows="3" class="form-control liu_radius" placeholder=""></textarea>
+                    </div>
+                </div> 
+                <div class="text-center hui_zmargin">
+                    <input class="btn btn-md btn-success hui_button  liu_margin" type="button" value="提 交" />
+                </div>
+            </div>
+            <!--留言展示区域-->
+            <div class="liu_margin">
+                <div class="liu_alltitle">
+                    <span>全部留言</span>
+                </div>
+                <div class="liu_margin">
+                   <table class="table liu_bottom">
+                       <tr>
+                           <td class="liu_table"><div class="liu_bold">留言内容</div></td>
+                           <td>
+                                <div class="pull-left">贸促中心的工作宗旨是什么？</div>
+                                <div class="pull-right liu_time">2017-03-01 13:13:50 </div>
+                           </td>
+                       </tr>
+                       <tr>
+                           <td class="liu_table"><div class="liu_bold liu_blue">贸促回复</div></td>
+                           <td>
+                               <div class="liu_huifu">立足开发区，以滨海新区为依托，全面服务于天津，借助网络资源、会议展览、商务考察等方式，构筑商贸平台，全力推广企业的产品与服务，为企业在全球范围内寻求更多的商机，构建良好的营商环境。</div>
+                               <div class="liu_time"> 2017-03-01 13:13:50 </div>
+                           </td>
+                       </tr>
+                   </table>
+
+                    <table class="table liu_bottom">
+                        <tr>
+                            <td class="liu_table"><div class="liu_bold">留言内容</div></td>
+                            <td>
+                                <div class="pull-left">贸促中心的工作宗旨是什么？</div>
+                                <div class="pull-right liu_time">2017-03-01 13:13:50 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="liu_table"><div class="liu_bold liu_blue">贸促回复</div></td>
+                            <td>
+                                <div class="liu_huifu">立足开发区，以滨海新区为依托，全面服务于天津，借助网络资源、会议展览、商务考察等方式，构筑商贸平台，全力推广企业的产品与服务，为企业在全球范围内寻求更多的商机，构建良好的营商环境。</div>
+                                <div class="liu_time"> 2017-03-01 13:13:50 </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        
+        
+        
+        </section>
+        <div class="clearfix"></div>
+    </section>
+    <script>
+		//初始化左侧目录
+		LeftMenu([
+			'联系我们',
+            [{ 'name': '调查征集', 'url': '#', 'current': false },
+                { 'name': '在线客服', 'url': '#', 'current': false },
+                { 'name': '留言板', 'url': '#', 'current': true } ]
+		]);
+    </script>
+</div>
+

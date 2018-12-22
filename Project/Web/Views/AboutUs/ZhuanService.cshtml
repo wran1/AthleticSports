@@ -1,0 +1,100 @@
+﻿@using Models.WebsiteManagement
+@using Web.Helpers
+@using Web.Controllers
+@model PagedList<AnnualPlan>
+
+@{
+    ViewBag.Title = "专业服务 关于我们";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置 : </span>
+            <span><a href="/Home/Home">首页</a></span> <i class="fa fa-angle-right fastyle"></i>
+            <span><a href="@Url.Action("Index","AboutUs",new { area = "", index = "aboutUs" })">关于我们</a></span> <i class="fa fa-angle-right fastyle"></i>
+            <span>专业服务</span>
+        </div>
+        <div class="clearfix"></div>
+        <!--搜索-->
+        @*<form class="pull-right search">
+                <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" /><button type="submit"><img src="~/Content/images/search-but.png" /></button>
+            </form>
+            <div class="clearfix"></div>*@
+    </section>
+    <section class="mian">
+        <div class="top-back-1"></div>
+        <div class="top-back-2"></div>
+        @Html.Partial("_LeftMenu")
+        <section class="menu-content">
+            <div class="top"><span>专业服务</span></div>
+            <div>
+                <div class="tai_mian" id="zhanshi">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="taititle">商务配对</div>
+                        <div class="tit-image">
+                            <img src="~/Content/images/tit_shangwu1.jpg" />
+                            <img src="~/Content/images/tit_shangwu2.jpg" />
+                            <img src="~/Content/images/tit_shangwu3.jpg" />
+                        </div>
+                        <ul class="tailist">
+                            <li>与国内外多家商贸机构建立合作联盟关系</li>
+                            <li>每年组织大量商贸专业对接活动</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <div class="taititle">展览会议</div>
+                        <div class="tit-image">
+                            <img src="~/Content/images/tit-zhanlan1.jpg" />
+                            <img src="~/Content/images/tit-zhanlan2.jpg" />
+                            <img src="~/Content/images/tit-zhanlan3.jpg" />
+                        </div>
+                        <ul class="tailist">
+                            <li>每年组织企业参加境内外相关专业的展会活动</li>
+                            <li>为参展企业提供政策支持</li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-12 col-xs-12">
+                        <div class="taititle">媒体杂志</div>
+                        <ul class="tailist pull-left">
+                            <li>自编刊物，收录的企业及产品全面涵盖开发区支柱产业</li>
+                            <li>与《滨海时报》、《新商界》等合作媒体打造企业产品媒体宣传平台</li>
+                        </ul>
+                        <img src="~/Content/images/tit-meiti1.png" class="pull-left tit-position"  />
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 col-xs-12">
+                        <div class="taititle">商务培训</div>
+                        <div class="tit-image">
+                            <img src="~/Content/images/tit-peixun1.jpg" />
+                            <img src="~/Content/images/tit-peixun2.jpg" />
+                            <img src="~/Content/images/tit-peixun3.jpg" />
+                        </div>
+                        <ul class="tailist">
+                            <li>协助企业员工提升综合素质，开展了一系列针对性的培训</li>
+                        </ul>
+                    </div>
+                    <div class="text-center" style="color:#656565;">更新日期：2017年09月29日 10:33</div>
+                    <div class="h_20"></div>
+
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+    </section>
+</div>
+
+<script>
+		//初始化左侧目录
+		LeftMenu([
+			'关于我们',
+            [{ 'name': '贸易促进中心简介', 'url': '@Url.Action("Index","AboutUs",new { area = "", index = "aboutUs" })', 'current': false },
+                { 'name': '专业服务', 'url': '@Url.Action("ZhuanService", "AboutUs", new { area = "", index = "aboutUs" })', 'current': true },
+                { 'name': '年度计划', 'url': '@Url.Action("ProfessionalService", "AboutUs", new { area = "", index = "aboutUs" })', 'current': false },
+         { 'name': '成为会员', 'url': '@Url.Action("UserDeclaration", "Account", new { area = "", index = "aboutUs" })', 'current': false }]
+    ]);
+</script>

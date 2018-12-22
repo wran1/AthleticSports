@@ -1,0 +1,136 @@
+﻿#focus .first-screen{margin-bottom:20px}
+#focus .first-screen .item{position:relative}
+#focus .first-screen .item .item-text{background-color:rgba(255, 255, 255, 1);padding:24px}
+@media(min-width:768px){
+    #focus .first-screen .item .item-text{background-color:rgba(255, 255, 255, 0.79);position:absolute;width:525px;right:0;top:35px}
+}
+@media(min-width:992px){
+    #focus .first-screen .item .item-text{top:95px}
+}
+@media(min-width:1200px){
+    #focus .first-screen .item .item-text{top:146px}
+}
+#focus .first-screen .item .item-text div{font-size:18px;color:#333333;margin-bottom:10px;font-weight:600}
+#focus .first-screen .item .item-text p{margin-bottom:20px;font-size:14px;color:#333333;text-align:justify}
+#focus .first-screen .item .item-text a{color:#003F99;font-size:12px;font-weight:600}
+#focus .second-screen{padding:20px;background-color:#FFFFFF;border:1px solid #DDDDDD}
+#focus .second-screen > .public-item-title{margin-bottom:32px;margin-top:12px}
+#focus .second-screen .list-parten{margin-bottom:0}
+#focus .second-screen .list-parten > li{padding:9px 0;color:#545454;font-size:16px;border-color:#E7E7E7;border-width:1px;border-style:solid;margin-bottom:9px}
+#focus .second-screen .list-parten > li p{display:none}
+#focus .second-screen .list-parten > li:last-child{margin-bottom:0}
+#focus .second-screen .list-parten > li .list-parten-img{font-size:25px;color:#888888;border-radius:50%;background:#E9E9E9;margin-right:15px;width:35px; height:35px; text-align:center;vertical-align:middle;}
+#focus .second-screen .list-parten > li span{display:block;line-height:35px;float:left;font-size:16px;color:#555555}
+#focus .second-screen .list-parten > li > a{display:block;width:146px;margin:0 auto;}
+#focus .second-screen .list-parten > li.current{background-color:#014099;border-color:#014099;position:relative}
+#focus .second-screen .list-parten > li.current .list-parten-img{color:#014099;background:#FFFFFF}
+#focus .second-screen .list-parten > li.current span{color:#FFFFFF}
+#focus .second-screen .list-parten > li.current p{display:none}
+#focus .second-screen .list-son{margin-top:12px}
+@media(min-width:768px){
+ #focus .second-screen .list-son{padding-left:12px;margin-top:0}
+ #focus .second-screen .list-parten{margin-bottom:0;padding-right:12px}
+ #focus .second-screen .list-parten > li.current p{display:block;margin:0;position:absolute;background:#FFF;width:10px;height:10px;transform:rotate(45deg);top:50%;right:-30px;margin-top:-4px; border-width:0 0 1px 1px;border-style:solid;border-color:#B7D3FF;z-index:1}
+}
+
+#focus .second-screen .list-son > ul{border:1px solid #B7D3FF;margin-bottom:0;height:635px;overflow:auto;padding:10px 38px 0}
+#focus .second-screen .list-son > ul li{position:relative;cursor:pointer}
+#focus .second-screen .list-son > ul li a{padding:14px 0;display:block;text-decoration:none;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+#focus .second-screen .list-son > ul li p {
+        color: #878787;
+        font-size: 15px;
+        line-height: 17px;
+        border-left: 2px solid #DDDDDD;
+        word-break: keep-all; /* 不换行 */
+        white-space: nowrap; /* 不换行 */
+        overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+        text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+        padding-left: 7px;margin: 0 0 0 9px; }
+#focus .second-screen .list-son > ul li article{background:repeat-x url("/Content/images/son-border.png");position:absolute;width:100%;bottom:0;height:1px}
+#focus .second-screen .list-son > ul li.current article{border-left:7px solid #DDDDDD;border-right:7px solid #DDDDDD}
+#focus .second-screen .list-son > ul li.current p{color:#003F99;border-left:2px solid #003F99;margin:0 0 0 9px}
+@media only screen and (max-width: 767px) {
+   #focus .second-screen .list-son > ul{height:auto; padding:10px 38px 10px;}
+    #focus .second-screen .panel{border:0px;}
+
+}
+@media(min-width:992px){
+    #focus .second-screen .list-main{padding-left:64px}
+}
+#focus .second-screen .list-main > div{font-size:20px;color:#003F99;line-height:28px;padding:20px 0}
+#focus .second-screen .list-main > article{font-size:14px;color:#444444;line-height:24.25px;text-indent:2em;text-align:justify;padding-bottom:26px;border-bottom:1px solid #DDDDDD;margin-bottom:25px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical}
+#focus .second-screen .list-main > ul{list-style:url("/Content/images/focus/list-style.png")}
+#focus .second-screen .list-main > ul li{font-size:14px;line-height:17px;color:#878787;padding:9px 0}
+#focus .third-screen .container-fluid{margin-left:-15px;margin-right:-15px;margin-bottom:62px}
+#focus .third-screen .new-product{border:1px solid #DDDDDD;background-color:#FFFFFF;padding:32px 32px 0;margin-top:20px}
+#focus .third-screen .new-product > .row{margin-left:0;margin-right:0;margin-top:24px}
+#focus .third-screen .new-product .product-img-l{padding-left:9px;padding-right:20px}
+#focus .third-screen .new-product .product-img-r{padding-left:20px;padding-right:9px}
+#focus .third-screen .new-product .product-img-l > img,#focus .third-screen .new-product .product-img-r > img{width:100%;border:1px solid #DDDDDD}
+#focus .third-screen .new-product .product-text{color:#666666;font-size:16px;text-align:center;line-height:20px;padding:22px 0 20px;margin-bottom:0}
+#focus-window .menu-content .select-row{margin:23px -5px 54px;height:31px}
+#focus-window .menu-content .select-row > .select-box{padding-left:5px;padding-right:5px;width:26%;float:left;position:relative;margin-bottom:10px}
+#focus-window .menu-content .select-row > .select-box > select{width:100%;height:31px;border-color:#DDDDDD;position:relative;z-index:1;opacity:0}
+#focus-window .menu-content .select-row > .select-box > .show{position:absolute;left:5px;right:5px;top:0;bottom:0;border:1px solid #DDDDDD;z-index:0;padding:0 39px 0 10px}
+#focus-window .menu-content .select-row > .select-box > input{width:100%;height:31px;border:1px solid #DDDDDD;font-size:13px;color:#666666;padding:0 10px}
+#focus-window .menu-content .select-row > .select-box > .show > span{line-height:29px;height:29px;font-size:13px;color:#999999;overflow:hidden;display:inline-block}
+#focus-window .menu-content .select-row > .select-box > .show > div{position:absolute;background:no-repeat url("/Content/images/focus/select-back.png");width:27px;height:27px;margin:1px;top:0;right:0}
+#focus-window .menu-content .select-row .select-sub{width:22%;padding:0 5px;float:left}
+@media(max-width: 767px){
+    #focus-window .menu-content .select-row > .select-box{width:50%}
+    #focus-window .menu-content .select-row .select-sub{width:50%}
+}
+#focus-window .menu-content .select-row .select-sub button{background:#14A83B;border:0;font-size:16px;line-height:17px;color:#FFFFFF;padding:7px 0;width:100%}
+#focus-window .menu-content .select-row .select-sub button > img{display:inline-block;vertical-align:top;margin-right:8px}
+#focus-window .focus-window-table{overflow:auto}
+#focus-window .focus-window-table table{width:100%;min-width:546px}
+#focus-window .focus-window-table table *{text-align:center}
+ #focus-window .focus-window-table table th{background-image:url("/Content/images/focus/table-back.png");background-size:100% 100%;font-size:16px;color:#FFFFFF;padding:11px 0}
+#focus-window .focus-window-table table tr td > div{font-size:14px;padding:10px 0}
+#focus-window .focus-window-table table tr:nth-child(odd){background:#EEEEEE;}
+#focus-window .focus-window-table table tr:nth-child(odd) td > div{color:#545454;background:#EEEEEE;border-width:0 1px;border-color:#FFFFFF;border-style:solid}
+ #focus-window .focus-window-table table tr:nth-child(odd) td:nth-child(even){padding:0 1px}
+ #focus-window .focus-window-table table tr:nth-child(even) td > div{color:#555555}
+ #focus-window-details .details-value{padding:48px 6.7% 0}
+ #focus-window-details .details-value .details-logo{width:168px;margin:0 auto}
+ #focus-window-details .details-value .details-logo > img{width:100%}
+ #focus-window-details .details-value .details-title{font-size:20px;color:#333333;text-align:center;padding:15px 0;border-bottom:1px solid #EEEEEE;margin-bottom:40px}
+ #focus-window-details .details-value .details-text{line-height:23px;font-size:16px;color:#333333;margin-bottom:13px;text-indent:2em;font-family:Arial, 'Microsoft YaHei';text-align:justify}
+ #focus-window-details .details-ul{margin-top:40px;word-wrap:break-word}
+ #focus-window-details .details-ul li{position:relative;font-size:16px;color:#333333;line-height:28px} 
+ /*.details-div{height:28px;}*/ 
+ #focus-window-details .details-ul li div:first-child{position:absolute}
+ #focus-window-details .details-ul li div:first-child span{font-size:20px;float:left;margin-top:5px;margin-right:10px;color:#999999;}
+ #focus-window-details .details-ul li div:last-child{margin-left:80px}
+ .focus-public .product-list{padding:0}
+ .focus-public .product-list .row{margin-left:-5px;margin-right:-5px}
+ .focus-public .product-list .row div:first-child{text-align:center;position:relative;line-height:25px;margin-top:70px;margin-bottom:5px}
+ .focus-public .product-list .row div:first-child span{position:relative;z-index:1;background:#FFFFFF;padding:0 10px;font-size:18px;color:#333333}
+ .focus-public .product-list .row div:first-child div:nth-child(2){height:1px;width:100%;position:absolute;background:#DDDDDD;top:50%;z-index:0}
+ .focus-public .product-list .row div:first-child div:nth-child(3){position:absolute;border-width:6px;border-style:solid;border-color:#999999 transparent transparent transparent;left:50%;margin-left:-6px}
+ .focus-public .product-list .row > div{padding-left:5px;padding-right:5px}
+ .focus-public .product-list .row .details-product-item{margin-top:34px}
+ .focus-public .product-list .row .details-product-item a{text-decoration:none}
+ .focus-public .product-list .row .details-product-item .item-img{width:100%;border:1px solid #EEEEEE;height:155px;}/*增加了固定高度*/
+ @media(max-width: 767px){
+    .focus-public .product-list .row .details-product-item .item-img{width:100%;border:1px solid #EEEEEE;height:auto;}/*增加了固定高度*/
+
+}
+ .focus-public .product-list .row .details-product-item .item-text{font-size:14px;color:#666666;text-align:center;line-height:21px;padding:18px 0;    overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+ #focus-window-product .product-value{margin:0 25px}#focus-window-product .product-value .product-title{font-size:20px;color:#333333;line-height:26px;text-align:center;padding-top:40px;padding-bottom:13px;border-bottom:1px solid #EEEEEE}
+#focus-window-product .product-value .container-fluid{padding:0;margin-top:64px;margin-bottom:42px}
+@media(min-width: 1200px){
+    #focus-window-product .product-value .container-fluid{height:222px}
+}
+#focus-window-product .product-value .product-img > img{width:100%;height:244px;}
+#focus-window-product .product-value .product-attr ul{border-top:1px solid #EEEEEE;margin:0}
+#focus-window-product .product-value .product-attr ul li{border-bottom:1px solid #EEEEEE;font-size:15px;padding-bottom:8px;padding-top:14px}
+#focus-window-product .product-value .product-attr ul li span:first-child{color:#666666}
+#focus-window-product .product-value .product-attr ul li span:last-child{color:#333333}
+#focus-window-product .product-value .product-text-top{border-left:2px solid #014099;margin-bottom:16px}
+#focus-window-product .product-value .product-text-top span{border-left:2px solid #FFFFFF;background:#014099;line-height:25px;padding:0 10px;display:inline-block;font-size:18px;color:#FFFFFF}
+#focus-window-product .product-value .product-text{color:#525252;font-size:16px;line-height:23px;text-align:justify;margin-bottom:37px}
+#new-product .product-list .row div:first-child{margin:0 0 12px}
+#new-product-details .npd-title{margin:0 6.7% 46px;border-bottom:1px solid #DDDDDD;text-align:center;font-size:20px;color:#333333;padding:38px 0 14px}
+#new-product-details .npd-img{margin:0 18.2%}
+#new-product-details .npd-img > img{width:100%}

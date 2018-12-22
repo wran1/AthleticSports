@@ -1,0 +1,111 @@
+﻿#trade-teda .trade-teda-list {
+	
+
+}
+#trade-teda .trade-teda-list >li {
+	padding: 62px 3% 60px 4.3%;
+	margin-left: 4.2%;
+    margin-right: 3%;
+    border-bottom: 1px solid #EEEEEE;
+}
+#trade-teda .trade-teda-img{
+	width: 162px; margin:0px auto;
+}
+#trade-teda .trade-teda-img>img{
+	width: 100%;
+}
+.trade-left {
+    float: left;
+}
+@media(min-width: 768px) {
+	#trade-teda .trade-teda-img{
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	#trade-teda .trade-teda-centent{
+		margin-left: 0px;
+	}
+}
+.trade-left {
+    float: left;
+}
+
+@media(min-width: 992px) {
+	#trade-teda .trade-teda-img{
+		width: 162px;
+		margin-bottom: 0px;
+	}
+	#trade-teda .trade-teda-centent{
+		margin-left: 230px;
+        min-height:120px;
+	}
+}
+#trade-teda .trade-teda-title{
+	position: relative;
+	font-size: 20px;
+	border-bottom: 1px solid #666666;
+}
+@media only screen and (max-width: 767px) {
+    .trade-left {
+        float: none;
+    }
+
+    #trade-teda .trade-teda-title {
+        position: relative;
+        font-size: 17px;
+        border-bottom: 1px solid #666666;
+        margin-top:10px;
+    }
+    #trade-teda .trade-teda-but{text-align:center;}
+}
+#trade-teda .trade-teda-title>div:first-child{
+    color: #333333;
+    float: left;
+}
+#trade-teda .trade-teda-title>div:last-child{
+    color: #666666;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #EEEEEE;
+    margin-left: 120px;
+    margin-bottom: -1px;
+    text-align: justify;
+}
+#trade-teda .trade-teda-text{
+	font-size: 16px;
+    color: #545454;
+    line-height: 25px;
+    text-indent: 2em;
+    margin-top: 23px;
+    margin-bottom: 57px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+#trade-teda .trade-teda-but a{
+	border: 0px;
+    padding: 2.5px 12px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #FFFFFF;
+    border-radius: 12.5px;
+}
+    #trade-teda .trade-teda-but a > i {
+        color: #fff;
+        margin-right: 5px;
+        font-size: 18px;
+        vertical-align: sub;
+    }
+#trade-teda .trade-teda-but a>img{
+	vertical-align:top;
+	margin-right: 10px;
+    margin-top:2px;
+}
+#trade-teda .trade-teda-but a:first-child{
+	background: #227BDD;
+	margin-right: 20px;
+}
+#trade-teda .trade-teda-but a:last-child{
+	background: #14A83B;
+}

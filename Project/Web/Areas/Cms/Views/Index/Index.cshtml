@@ -1,0 +1,304 @@
+﻿@using Models.CmsModels
+@using Web.Helpers
+
+@{
+    ViewBag.Title = "资讯速递";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/information.css" rel="stylesheet" />
+<div id="information">
+    <section class="page-second-top">
+        <!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置 : </span>
+            <span><a href="/Home/Home">首页</a> <i class="fa fa-angle-right fastyle"></i> </span>
+            <span>资讯速递</span>
+        </div>
+        <!--搜索-->
+        <form class="pull-right search">
+            <img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" id="searchfor" placeholder="资讯搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" />
+            <a  href="javascript:void(0)" onclick="SearchSumit()"><img src="~/Content/images/search-but.png" /></a>
+            @*<button type="submit"><img src="~/Content/images/search-but.png" /></button>*@
+        </form>
+        <div class="clearfix"></div>
+    </section>
+    <section class="first-screen">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="row">
+                    <div class="col-sm-6 information-item">
+                        <div class="text-item">
+                            <div class="public-item-title">
+								<div>展览活动<div></div></div>
+								<div>
+									<a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "展览活动", index = "info" })">MORE <i class="fa fa-angle-double-right"></i></a>
+									<div></div>
+								</div>
+                            </div>
+                            <ul class="information-list list-unstyled">
+                                @foreach (CmsArtical item in ViewBag.ExhibitionNoticeList)
+                                {
+                                    <li>                                        
+                                        <a href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = "展览活动", index = "info" })">
+                                           
+                                            <div class="information-list-date pull-right">@(item.PublishTime?.ToString("yyyy-MM-dd"))</div>
+                                            <article>
+                                                @if (item.IsNew)
+                                                    {
+                                                        <img src="~/Content/images/inco-new.gif" class="inco-hot" />
+                                                    }
+                                                   else if (item.IsHot)
+                                                    {
+                                                        <img src="~/Content/images/inco-hot.gif" class="inco-hot" />
+                                                     }
+                                                @item.Title.CutString(40, true)
+                                            </article>
+                                            
+                                            <div class="information-border"></div>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 information-item">
+                        <div class="text-item">
+                            <div class="public-item-title">
+								<div>泰达动态<div></div></div>
+								<div>
+									<a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "泰达动态", index = "info" })">MORE <i class="fa fa-angle-double-right"></i></a>
+									<div></div>
+								</div>
+                            </div>
+                            <ul class="information-list list-unstyled">
+                                @foreach (CmsArtical item in ViewBag.ActivityNoticeList)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = "泰达动态", index = "info" })">
+                                            <div class="information-list-date pull-right">@(item.PublishTime?.ToString("yyyy-MM-dd"))</div>
+                                            <article>
+                                                 @if (item.IsNew)
+                                                 {
+                                                    <img src="~/Content/images/inco-new.gif" class="inco-hot" />
+                                                 }
+                                                 else if (item.IsHot)
+                                                 {
+                                                    <img src="~/Content/images/inco-hot.gif" class="inco-hot" />
+                                                }
+                                                @item.Title.CutString(40, true)
+                                               
+                                            </article>
+                                            <div class="information-border"></div>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+					<div class="clearfix"></div>
+                    <div class="col-lg-6 information-item">
+                        @*@foreach (CmsArtical firstItem in ViewBag.ActivityReportTop)
+                        {
+                            <a href="@Url.Action("Details","Index",new { id = firstItem.Id, area = "Cms", tab = "活动报道", index = "info" })">
+                                <img src="@(string.IsNullOrEmpty(firstItem.CoverImage) ? "/Content/images/information/information-img-1.png" : firstItem.CoverImage)" width="100%" />
+                                <div class="information-bottom-text">@firstItem.Title</div>
+                            </a>
+                        }*@
+                     
+                            <article id="swiper-1" class="swiper-container">
+                                <article class="swiper-wrapper">
+                                    @foreach (CmsArtical firstItem in ViewBag.ActivityReportTop)
+                                    {
+                                        <div class="swiper-slide">
+                                            <a href="@Url.Action("Details","Index",new { id = firstItem.Id, area = "Cms", tab = "活动报道", index = "info" })">
+                                                <img src="@(string.IsNullOrEmpty(firstItem.CoverImage) ? "/Content/images/information/information-img-2.png" : firstItem.CoverImage)" class="img-responsive" />
+                                                <div class="information-bottom-text" style="bottom: 0px;width: 100%;left: 0;">@firstItem.Title</div>
+                                            </a>
+                                        </div>
+                                    }
+                                    @foreach (CmsArtical item in ViewBag.ActivityReportList)
+                                    {
+                                        <div class="swiper-slide">
+                                            <a href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = "活动报道", index = "info" })">
+                                                <img src="@(string.IsNullOrEmpty(item.CoverImage) ? "/Content/images/information/information-img-2.png" : item.CoverImage)" class="img-responsive" />
+                                                <div class="information-bottom-text" style="bottom: 0px;width: 100%;left: 0;">@item.Title</div>
+                                            </a>
+                                        </div>
+                                    }
+                                    @*@foreach (CmsArtical item in ViewBag.ZhanhuiList)
+                                    {
+                                        <div class="swiper-slide">
+                                            <a href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = "展会现场", index = "info" })">
+                                                <img src="@(string.IsNullOrEmpty(item.CoverImage) ? "/Content/images/information/information-img-2.png" : item.CoverImage)" class="img-responsive" />
+                                                <div class="information-bottom-text" style="bottom: 0px;width: 100%;left: 0;">@item.Title</div>
+                                            </a>
+                                        </div>
+                                    }*@
+                                </article>
+                                <!-- 如果需要分页器 -->
+                                @*<div class="swiper-pagination"></div>*@
+
+                                <!-- 如果需要导航按钮 -->
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </article>
+                       
+                        </div>
+                    <div class="col-lg-6 information-item">
+                        <div class="text-item">
+                            <div class="public-item-title">
+								<div>活动报道<div></div></div>
+								<div>
+									<a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "活动报道", index = "info" })">MORE <i class="fa fa-angle-double-right"></i></a>
+									<div></div>
+								</div>
+                            </div>
+                            <div class="information-text">
+                                @foreach (CmsArtical firstItem in ViewBag.ActivityReportTop)
+                                {
+                                    <a href="@Url.Action("Details","Index",new { id = firstItem.Id, area = "Cms", tab = "活动报道", index = "info" })">
+                                        <p>
+                                            @if (firstItem.IsNew)
+                                            {
+                                                <img src="~/Content/images/inco-new.gif" class="inco-hot" />
+                                            }
+                                            else if (firstItem.IsHot)
+                                            {
+                                                <img src="~/Content/images/inco-hot.gif" class="inco-hot" />
+                                            }
+                                            @firstItem.Title
+                                        </p>
+                                        <article>                                           
+                                            @(firstItem.Abstract?.CutString(120, true))
+                                        </article>
+                                        <div class="information-border"></div>
+                                    </a>
+                                }
+                            </div>
+                            <ul class="information-list list-unstyled" style="margin-top:0px;">
+                                @foreach (CmsArtical item in ViewBag.ActivityReportList)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab = "活动报道", index = "info" })">
+                                            <div class="information-list-date pull-right">@(item.PublishTime?.ToString("yyyy-MM-dd"))</div>
+                                            <article>
+                                                @if (item.IsNew)
+                                                {
+                                                    <img src="~/Content/images/inco-new.gif" class="inco-hot" />
+                                                }
+                                                else if (item.IsHot)
+                                                {
+                                                    <img src="~/Content/images/inco-hot.gif" class="inco-hot" />
+                                                }
+                                                @item.Title.CutString(40, true)               
+                                            </article>
+                                            <div class="information-border"></div>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+					<div class="clearfix"></div>
+                    <div class="col-xs-12">
+                        <div class="text-lg-item">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="public-item-title">
+                                        <div>企业采风<div></div></div>
+                                        <div>
+                                            <a href="@Url.Action("ArticleList","Index",new { area = "Cms", tab = "企业采风", index = "info" })">MORE <i class="fa fa-angle-double-right"></i></a>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <article id="swiper-2" class="swiper-container">
+                                        <article class="swiper-wrapper">
+											@foreach (CmsArtical item in ViewBag.CompanyList)
+											{
+                                                <div class="swiper-slide text-lg-main-text">
+                                                    <div>
+                                                        <div>
+                                                            <div>
+                                                                <a href="@Url.Action("Details","Index",new { id = item.Id, area = "Cms", tab ="企业采风", index = "info" }))" target="_blank">
+                                                                    <img src="@(string.IsNullOrEmpty(item.CoverImage) ? "/Content/images/information/logo-1.png" : item.CoverImage)" class="img-responsive" />
+                                                                    <article>
+                                                                        <div>@item.Title</div>
+                                                                    </article>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+											}
+                                        </article>
+                                     </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<script>
+		var swiper1 = new Swiper('#swiper-1', {
+			loop: true,
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev'
+		});
+		var zxsdSwiper;
+		var throttleTime;
+		function throttle() {
+			clearTimeout(throttleTime);
+			throttleTime = setTimeout(function () {
+				getWidth();
+			}, 500);
+		}
+		function getWidth() {
+			if (document.body.offsetWidth >= 1200) {
+				initSwiper(6);
+				return;
+			}
+			if (document.body.offsetWidth >= 992) {
+				initSwiper(4);
+				return;
+			}
+			if (document.body.offsetWidth >= 768) {
+				initSwiper(3);
+				return;
+			}
+			if (document.body.offsetWidth >= 414) {
+				initSwiper(2);
+				return;
+			} else {
+				initSwiper(1);
+				return;
+			}
+		}
+		function initSwiper(num) {
+			if (zxsdSwiper) {
+				zxsdSwiper.params.slidesPerView = num;
+				zxsdSwiper.init();
+			} else {
+				zxsdSwiper = new Swiper('#swiper-2', {
+					loop: true,
+					autoplay: 1000,
+					slidesPerView: num,
+					spaceBetween: 30
+				});
+			}
+		}
+		window.onresize = function () {
+			throttle();
+		}
+
+        getWidth();
+
+          function SearchSumit() {
+            var content = $("#searchfor").val();
+            var type = '@Html.Raw(Request["tab"])';
+            window.location.href = decodeURI("/WebsitePage/Search/Index?type=")+type + decodeURI("&keyword=" + content);
+        }
+	</script>
+</div>
+

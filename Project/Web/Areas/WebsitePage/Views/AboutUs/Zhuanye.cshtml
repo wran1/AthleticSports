@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "专业服务";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/focus.css" rel="stylesheet" />
+<div class="focus-public">
+	<section class="page-second-top">
+		<!--网站路径-->
+        <div class="website-url pull-left">
+            <span>当前位置</span>
+            <span>首页></span>
+            <span>关于我们></span>
+            <span>专业服务</span>
+        </div>
+		<!--搜索-->
+		@*<form class="pull-right search">
+			<img class="pull-left" src="~/Content/images/focus/search-left.png" /><input type="text" placeholder="在本栏目搜索" /><img class="pull-right" src="~/Content/images/focus/search-right.png" /><button type="submit"><img src="~/Content/images/search-but.png" /></button>
+		</form>
+		<div class="clearfix"></div>*@
+	</section>
+	<section class="mian">
+		<div class="top-back-1"></div>
+		<div class="top-back-2"></div>
+		@Html.Partial("leftMenu")
+		<section class="menu-content">
+			<div class="top"><span>专业服务</span></div>
+			<div>
+                <div class="tai_mian" id="zhanshi">
+                    <div style="padding-top:30px;">
+                        <div class="col-md-3 col-sm-6 col-xs-6 text-center zhuan-height">
+                            <img src="~/Content/images/inco-shangwu.jpg" />
+                            <h4>商务配对</h4>
+                            <span style="display:block;text-align:left;">与国内外多家商贸机构建立合作联盟关系，每年组织大量商贸专业对接活动</span>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-6 text-center zhuan-height">
+                            <img src="~/Content/images/inco-zhanlan.jpg" />
+                            <h4>展览会议</h4>
+                            <span style="display:block;text-align:left;">每年组织企业参加境内外相关专业的展会活动。为参展企业提供政策支持</span>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-6 text-center zhuan-height">
+                            <img src="~/Content/images/inco-zazhi.jpg" />
+                            <h4>媒体杂志</h4>
+                            <span style="display:block;text-align:left;">自编刊物收录的企业及产品全面涵盖开发区支柱产业与《滨海时报》、《新商界》等合作媒体打造企业产品媒体宣传平台。</span>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-6 text-center zhuan-height">
+                            <img src="~/Content/images/inco-peixun.jpg" />
+                            <h4>商务培训</h4>
+                            <span style="display:block;text-align:left;">协助企业员工提升综合素质，开展了一系列针对性的培训</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--会展/活动-->
+                    <table>
+                        <tr>
+                            <th>展会/活动</th>
+                            <th>时间</th>
+                            <th>地点</th>
+                            <th>行业范围</th>
+                            <th>附件</th>
+                            <th>状态</th>
+                        </tr>
+                        <tr>
+                            <td><div>第九届中国绿色食品博览会</div></td>
+                            <td><div>4月</div></td>
+                            <td><div>天津</div></td>
+                            <td><div>食品相关</div></td>
+                            <td><div><img src="~/Content/images/inco-load.png" />  附件下载</div></td>
+                            <td><div>进行中</div></td>
+                        </tr>
+                        <tr>
+                            <td><div>第五届中国电子信息博览会</div></td>
+                            <td><div>1月</div></td>
+                            <td><div>天津</div></td>
+                            <td><div>电子相关</div></td>
+                            <td><div><img src="~/Content/images/inco-load.png" />  附件下载</div></td>
+                            <td><div>已结束</div></td>
+                        </tr>
+                        <tr>
+                            <td><div>第五届中国电子信息博览会</div></td>
+                            <td><div>1月</div></td>
+                            <td><div>天津</div></td>
+                            <td><div>电子相关</div></td>
+                            <td><div><img src="~/Content/images/inco-loadhui.png" />  暂无附件</div></td>
+                            <td><div>未开始</div></td>
+                        </tr>
+                        <tr>
+                            <td><div>第五届中国电子信息博览会</div></td>
+                            <td><div>1月</div></td>
+                            <td><div>天津</div></td>
+                            <td><div>电子相关</div></td>
+                            <td><div><img src="~/Content/images/inco-loadhui.png" />  暂无附件</div></td>
+                            <td><div>未开始</div></td>
+                        </tr>
+                        <tr>
+                            <td><div>第五届中国电子信息博览会</div></td>
+                            <td><div>1月</div></td>
+                            <td><div>天津</div></td>
+                            <td><div>电子相关</div></td>
+                            <td><div><img src="~/Content/images/inco-loadhui.png" />  暂无附件</div></td>
+                            <td><div>未开始</div></td>
+                        </tr>
+                    </table>
+
+
+
+                </div>
+			</div>
+		</section>
+		<div class="clearfix"></div>
+	</section>
+</div>
+
+<script>
+		//初始化左侧目录
+		LeftMenu([
+			'关于我们',
+                [{ 'name': '中心简介', 'url': '#', 'current': false},
+                 { 'name': '专业服务', 'url': '#', 'current': true}]
+		]);
+</script>
+

@@ -1,0 +1,20 @@
+﻿@using Services
+@using Web.Helpers
+@model string
+
+@{
+    var id = CommonCodeGenerator.GenerateRandomInt(100, 1000);
+}
+<div>
+    @Html.HiddenFor(a => a, new { @id = id + "CityId" })
+    <select id="@(id + "District1")" class="show-tick form-control-static" data-show-subtext="true" data-live-search="true" data-size="auto"></select>
+    <select id="@(id + "District2")" class="show-tick form-control-static" style="display: none" data-show-subtext="true" data-live-search="true" data-size="auto"></select>
+    <select id="@(id + "District3")" class="show-tick form-control-static" style="display: none" data-show-subtext="true" data-live-search="true" data-size="auto"></select>
+    <script src="~/Scripts/SelectFunctions.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            InitialDistricts(getCityDatsUrl,"#@id","@(string.IsNullOrEmpty(Model) ? "" : Model)");
+    });
+    </script>
+</div>

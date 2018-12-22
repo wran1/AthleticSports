@@ -1,0 +1,53 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using Web.Areas.HelpPage.Models
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "新商界API帮助文档";
+
+    // Group APIs by controller
+    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<link rel="stylesheet" href="/content/jquery-ui.css">
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.0.min.js"></script>
+<script>
+  $( function() {
+      $("#accordion").accordion({
+          collapsible: true,
+          heightStyle: "content"
+      });
+  } );
+</script>
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h2>使用说明</h2>
+            <p>
+                API状态： [开发测试中|开发完成]，APP开发人员使用开发完成的API<br />
+                最后发布时间：记录API最后发布时间，仅限变更了提交/返回数据结构的变更发布，内部功能性的修改不影响API使用的变更不用在此记录<br />
+                发布记录：记录API变更发布记录<br />
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <div id="accordion">
+            @foreach (var group in apiGroups)
+            {
+                @Html.DisplayFor(m => group, "ApiGroup")
+            }
+        </div>
+    </section>
+</div>

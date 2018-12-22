@@ -1,0 +1,437 @@
+﻿@model Web.Models.UserRegisterModel
+@using Models.SysModels
+@using Models.Dictionary
+
+@{
+    ViewBag.Title = "会员注册";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row p15">
+    <div class="col-xs-8 hui_nav">
+        <span>当前位置：</span><a href="@Url.Action("Home", "Home", new { area = "" })">首页</a>  > <a href="@Url.Action("Index","AboutUs",new { area = "",index = "aboutUs" })">关于我们</a>  > <a href="@Url.Action("UserDeclaration","Account",new { area = "" })">会员注册</a>
+    </div>
+</div>
+<div style="background:#fff;">
+    <div class="row p15">
+        <div class="col-xs-12 hui_title text-center">会员注册<div class="h_20 hui_bottom"></div></div>
+    </div>
+    <div class="h_20"></div>
+    @using (Html.BeginForm("UserRegister", "Account", FormMethod.Post, new { role = "form", id = "form4register" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div id="userregister">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">登录资料</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div style="position:relative;">
+                            <span class="hui_xing">*</span>
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon" id="basic-addon1">用  户  名</span>
+                                @Html.EditorFor(model => model.UserName, new { placeholder = "会员用户名由3-20个英文字母或数字组成，不支持中文。一旦注册成功，不可修改；建议使用公司名的字母缩写", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                        <div style="position:relative;">
+                            <span class="hui_xing">*</span>
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon" id="basic-addon1">登录密码</span>
+                                @Html.EditorFor(model => model.Password, new { placeholder = "密码由6-20个英文字母和数字组成，区分大小写。建议采用易记、难猜的英文数字组合", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div style="position:relative;">
+                            <span class="hui_xing">*</span>
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">确认密码</span>
+                                @Html.EditorFor(model => model.ConfirmPassword, new { placeholder = "密码由6-20个英文字母和数字组成，区分大小写。建议采用易记、难猜的英文数字组合", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+   
+        <div class="clearfix"></div>
+      
+            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">联系信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">真实姓名</span>
+                                @Html.EditorFor(model => model.FullName, new { placeholder = "请填写您的真实姓名，以便客户与您联系", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">英文姓名</span>
+                                @Html.EditorFor(model => model.EnglishName, new { placeholder = "请填写您的英文姓名，以便客户与您联系", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.EnglishName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">性      别</span>
+                                <span class="form-control" style="padding-left:20px;">
+                                    <input @(Model.Sex == "男" ? "checked" : "") name="Sex" type="radio" value="男"><span style="margin-right:20px;">男</span>
+                                    <input @(Model.Sex == "女" ? "checked" : "") name="Sex" type="radio" value="女"><span>女</span>
+                                    @*@Html.RadioButtonFor(model => model.Sex, "男", new { @id = "sexradio1", @name = "Sex", @checked = Model.Sex == "男" ? "checked" : "" }) <span style="margin-right:20px;">男</span>
+                                    @Html.RadioButtonFor(model => model.Sex, "女", new { @id = "sexradio2", @name = "Sex", @checked = Model.Sex == "女" ? "checked" : "" }) <span>女</span>*@
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div style="position:relative;">
+                                @*<span class="hui_xing">*</span>*@
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">微信号</span>
+                                    @Html.EditorFor(model => model.WxId, new { placeholder = "加入泰达企业群，拓展渠道，寻找商机", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.WxId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">您的职位</span>
+                                @Html.EditorFor(model => model.Cposition, new { placeholder = "请填写您在公司所担任的职位", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Cposition, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">英文职位</span>
+                                @Html.EditorFor(model => model.Eposition, new { placeholder = "请填写您在公司所担任的职位", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Eposition, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div style="position:relative;">
+                                <span class="hui_xing">*</span>
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">固定电话</span>
+                                    @Html.EditorFor(model => model.FixedPhone, new { placeholder = "输入电话格式为：地区区号 - 电话号码", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.FixedPhone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">手      机</span>
+                                @Html.EditorFor(model => model.PhoneNumber, new { placeholder = "请填写您日常使用的手机号码", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">传      真</span>
+                                @Html.EditorFor(model => model.Fox, new { placeholder = "请填写您的公司传真号码", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Fox, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div style="position:relative;">
+                                <span class="hui_xing">*</span>
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">邮      箱</span>
+                                    @Html.EditorFor(model => model.Email, new { placeholder = "电子邮箱是客户与您联系的首选方式，请务必填写", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group">
+                                <span class="input-group-addon no_border">是否选择公开您的联系方式</span>
+                                <span class="form-control no_border" style="white-space:nowrap;">
+                                    <input @(Model.IsPublicPhone ? "checked" : "") name="IsPublicPhone" type="radio" value="True"><span style="margin-right:10px;">是</span>
+                                    <input @(!Model.IsPublicPhone ? "checked" : "") name="IsPublicPhone" type="radio" value="False"><span>否</span>
+                                    @*@Html.RadioButtonFor(model => model.IsPublicPhone, true, new { @name = "IsPublicPhone", @checked = Model.IsPublicPhone ? "checked" : "" }) <span style="margin-right:20px;">是</span>
+                                    @Html.RadioButtonFor(model => model.IsPublicPhone, false, new { @name = "IsPublicPhone", @checked = !Model.IsPublicPhone ? "checked" : "" }) <span>否</span>*@
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+      
+        <div class="clearfix"></div>
+    
+            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">公司信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div style="position:relative;">
+                            <span class="hui_xing">*</span>
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon" id="basic-addon1">公司名称</span>
+                                @Html.EditorFor(model => model.CompanyName, new { placeholder = "请务必填写与工商营业执照完全相同的名称，以确保您公司注册信息的唯一性", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                        </div>
+                        <div style="position:relative;">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon" id="basic-addon1">公司英文</span>
+                                @Html.EditorFor(model => model.EfCompanyName, new { placeholder = "请务必填写与工商营业执照完全相同的名称，以确保您公司注册信息的唯一性", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.EfCompanyName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div style="position:relative;">
+                            <span class="hui_xing">*</span>
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">会员类型</span>
+                                <span class="form-control">
+                                    @foreach (var item in (MemberType[])Enum.GetValues(typeof(MemberType)))
+                                    {
+                                        <input @(Model.MemberType.ToString() == item.ToString() ? "checked" : "") name="MemberType" type="radio" value="@((int)Enum.Parse(typeof(MemberType), item.ToString()))"><span>@item</span>
+                                        @*@Html.RadioButtonFor(model => model.MemberType, (int)Enum.Parse(typeof(MemberType), item.ToString()), new { @id = i, @name = "MemberType", @checked = Model.MemberType.ToString() == item.ToString() ? "checked" : "" }) <span>@item</span>
+                                        i++;*@
+                                    }
+                                    <span class="text-right right_tishi no-display">请选择您公司所属于行业的经营性质，采购商会员只能发布采购信息</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="position:relative;">
+                            <span class="hui_xing">*</span>
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">公司类型</span>
+                                <span class="form-control">
+                                    @foreach (var item in (CompanyType[])Enum.GetValues(typeof(CompanyType)))
+                                    {
+                                        <input @(Model.CompanyType.ToString() == item.ToString() ? "checked" : "") name="CompanyType" type="radio" value="@((int)Enum.Parse(typeof(CompanyType), item.ToString()))"><span>@item</span>
+                                        @*@Html.RadioButtonFor(model => model.CompanyType, (int)Enum.Parse(typeof(CompanyType), item.ToString()), new { @id = i, @name = "CompanyType", @checked = (Model.CompanyType.ToString() == item.ToString() ? "true" : "false") }) <span>@item</span>
+                                        i++;*@
+                                    }
+                                    <span class="text-right right_tishi no-display">请选择您的公司类型</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div style="position:relative;">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon" id="basic-addon1">公司网址</span>
+                                @Html.EditorFor(model => model.CompanyUrl, new { placeholder = "请填写公司网址", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.CompanyUrl, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 col-xs-12 no_left no_right1">
+                            <div class="col-md-6 col-xs-12 no_left no_right1">
+                                <div style="position:relative;">
+                                    @*<span class="hui_xing">*</span>*@
+                                    <div class="input-group hui_input">
+                                        <span class="input-group-addon">总资产值</span>
+                                        @Html.EditorFor(model => model.TotalAsset, new { placeholder = "", @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.TotalAsset, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12 no_padding">
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">出口经验</span>
+                                    <span class="form-control">
+                                        <input @(Model.IsExportExperience ? "checked" : "") name="IsExportExperience" type="radio" value="True"><span>有</span>
+                                        <input @(!Model.IsExportExperience ? "checked" : "") name="IsExportExperience" type="radio" value="False"><span>无</span>
+                                        @*@Html.RadioButtonFor(model => model.IsExportExperience, true, new { @name = "IsExportExperience", @checked = Model.IsExportExperience ? "checked" : "" }) <span>有</span>
+                                        @Html.RadioButtonFor(model => model.IsExportExperience, false, new { @name = "IsExportExperience", @checked = !Model.IsExportExperience ? "checked" : "" }) <span>无</span>*@
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_padding">
+                            <div class="col-md-6 col-xs-12 no_left no_right1">
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">员工总数</span>
+                                    @Html.EditorFor(model => model.TotalStaff, new { placeholder = "", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.TotalStaff, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6 col-xs-12 no_padding">
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon"> 年销售额</span>
+                                    @Html.EditorFor(model => model.AnnuaSales, new { placeholder = "", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.AnnuaSales, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 no_left no_right1">
+                            <div style="position:relative;">
+                                <span class="hui_xing">*</span>
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">公司注册地址</span>
+                                    @Html.EditorFor(model => model.RegisteredAddress, new { placeholder = "", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.RegisteredAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 no_padding">
+                            <div style="position:relative;">
+                                <span class="hui_xing">*</span>
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">公司办公地址</span>
+                                    @Html.EditorFor(model => model.ActualAddress, new { placeholder = "", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.ActualAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 no_left no_right1">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">搜索关键词</span>
+                                @Html.TextAreaFor(model => model.Keywords, new { rows = "3", placeholder = "请填写与您经营项目相关的关键词，以便在分类搜索中方便的查找到您的公司信息，多个关键词之间用英文小写逗号(,)隔开", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Keywords, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 col-xs-12 no_padding">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">搜索关键词<br />（英文）</span>
+                                @Html.TextAreaFor(model => model.Keyword4English, new { rows = "3", placeholder = "请填写与您经营项目相关的关键词，以便在分类搜索中方便的查找到您的公司信息，多个关键词之间用英文小写逗号(,)隔开", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Keyword4English, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-12 col-xs-12 no_left">
+                            <div style="position:relative;">
+                                <span class="hui_xing">*</span>
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon"> 所属行业</span>
+                                    @Html.EditorFor(model => model.IndustryOwnedId, new { placeholder = "", @class = "form-control" })
+                                    @*<input type="text" class="form-control" aria-label="汽车行业" />
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="#">汽车行业</a></li>
+                                        </ul>
+                                    </div>*@
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.IndustryOwnedId, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="col-md-6 col-xs-12 no_padding">
+                            @*<div class="input-group hui_input">
+                                <input type="text" class="form-control" aria-label="汽车零部件" />
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">汽车零部件</a></li>
+                                    </ul>
+                                </div> /btn-group 
+                            </div>*@
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-6 col-xs-12 no_left no_right1">
+                            <div style="position:relative;">
+                                <span class="hui_xing">*</span>
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">主营业务</span>
+                                    @Html.TextAreaFor(model => model.MainBusiness, new { rows = "3", placeholder = "请填写您公司经营的主营业务，所填内容将被视为在分类搜索中查找您公司信息的搜索条件，请不要填写夸大的广告语，否则不予通过", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.MainBusiness, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_padding">
+                            <div style="position:relative;">
+                                <div class="input-group hui_input">
+                                    <span class="input-group-addon">主营业务<br />（英文）</span>
+                                    @Html.TextAreaFor(model => model.MainBusiness4English, new { rows = "3", placeholder = "请填写您公司经营的主营业务，所填内容将被视为在分类搜索中查找您公司信息的搜索条件，请不要填写夸大的广告语，否则不予通过", @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.MainBusiness4English, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon no_border">是否愿意参加展会</span>
+                                <span class="form-control no_border" style="border-radius:0;white-space:nowrap;">
+                                    <input @(Model.IsExhibitionIntention ? "checked" : "") name="IsExhibitionIntention" type="radio" value="True"><span style="margin-right:10px;">是</span>
+                                    <input @(!Model.IsExhibitionIntention ? "checked" : "") name="IsExhibitionIntention" type="radio" value="False"><span>否</span>
+                                    @*@Html.RadioButtonFor(model => model.IsExhibitionIntention, true, new { @name = "IsExhibitionIntention", @checked = Model.IsExhibitionIntention ? "checked" : "" }) <span style="margin-right:20px;">是</span>
+                                    @Html.RadioButtonFor(model => model.IsExhibitionIntention, false, new { @name = "IsExhibitionIntention", @checked = !Model.IsExhibitionIntention ? "checked" : "" }) <span>否</span>*@
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_left">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon"> 境内展会</span>
+                                @Html.EditorFor(model => model.DomesticExhibitionId, new { placeholder = "", @class = "form-control" })
+                                @*<input type="text" class="form-control" aria-label="汽车行业" />
+                                <div class="input-group-btn">
+                                    @Html.Editor("DomesticExhibitionId", new { @class = "form-control" })
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">汽车行业</a></li>
+                                    </ul>
+                                </div>*@
+                                @*<input type="text" class="form-control" aria-label="汽车行业" />
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">汽车行业</a></li>
+                                    </ul>
+                                </div>*@
+                            </div>
+                            @Html.ValidationMessageFor(model => model.DomesticExhibitionId, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6 col-xs-12 no_padding">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon"> 境外展会</span>
+                                @Html.EditorFor(model => model.OverseasExhibitionId, new { placeholder = "", @class = "form-control" })
+                                @*<input type="text" class="form-control" aria-label="汽车行业" />
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">汽车行业</a></li>
+                                    </ul>
+                                </div>
+                                <input type="text" class="form-control" aria-label="汽车行业" />
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">汽车行业</a></li>
+                                    </ul>
+                                </div>*@
+                            </div>
+                            @Html.ValidationMessageFor(model => model.OverseasExhibitionId, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-12 col-xs-12 no_padding">
+                            <div class="input-group hui_input">
+                                <span class="input-group-addon">其他意向展会</span>
+                                @Html.TextAreaFor(model => model.OtherExhibition, new { rows = "3", placeholder = "请填写您公司意向参加的展会名称时间地点", @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.OtherExhibition, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="text-center hui_zmargin">
+                        <input id="form4registerSubmit" class="btn btn-md btn-success hui_button" type="button" onclick="document.getElementById('form4register').submit();" value="注册">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    }
+</div>
+<div class="h_20"></div>

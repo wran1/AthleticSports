@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "楼宇首页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 bannerBox">
+            <img src="~/Content/images/ly_banner.jpg" class="img-responsive" />
+        </div>
+        <div class="col-xs-12 col-sm-5 searchBox lySearchBox">
+            <div class="h_1em"></div>
+            <input class="form-control" placeholder="楼宇名称" />
+            <div class="h_1em"></div>
+            <input class="form-control" placeholder="楼宇位置" />
+            <div class="h_1em"></div>
+            <select name="zujin" data-placeholder="租金筛选" id="zujin" class="dept_select form-control">
+                <option value="-1"></option>
+                <option value="">不限</option>
+                <option value="0-2">2元以下/天/㎡</option>
+                <option value="2-3">2-3元/天/㎡</option>
+                <option value="3-4">3-4元/天/㎡</option>
+                <option value="4-5">4-5元/天/㎡</option>
+                <option value="5-6">5-6元/天/㎡</option>
+                <option value="6-7">6-7元/天/㎡</option>
+                <option value="7-">7元以上/天/㎡</option>
+            </select>
+            <div class="h_1em"></div>
+            <select name="mianji" data-placeholder="面积筛选" id="mianji" class="dept_select form-control">
+                <option value="-1"></option>
+                <option value="">不限</option>
+                <option value="0-100">0-100㎡</option>
+                <option value="101-200">101-200㎡</option>
+                <option value="201-300">201-300㎡</option>
+                <option value="301-400">301-400㎡</option>
+                <option value="401-500">401-500㎡</option>
+                <option value="500-">500㎡以上</option>
+            </select>
+            <div class="h_1em"></div>
+            <select name="wuye" data-placeholder="物业筛选" id="wuye" class="dept_select form-control">
+                <option value="-1"></option>
+                <option value="">不限</option>
+                <option value="一级">一级</option>
+                <option value="二级">二级</option>
+                <option value="三级">三级</option>
+            </select>
+            <div class="h_1em"></div>
+            <a class="btn btn-primary btn-block lySearch">搜 索</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="i_title">
+                <span>楼宇信息</span>
+                <span class="more pull-right"><a href="#">更多 <i class="fa fa-angle-double-right"></i></a></span>
+            </div>
+            <div class="h_1em"></div>
+            <div class="row greyBg">
+                    <div class="col-xs-6"><a href="#"><img src="~/Content/images/ly_1.jpg" class="img-responsive" /></a></div>
+                    <div class="col-xs-6">
+                        <h4><a href="#">泰达MSD-B1座</a></h4>
+                        地址：开发区第二大街与新城东路交口<br />
+                        面积：6.1万㎡<br />
+                        待招商面积：6.1万㎡
+                    </div>
+            </div>
+            <div class="h_1em"></div>
+            <div class="row greyBg">
+                <div class="col-xs-6"><a href="#"><img src="~/Content/images/ly_2.jpg" class="img-responsive" /></a></div>
+                <div class="col-xs-6">
+                    <h4><a href="#">泰达MSD-G座</a></h4>
+                    地址：开发区第二大街与新城东路交口<br />
+                    面积：6.1万㎡<br />
+                    待招商面积：6.1万㎡
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="i_title">
+                <span>热门空置</span>
+                <span class="more pull-right"><a href="#">更多 <i class="fa fa-angle-double-right"></i></a></span>
+            </div>
+            <div class="h_1em"></div>
+            <div class="row greyBg">
+                <div class="col-xs-6"><a href="#"><img src="~/Content/images/ly_3.jpg" class="img-responsive" /></a></div>
+                <div class="col-xs-6">
+                    <h4><a href="#">泰达MSD-G座楼层3F</a></h4>
+                    地址：开发区第二大街与新城东路交口<br />
+                    面积：6.1万㎡<br />
+                    待招商面积：6.1万㎡
+                </div>
+            </div>
+            <div class="h_1em"></div>
+            <div class="row greyBg">
+                <div class="col-xs-6"><a href="#"><img src="~/Content/images/ly_4.jpg" class="img-responsive" /></a></div>
+                <div class="col-xs-6">
+                    <h4><a href="#">开发区第九大街2000平米厂房</a></h4>
+                    地址：开发区第二大街与新城东路交口<br />
+                    面积：6.1万㎡<br />
+                    待招商面积：6.1万㎡
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jigou">
+        <div class="i_title text-center">
+            <span>机构推荐</span>
+        </div>
+        <div class="h_1em"></div>
+        <div class="row">
+            <div class="col-xs-3 col-sm-2">
+                <a href="#" class="thumbnail"><img src="~/Content/images/jigou_1.jpg" class="img-responsive" /></a>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <a href="#" class="thumbnail"><img src="~/Content/images/jigou_2.jpg" class="img-responsive" /></a>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <a href="#" class="thumbnail"><img src="~/Content/images/jigou_3.jpg" class="img-responsive" /></a>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <a href="#" class="thumbnail"><img src="~/Content/images/jigou_4.jpg" class="img-responsive" /></a>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <a href="#" class="thumbnail"><img src="~/Content/images/jigou_5.jpg" class="img-responsive" /></a>
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <a href="#" class="thumbnail"><img src="~/Content/images/jigou_1.jpg" class="img-responsive" /></a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<link rel="stylesheet" href="~/Content/css/chosen.css">
+<script src="~/Scripts/chosen.jquery.js"></script>
+<script>
+    $(function () {
+        $('.dept_select').chosen();
+        if (window.innerWidth > 760) {
+            $('.searchBox').css("height", $('.bannerBox').height());
+        }
+    });
+    
+</script>

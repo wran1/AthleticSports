@@ -1,0 +1,64 @@
+﻿@using Web.Helpers
+@using Models.WebsiteManagement
+@model PagedList<Product>
+
+@{
+    Layout = null;
+    ViewBag.Title = "产品列表";
+    var UpdateTargetId = Request.QueryString["UpdateTargetId"] ?? "UserInfo";
+}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="h_20"></div>
+                    <div class="ptitle">
+                        <span> 产品列表 </span>
+                        <a class="btn btn-success pull-right" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#UserInfo"  href="@Url.Action("ProductCreat","Index",new { area="User"})">+新产品上传</a>
+                        <div class="h_20"></div>
+                    </div>
+                    <div class="h_20"></div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 table-responsive no_padding">
+                        <table class="table table-striped text-center">
+                            <thead>
+                                <tr class="table-span">
+                                    <td>产品名称</td>
+                                    <td>当前状态</td>
+                                    <td>操作</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ProductName</td>
+                                        <td><span class="shenhe">@item.AuditState</span></td>
+                                        <td>
+                                            <div class="bianji">
+                                                <a class="btn btn-small btn-info" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#UserInfo" href="@Url.Action("ProductEdit", new { id = item.Id,pageIndex = Request["pageIndex"] })"><i class="fa fa-pencil" aria-hidden="true"></i> 编辑</a>
+                                                <a class="btn btn-small btn-info" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#UserInfo" data-ajax-confirm="您确定要删除吗？" data-ajax-method="Post" href="@Url.Action("ProductDelete", new { id = item.Id, pageIndex = Request["pageIndex"] })"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                
+                           
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="h_20"></div>
+                    @*<div class="text-center hui_zmargin">
+                        <input class="btn btn-md btn-success hui_button" type="button" value="保存" />
+                    </div>*@
+                    <div class="h_20"></div>
+                    <div class="h_20"></div>
+                    @Html.Raw(Ajax.MikePager(Model))
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+@*</div>*@
