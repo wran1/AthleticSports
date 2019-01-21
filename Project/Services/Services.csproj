@@ -79,6 +79,9 @@
     <Compile Include="SysServices\EmailService.cs" />
     <Compile Include="SysServices\SysBroadcastReceivedService.cs" />
     <Compile Include="SysServices\SysBroadcastService.cs" />
+    <Compile Include="TestServices\PeriodicTestResultService.cs" />
+    <Compile Include="TestServices\SubjectiveTestService.cs" />
+    <Compile Include="TestServices\TrainingRecordService.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WebsiteManagementServices\WebsiteManagementServices.cs" />
     <Compile Include="SysServices\SysDepartmentSysUserService.cs" />

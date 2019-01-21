@@ -47,7 +47,7 @@ namespace Models.SysModels
 
         [MaxLength(100)]
         public string FullName { get; set; }
-
+        public string Sign { get; set; }
         /// <summary>
         /// 头像URL
         /// </summary>

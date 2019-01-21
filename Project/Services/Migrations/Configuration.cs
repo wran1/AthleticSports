@@ -159,23 +159,23 @@ namespace Services.Migrations
                     Ico = "fa-globe",
                     Display = true
                 },
-                new SysController
-                {
-                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                    Name = "栏目管理",
-                    ControllerName = "CmsCategory",
-                    SystemId = "200005",
-                    Ico = "fa-newspaper-o"
-                },
-                new SysController
-                {
-                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                    Name = "资讯管理",
-                    ControllerName = "CmsArtical",
-                    SystemId = "200100",
-                    Ico = "fa-newspaper-o",
-                    Display = false,
-                },
+                //new SysController
+                //{
+                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                //    Name = "栏目管理",
+                //    ControllerName = "CmsCategory",
+                //    SystemId = "200005",
+                //    Ico = "fa-newspaper-o"
+                //},
+                //new SysController
+                //{
+                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                //    Name = "资讯管理",
+                //    ControllerName = "CmsArtical",
+                //    SystemId = "200100",
+                //    Ico = "fa-newspaper-o",
+                //    Display = false,
+                //},
                 //  new SysController
                 //{
                 //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
@@ -256,14 +256,14 @@ namespace Services.Migrations
                     Ico = "fa-cogs",
                     Display = true
                 },
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "组织架构",
-                //    ControllerName = "SysDepartment",
-                //    SystemId = "900200",
-                //    Ico = "fa-dot-circle-o"
-                //},
+                   new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "组织架构",
+                    ControllerName = "SysDepartment",
+                    SystemId = "900100",
+                    Ico = "fa-building-o",
+                },
                 new SysController
                 {
                     SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
@@ -280,86 +280,8 @@ namespace Services.Migrations
                     SystemId = "900400",
                     Ico = "fa-user-circle-o"
                 },
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "微信同步",
-                //    ControllerName = "WeixinUser",
-                //    SystemId = "900500",
-                //    Ico = "fa-users"
-                //},
-                #endregion
-
-                //#region 数据字典 920
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "数据字典",
-                //    ControllerName = "Index",
-                //    SystemId = "920",
-                //    Ico = "fa-table",
-                //    Display = true
-                //},
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "地区",
-                //    ControllerName = "City",
-                //    SystemId = "920100",
-                //    Ico = "fa-dot-circle-o",
-                //    Display = false,
-                //},
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "友情链接类型",
-                //    ControllerName = "FriendshipLinkType",
-                //    SystemId = "920150",
-                //    Ico = "fa-dot-circle-o"
-                //},
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "友情链接",
-                //    ControllerName = "FriendshipLink",
-                //    SystemId = "920200",
-                //    Ico = "fa-dot-circle-o"
-                //},
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "所属行业",
-                //    ControllerName = "IndustryOwned",
-                //    SystemId = "920250",
-                //    Ico = "fa-dot-circle-o"
-                //},
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "境内展",
-                //    ControllerName = "DomesticExhibition",
-                //    SystemId = "920300",
-                //    Ico = "fa-dot-circle-o"
-                //},
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "境外展",
-                //    ControllerName = "OverseasExhibition",
-                //    SystemId = "920400",
-                //    Ico = "fa-dot-circle-o"
-                //},
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "产品册分类",
-                //    ControllerName = "ProductBookType",
-                //    SystemId = "920500",
-                //    Ico = "fa-dot-circle-o"
-                //},
                
-                //#endregion
-
+                #endregion
                 #region 系统开发配置 950
                 new SysController
                 {

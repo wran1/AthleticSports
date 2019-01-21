@@ -35,15 +35,15 @@ namespace Web.Areas.Platform.Models
         [MaxLength(10)]
         public string Sex { get; set; }
 
-        [DataType(DataType.EmailAddress)]
-        [Required]
-        public string Email { get; set; }
+        //[DataType(DataType.EmailAddress)]
+        //[Required]
+        //public string Email { get; set; }
 
-        //public bool EmailConfirmed { get; set; }
+        ////public bool EmailConfirmed { get; set; }
 
-        [RegularExpression("1[34578][0-9]{9}")]
-        [Required]
-        public string PhoneNumber { get; set; }
+        //[RegularExpression("1[34578][0-9]{9}")]
+        //[Required]
+        //public string PhoneNumber { get; set; }
 
         //public bool PhoneNumberConfirmed { get; set; }
 

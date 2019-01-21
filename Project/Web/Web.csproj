@@ -498,6 +498,7 @@
     <Compile Include="Helpers\ModelMetadataExtensions\MetadataConventionsAttribute.cs" />
     <Compile Include="Helpers\OnTimedEvent.cs" />
     <Compile Include="Helpers\PagedList.cs" />
+    <Compile Include="Helpers\SettingsLoader.cs" />
     <Compile Include="Helpers\StatisticsTrackerAttribute.cs" />
     <Compile Include="Helpers\UserAuthorizeFilterAttribute.cs" />
     <Compile Include="Helpers\UserInfo.cs" />
@@ -689,6 +690,7 @@
     <Content Include="Content\images\weibo_b.jpg" />
     <Content Include="Content\images\weixin.png" />
     <Content Include="Content\images\weixin_b.jpg" />
+    <Content Include="Content\img\metro.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\logo.gif" />
     <Content Include="Content\main.css" />
@@ -1353,7 +1355,6 @@
     <Content Include="Scripts\ckeditor\package.json" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
-    <Content Include="Scripts\SelectFunctions.js" />
     <Content Include="Scripts\slide.js" />
     <Content Include="Scripts\swiper.jquery.min.js" />
     <Content Include="Scripts\WebApiTestClient.js" />

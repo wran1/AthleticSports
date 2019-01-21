@@ -58,6 +58,10 @@
   <ItemGroup>
     <Compile Include="SysModels\SysBroadcast.cs" />
     <Compile Include="SysModels\SysBroadcastReceived.cs" />
+    <Compile Include="SysModels\SysConfigurationSetting.cs" />
+    <Compile Include="TestModels\PeriodicTestResult.cs" />
+    <Compile Include="TestModels\SubjectiveTest.cs" />
+    <Compile Include="TestModels\TrainingRecord .cs" />
     <Compile Include="WebsiteManagement\AboutUs.cs" />
     <Compile Include="CmsModels\CmsArtical.cs" />
     <Compile Include="CmsModels\CmsCategory.cs" />

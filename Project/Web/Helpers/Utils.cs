@@ -66,6 +66,11 @@ namespace Common
         {
             return Guid.NewGuid().ToString("N").Substring(0, 6) + Generator(3);
         }
+        public static string GenerateEmail(string Myname)
+        {
+            var MyEmail = Myname + "@163.com";
+            return MyEmail;
+        }
     }
 
     public class CommonUtils
@@ -104,7 +109,7 @@ namespace Common
                     ? user.PhoneNumber
                     : (user.EmailConfirmed ? user.Email : "未知")) : user.UserName) : user.FullName;
         }
-
+      
 
     }
 

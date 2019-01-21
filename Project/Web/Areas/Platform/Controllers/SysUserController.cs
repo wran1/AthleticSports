@@ -95,8 +95,8 @@ namespace Web.Areas.Platform.Controllers
                 a.UserName,
                 a.FullName,
                 a.Sex,
-                PhoneNumber = a.PhoneNumber,
-                Email = a.Email,
+                //PhoneNumber = a.PhoneNumber,
+                //Email = a.Email,
                 a.CreatedDate,
                 a.UpdatedDate,
                 a.Id
@@ -122,8 +122,8 @@ namespace Web.Areas.Platform.Controllers
                 a.UserName,
                 a.FullName,
                 a.Sex,
-                PhoneNumber = a.PhoneNumber,
-                Email = a.Email,
+                //PhoneNumber = a.PhoneNumber,
+                //Email = a.Email,
                 a.CreatedDate,
                 a.UpdatedDate,
                 a.Id
@@ -237,7 +237,7 @@ namespace Web.Areas.Platform.Controllers
                 var item = _sysUserService.GetById(id);
 
                 item.UpdatedDate = DateTimeLocal.Now;
-
+               
                 mapper.Map(collection, item);
 
                 //处理角色
@@ -292,7 +292,7 @@ namespace Web.Areas.Platform.Controllers
             {
                 collection.Id = Guid.NewGuid().ToString();
                 var item = mapper.Map<SysUserEditModel, SysUser>(collection);
-
+                item.Email = CommonCodeGenerator.GenerateEmail(collection.UserName);
                 item.SysDepartmentSysUsers.Add(new SysDepartmentSysUser
                 {
                     SysUserId = item.Id,

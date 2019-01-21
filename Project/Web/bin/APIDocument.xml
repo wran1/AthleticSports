@@ -2523,6 +2523,24 @@
             <param name="slidingExpiration"></param>
             <returns></returns>
         </member>
+        <member name="T:Web.App_Start.SettingsLoader">
+            <summary>
+            加载全站系统参数配置
+            </summary>
+        </member>
+        <member name="M:Web.App_Start.SettingsLoader.GetAccountConfiguration">
+            <summary>
+            获取账户系统参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Web.App_Start.SettingsLoader.SetAccountConfiguration(Models.SysModels.AccountConfiguration)">
+            <summary>
+            设置账户系统参数
+            </summary>
+            <param name="accountConfiguration"></param>
+            <returns></returns>
+        </member>
         <member name="T:Web.Models.ExternalLoginConfirmationViewModel">
             <summary>
             

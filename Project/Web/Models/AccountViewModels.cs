@@ -96,10 +96,9 @@ namespace Web.Models
         //[Remote("CheckUserAccountExists", "Account", ErrorMessage = "用户账号已存在")] // 远程验证（Ajax）
         public string UserName { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [Display(Name = "邮箱")]
-        public string Email { get; set; }
+        [DataType("SystemId")]
+        [Display(Name = "Department")]
+        public string DepartmentId { get; set; }
 
         [Required]
         [StringLength(20, ErrorMessage = "{0}必须在{2}至{1}个字符。", MinimumLength = 6)]

@@ -14,7 +14,7 @@ using System;
 using Common;
 using Web.Helpers;
 using IServices.IDictionaryServices;
-
+using AutoMapper;
 
 namespace Web.Controllers
 {
@@ -24,19 +24,22 @@ namespace Web.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ICityService _iCityService;
+        private ISysDepartmentService _iDepartmentService;
+        private ISysDepartmentSysUserService _iSysDepartmentSysUserService;
         //private ICompanyInfoService _iCompanyInfoService;
         public AccountController()
         {
 
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager
+        public AccountController(ApplicationUserManager userManager, ISysDepartmentService iDepartmentService, ISysDepartmentSysUserService iSysDepartmentSysUserService,ApplicationSignInManager signInManager
             , ICityService iCityService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             _iCityService = iCityService;
-            //_iCompanyInfoService = iCompanyInfoService;
+            _iDepartmentService = iDepartmentService;
+            _iSysDepartmentSysUserService = iSysDepartmentSysUserService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -62,15 +65,24 @@ namespace Web.Controllers
                 _userManager = value;
             }
         }
-        //public IIndustryOwnedService IndustryOwnedService
-        //{
-        //    get
-        //    {
-        //        if (_iIndustryOwnedService == null)
-        //            _iIndustryOwnedService = DependencyResolver.Current.GetService<IIndustryOwnedService>();
-        //        return _iIndustryOwnedService;
-        //    }
-        //}
+        public ISysDepartmentService SysDepartmentService
+        {
+            get
+            {
+                if (_iDepartmentService == null)
+                    _iDepartmentService = DependencyResolver.Current.GetService<ISysDepartmentService>();
+                return _iDepartmentService;
+            }
+        }
+        public ISysDepartmentSysUserService SysDepartmentSysUserService
+        {
+            get
+            {
+                if (_iSysDepartmentSysUserService == null)
+                    _iSysDepartmentSysUserService = DependencyResolver.Current.GetService<ISysDepartmentSysUserService>();
+                return _iSysDepartmentSysUserService;
+            }
+        }
         //public IDomesticExhibitionService DomesticExhibitionService
         //{
         //    get
@@ -259,7 +271,20 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var item = new SysUser();
+
+            ViewBag.DepartmentId =
+              SysDepartmentService.GetAll()
+                  .ToSystemIdSelectList(
+                      item.SysDepartmentSysUsers.FirstOrDefault(
+                          /*c => c.SysDepartment.EnterpriseId == _iUserInfo.EnterpriseId*/)?.SysDepartmentId);
+
+
+            var config = new MapperConfiguration(a => a.CreateMap<SysUser, RegisterViewModel>());
+
+            var aa = config.CreateMapper().Map<RegisterViewModel>(item);
+
+            return View(aa);
         }
 
         //
@@ -279,34 +304,33 @@ namespace Web.Controllers
                 
                 return View(model);
             }
-            var user = new SysUser { UserName = model.UserName, Email = model.Email };
+            
+            var user = new SysUser { UserName = model.UserName, Email = CommonCodeGenerator.GenerateEmail(model.UserName), };
 
             var result = await UserManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
+                var iUnitOfWork = DependencyResolver.Current.GetService<IUnitOfWork>();
+                if (!string.IsNullOrEmpty(model.DepartmentId))
+                {
+                    SysDepartmentSysUserService.Save(null,
+                        new SysDepartmentSysUser { SysDepartmentId = model.DepartmentId, SysUserId = user.Id });
+                 
+                }
                 //前三个用户赋予管理员权限 
 
                 if (UserManager.Users.Count() < 3)
                 {
-                    //var iSysEnterpriseService = DependencyResolver.Current.GetService<ISysEnterpriseService>();
-
-                    //var iSysEnterpriseSysUserService = DependencyResolver.Current.GetService<ISysEnterpriseSysUserService>();
-
-                    var iUnitOfWork = DependencyResolver.Current.GetService<IUnitOfWork>();
-
+                 
                     await UserManager.AddToRoleAsync(user.Id, "系统管理员");
 
-                    //foreach (var item in iSysEnterpriseService.GetAll())
-                    //{
-                    //    await UserManager.AddToRoleAsync(user.Id, item.EnterpriseName + "系统管理员");
-                    //    iSysEnterpriseSysUserService.Save(null, new SysEnterpriseSysUser() { SysEnterpriseId = item.Id, SysUserId = user.Id });
-                    //}
-
-                    await iUnitOfWork.CommitAsync();
-
                 }
-
+                else
+                {
+                    await UserManager.AddToRoleAsync(user.Id, "运动员");
+                }
+                await iUnitOfWork.CommitAsync();
                 TempData[Alerts.Success] = "注册成功，请您登陆";
 
                 //await SignInManager.SignInAsync(user, false, true);

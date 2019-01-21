@@ -7,6 +7,7 @@ using Models.SysModels;
 using Models.Dictionary;
 using Models.WebsiteManagement;
 using Models.CmsModels;
+using Models.TestModels;
 
 namespace Services
 {
@@ -87,6 +88,15 @@ namespace Services
         /// </summary>
         public DbSet<SysDepartmentSysUser> SysDepartmentSysUser { get; set; }
 
+
+        #endregion
+
+        #region Test
+        public DbSet<SubjectiveTest> SubjectiveTests { get; set; }
+        public DbSet<TrainingType> TrainingTypes { get; set; }
+        public DbSet<TrainingRelation> TrainingRelations { get; set; }
+        public DbSet<TrainingPeople> TrainingPeoples { get; set; }
+        public DbSet<PeriodicTestResult> PeriodicTestResults { get; set; }
 
         #endregion
 

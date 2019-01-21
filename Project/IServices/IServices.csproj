@@ -50,8 +50,13 @@
     <Compile Include="ICmsServices\ICmsServices.cs" />
     <Compile Include="IDictionaryServices\IDictionaryServices.cs" />
     <Compile Include="IMessage\IMessageCenterService.cs" />
+    <Compile Include="ISettingServices\IAccountSettingServics.cs" />
+    <Compile Include="ISettingServices\ISettingService.cs" />
     <Compile Include="ISysServices\ISysBroadcastReceivedService.cs" />
     <Compile Include="ISysServices\ISysBroadcastService.cs" />
+    <Compile Include="ITestServices\IPeriodicTestResultServices.cs" />
+    <Compile Include="ITestServices\ISubjectiveTestServices.cs" />
+    <Compile Include="ITestServices\ITrainingRecordServices.cs" />
     <Compile Include="IWebsiteManagementServices\IWebsiteManagementServices.cs" />
     <Compile Include="ISystemService.cs" />
     <Compile Include="ISysServices\ISysDepartmentSysUserService.cs" />

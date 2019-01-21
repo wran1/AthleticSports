@@ -34,10 +34,6 @@ D:\代码\NewbusinessWeChat\Project\Services\obj\Debug\Services.csprojResolveAss
 D:\代码\NewbusinessWeChat\Project\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
 D:\代码\NewbusinessWeChat\Project\Services\obj\Debug\Services.dll
 D:\代码\NewbusinessWeChat\Project\Services\obj\Debug\Services.pdb
-D:\代码\wangxiao\AthleticSports\Project\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
-D:\代码\wangxiao\AthleticSports\Project\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
-D:\代码\wangxiao\AthleticSports\Project\Services\obj\Debug\Services.dll
-D:\代码\wangxiao\AthleticSports\Project\Services\obj\Debug\Services.pdb
 D:\代码\wangxiao\AthleticSports\Project\Services\bin\Debug\Services.dll.config
 D:\代码\wangxiao\AthleticSports\Project\Services\bin\Debug\Services.dll
 D:\代码\wangxiao\AthleticSports\Project\Services\bin\Debug\Services.pdb
@@ -70,3 +66,7 @@ D:\代码\wangxiao\AthleticSports\Project\Services\bin\Debug\Senparc.Weixin.QY.x
 D:\代码\wangxiao\AthleticSports\Project\Services\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Services\bin\Debug\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Services\bin\Debug\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+D:\代码\wangxiao\AthleticSports\Project\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+D:\代码\wangxiao\AthleticSports\Project\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
+D:\代码\wangxiao\AthleticSports\Project\Services\obj\Debug\Services.dll
+D:\代码\wangxiao\AthleticSports\Project\Services\obj\Debug\Services.pdb

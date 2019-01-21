@@ -106,22 +106,9 @@ namespace Web.Areas.Api.Controllers
             }
             return new APIResult<bool>(false);
         }
-
-        ///// <summary>
-        ///// 获取支付密码的状态
-        ///// </summary>
-        ///// <param name="userName"></param>
-        ///// <returns></returns>
-        //[AllowAnonymous, Route("PayPasswordStatus")]
-        //public APIResult<bool> GetPayPasswordStatus(string userName)
-        //{
-        //    var PayStatus = _iSysUserService.GetAll().Where(u => u.UserName == userName).Select(u => u.PayPasswordStatus).FirstOrDefault();
-        //    return new APIResult<bool>(PayStatus);
-        //}
-
         ///// <summary>
         ///// 手机注册
-        ///// </summary>
+        ///// </summary>W
         ///// <param name="registerBindModel"></param>
         ///// <returns></returns>
         //[Route("Register")]
@@ -145,7 +132,7 @@ namespace Web.Areas.Api.Controllers
         //                var sjs = Guid.NewGuid().ToString().Substring(0, 4);
         //                user = new SysUser
         //                {
-                            
+
         //                    Id = Guid.NewGuid().ToString(),
         //                    UserName = CommonCodeGenerator.GenerateUserName(sjs + registerBindModel.PhoneNumber),//"yw_" + (DateTimeLocal.Now-_miniDataTime).TotalDays.ToString("f0").PadLeft(6,'0')+registerBindModel.PhoneNumber,
         //                    PhoneNumber = registerBindModel.PhoneNumber,
@@ -154,7 +141,7 @@ namespace Web.Areas.Api.Controllers
         //                    LockoutEnabled = true,
         //                };
         //                user.Email = CommonCodeGenerator.GenerateEmail(user.UserName);
-        //                IdentityResult result = await UserManager.CreateAsync(user,registerBindModel.Password);
+        //                IdentityResult result = await UserManager.CreateAsync(user, registerBindModel.Password);
         //                if (result.Succeeded)
         //                {
         //                    result = await UserManager.AddToRoleAsync(user.Id, "注册用户");
@@ -163,7 +150,7 @@ namespace Web.Areas.Api.Controllers
         //                {
         //                    SetModelState(result);
         //                }
-                       
+
 
         //            }
         //            else
@@ -185,7 +172,7 @@ namespace Web.Areas.Api.Controllers
         //        {
         //            foreach (var err in result4CodeVerify.ErroMessage)
         //            {
-        //                ModelState.AddModelError(err.Key,err.Value);
+        //                ModelState.AddModelError(err.Key, err.Value);
         //            }
         //        }
         //    }
