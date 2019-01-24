@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IServices.ITestServices
 {
-    public interface ISubjectiveTestServices : IRepository<SubjectiveTest>
+    public interface ISubjectiveTestService : IRepository<SubjectiveTest>
     {
     }
    

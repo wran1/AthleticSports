@@ -39,7 +39,7 @@ namespace Services
         /// 地区
         /// </summary>
         public DbSet<City> Cities { get; set; }
-   
+        public DbSet<Train> Trains { get; set; }
 
         #endregion
 
@@ -97,7 +97,8 @@ namespace Services
         public DbSet<TrainingRelation> TrainingRelations { get; set; }
         public DbSet<TrainingPeople> TrainingPeoples { get; set; }
         public DbSet<PeriodicTestResult> PeriodicTestResults { get; set; }
-
+        public DbSet<DoctorRecord> DoctorRecords { get; set; }
+        public DbSet<ExportRecord> ExportRecords { get; set; }
         #endregion
 
 

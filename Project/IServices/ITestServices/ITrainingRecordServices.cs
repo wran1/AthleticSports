@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace IServices.ITestServices
 {
-    public interface ITrainingTypeServices : IRepository<TrainingType>
+    public interface ITrainingTypeService : IRepository<TrainingType>
     {
     }
-    public interface ITrainingRelationServices : IRepository<TrainingRelation>
+    public interface ITrainingRelationService : IRepository<TrainingRelation>
     {
     }
-    public interface ITrainingPeopleServices : IRepository<TrainingPeople>
+    public interface ITrainingPeopleService : IRepository<TrainingPeople>
     {
     }
 }

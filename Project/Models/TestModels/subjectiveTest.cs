@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Models.SysModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,5 +48,11 @@ namespace Models.TestModels
         public int TrainIntensity { get; set; }
         //教练评价
         public int Evaluate { get; set; }
+
+        [ForeignKey("SysUser")]
+        [Required]
+        public string SysUserId { get; set; }
+
+        public virtual SysUser SysUser { get; set; }
     }
 }

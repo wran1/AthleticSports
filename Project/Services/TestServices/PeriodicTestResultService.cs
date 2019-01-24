@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Services.TestServices
 {
-    public class PeriodicTestResultService : RepositoryBase<PeriodicTestResult>, IPeriodicTestResultServices
+    public class PeriodicTestResultService : RepositoryBase<PeriodicTestResult>, IPeriodicTestResultService
     {
         public PeriodicTestResultService(IDatabaseFactory databaseFactory, IUserInfo userInfo)
             : base(databaseFactory, userInfo)

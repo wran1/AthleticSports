@@ -56,9 +56,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dictionary\Train.cs" />
     <Compile Include="SysModels\SysBroadcast.cs" />
     <Compile Include="SysModels\SysBroadcastReceived.cs" />
     <Compile Include="SysModels\SysConfigurationSetting.cs" />
+    <Compile Include="TestModels\DoctorRecord.cs" />
+    <Compile Include="TestModels\ExportRecord.cs" />
     <Compile Include="TestModels\PeriodicTestResult.cs" />
     <Compile Include="TestModels\SubjectiveTest.cs" />
     <Compile Include="TestModels\TrainingRecord .cs" />

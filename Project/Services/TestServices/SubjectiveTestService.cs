@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Services.TestServices
 {
-    public class SubjectiveTestService : RepositoryBase<SubjectiveTest>, ISubjectiveTestServices
+    public class SubjectiveTestService : RepositoryBase<SubjectiveTest>, ISubjectiveTestService
     {
         public SubjectiveTestService(IDatabaseFactory databaseFactory, IUserInfo userInfo)
             : base(databaseFactory, userInfo)

@@ -22,6 +22,10 @@ namespace Models.TestModels
     /// </summary>
     public class TrainingType : DbSetBase
     {
+        public TrainingType()
+        {
+            Position = Position.上肢;
+        }
         public string Name { get; set; }
 
         public Position Position { get; set; }
@@ -67,16 +71,8 @@ namespace Models.TestModels
         public string TrainingTypeId { get; set; }
         [ScaffoldColumn(false)]
         public virtual TrainingType TrainingType { get; set; }
-       
-        [ForeignKey("SysUser")]
-        [Required]
-        public string SysUserId { get; set; }
-
-        public virtual SysUser SysUser { get; set; }
 
         public double Value { get; set; }
 
-        [ScaffoldColumn(false)]
-        public virtual ICollection<TrainingRelation> TrainingRelations { get; set; }
     }
 }

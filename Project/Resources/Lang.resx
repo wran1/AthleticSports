@@ -350,7 +350,7 @@
     <value>姓名</value>
   </data>
   <data name="Position" xml:space="preserve">
-    <value>职务</value>
+    <value>身体部位</value>
   </data>
   <data name="ResearchDirection" xml:space="preserve">
     <value>擅长研究方向</value>

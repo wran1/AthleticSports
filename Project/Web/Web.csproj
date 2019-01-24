@@ -415,8 +415,12 @@
     <Compile Include="Areas\Api\Models\AccountModels.cs" />
     <Compile Include="Areas\Api\Models\ApiCmsModels.cs" />
     <Compile Include="Areas\Api\Models\APIResult.cs" />
+    <Compile Include="Areas\Platform\Controllers\Test\TrainingPeopleController.cs" />
+    <Compile Include="Areas\Platform\Controllers\Test\TrainingTypeController.cs" />
+    <Compile Include="Areas\Platform\Controllers\TrainController.cs" />
     <Compile Include="Areas\Platform\Controllers\WebsiteManagement\CmsArticalController.cs" />
     <Compile Include="Areas\Platform\Controllers\WebsiteManagement\CmsCategoryController.cs" />
+    <Compile Include="Areas\Platform\Controllers\ExportRecordController.cs" />
     <Compile Include="Areas\Platform\Models\CompanyInfoModel.cs" />
     <Compile Include="Areas\Platform\Models\ConsultReplayModel.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -1381,6 +1385,7 @@
     <Content Include="404.html" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientDialogs.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientReferences.cshtml" />
+    <Content Include="Areas\Platform\Views\TrainingPeople\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\newbusinesscircles - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\newbusinesscircles - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\tradeteda - FTP.pubxml" />
@@ -1538,6 +1543,9 @@
     <Folder Include="Areas\Platform\Views\AboutUs\" />
     <Folder Include="Areas\Platform\Views\CmsCategory\" />
     <Folder Include="Areas\Platform\Views\CompanyInfo\" />
+    <Folder Include="Areas\Platform\Views\ExportRecord\" />
+    <Folder Include="Areas\Platform\Views\TrainingType\" />
+    <Folder Include="Areas\Platform\Views\Train\" />
     <Folder Include="Scripts\ckeditor\skins\moono\images\hidpi\" />
     <Folder Include="Views\Capital\" />
     <Folder Include="Views\GetDatas\" />

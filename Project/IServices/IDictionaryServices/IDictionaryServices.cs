@@ -6,5 +6,8 @@ namespace IServices.IDictionaryServices
     public interface ICityService : IRepository<City>
     {
     }
-    
+    public interface ITrainService : IRepository<Train>
+    {
+    }
+
 }

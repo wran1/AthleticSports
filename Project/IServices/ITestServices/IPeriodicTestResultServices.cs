@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IServices.ITestServices
 {
-    public interface IPeriodicTestResultServices : IRepository<PeriodicTestResult>
+    public interface IPeriodicTestResultService : IRepository<PeriodicTestResult>
     {
     }
    

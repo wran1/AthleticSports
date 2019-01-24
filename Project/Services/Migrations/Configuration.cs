@@ -101,7 +101,7 @@ namespace Services.Migrations
 
             #endregion
 
-            #region SysController
+            
 
             var sysControllers = new[]
             {
@@ -149,24 +149,32 @@ namespace Services.Migrations
 
                 #endregion other                
 
-                //#region 网站管理 200
+                #region 体能管理 200
                 new SysController
                 {
                     SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                    Name = "网站管理",
+                    Name = "体能管理",
                     ControllerName = "Index",
                     SystemId = "200",
                     Ico = "fa-globe",
                     Display = true
                 },
-                //new SysController
-                //{
-                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                //    Name = "栏目管理",
-                //    ControllerName = "CmsCategory",
-                //    SystemId = "200005",
-                //    Ico = "fa-newspaper-o"
-                //},
+                new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "训练指标",
+                    ControllerName = "TrainingType",
+                    SystemId = "200100",
+                    Ico = "fa-newspaper-o"
+                },
+                  new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "指标管理",
+                    ControllerName = "TrainingPeople",
+                    SystemId = "200200",
+                    Ico = "fa-newspaper-o"
+                },
                 //new SysController
                 //{
                 //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
@@ -183,9 +191,9 @@ namespace Services.Migrations
                 //    ControllerName = "StateCouncil",
                 //    SystemId = "200105",
                 //    Ico = "fa-newspaper-o",
-                    
+
                 //},
-                
+
                 //new SysController
                 //{
                 //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
@@ -245,7 +253,24 @@ namespace Services.Migrations
                 //    Ico = "fa-list-ul"
                 //},
                 #endregion
-
+                #region 数据字典 300
+                   new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "数据字典",
+                    ControllerName = "Index",
+                    SystemId = "300",
+                    Ico = "fa-cog"
+                },
+                new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "专项管理",
+                    ControllerName = "Train",
+                    SystemId = "300100",
+                    Ico = "fa-th-large"
+                },
+                #endregion
                 #region 系统管理 900
                 new SysController
                 {
@@ -280,17 +305,26 @@ namespace Services.Migrations
                     SystemId = "900400",
                     Ico = "fa-user-circle-o"
                 },
+                  new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "用户管理",
+                    ControllerName = "ExportRecord",
+                    SystemId = "900500",
+                    Ico = "fa-user-circle-o"
+                },
+   
                
                 #endregion
                 #region 系统开发配置 950
-                new SysController
-                {
-                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                    Name = "系统设置",
-                    ControllerName = "Index",
-                    SystemId = "950",
-                    Ico = "fa-cog"
-                },
+                //new SysController
+                //{
+                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                //    Name = "系统设置",
+                //    ControllerName = "Index",
+                //    SystemId = "950",
+                //    Ico = "fa-cog"
+                //},
                 //new SysController
                 //{
                 //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
@@ -323,14 +357,14 @@ namespace Services.Migrations
                 //    SystemId = "950950",
                 //    Ico = "fa-info-circle"
                 //},
-                new SysController
-                {
-                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                    Name = "用户日志",
-                    ControllerName = "SysUserLog",
-                    SystemId = "950990",
-                    Ico = "fa-calendar"
-                },
+                //new SysController
+                //{
+                //    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                //    Name = "用户日志",
+                //    ControllerName = "SysUserLog",
+                //    SystemId = "950990",
+                //    Ico = "fa-calendar"
+                //},
 
                 #endregion
             };
@@ -424,6 +458,7 @@ namespace Services.Migrations
             //}
 
             #endregion
+
         }
     }
 }

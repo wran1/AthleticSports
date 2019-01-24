@@ -3643,7 +3643,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查找类似 职务 的本地化字符串。
+        ///   查找类似 身体部位 的本地化字符串。
         /// </summary>
         public static string Position {
             get {

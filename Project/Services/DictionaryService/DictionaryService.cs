@@ -17,5 +17,12 @@ namespace Services.DictionaryService
         {
         }
     }
-   
+    public class TrainService : RepositoryBase<Train>, ITrainService
+    {
+        public TrainService(IDatabaseFactory databaseFactory, IUserInfo userInfo)
+            : base(databaseFactory, userInfo)
+        {
+        }
+    }
+
 }

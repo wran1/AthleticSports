@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Models.Infrastructure;
+using Models.TestModels;
 
 namespace Models.SysModels
 {
@@ -36,5 +37,8 @@ namespace Models.SysModels
 
         [ScaffoldColumn(false)]
         public virtual ICollection<SysDepartmentSysUser> SysDepartmentSysUsers { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual ICollection<TrainingRelation> TrainingRelations { get; set; }
     }
 }
