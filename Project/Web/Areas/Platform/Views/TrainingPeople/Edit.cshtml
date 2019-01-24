@@ -1,0 +1,84 @@
+﻿@using Models.TestModels
+@using Models.SysModels
+
+@model SysDepartment
+@{
+    Layout = "../Shared/_LayoutForm.cshtml";
+}
+
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "Main" }))
+{
+    <div class="form-horizontal">
+        @Html.AntiForgeryToken()
+        <div>
+            @Html.Partial("_alerts")
+            @Html.Partial("_validationSummary")
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@ViewBag.DepartName</label>
+            <div class="col-sm-8">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-condensed">
+
+                        <tbody>
+
+                            <tr>
+                                <th>
+                                    手臂区域
+                                </th>
+                           
+                                <td>
+                                    @foreach (TrainingType item in ViewBag.TrainingType1)
+                                    {
+                                        <label class="checkbox-inline  c-checkbox">
+                                            <input id="@item.Id" name="TrainingTypeids" type="checkbox" value="@item.Id"
+                                                   @if (Model.TrainingRelations != null && Model.TrainingRelations.Any(a => a.TrainingTypeId.Equals(item.Id))) { @("checked") } />
+                                            <span class="fa fa-check"></span>
+                                            @item.Name
+                                        </label>
+                                    }
+
+                                </td>
+                                 <th>
+                                    腿部区域
+                                </th>
+                           
+                                <td>
+                                    @foreach (TrainingType item in ViewBag.TrainingType2)
+                                    {
+                                        <label class="checkbox-inline  c-checkbox">
+                                            <input id="@item.Id" name="TrainingTypeids" type="checkbox" value="@item.Id"
+                                                   @if (Model.TrainingRelations != null && Model.TrainingRelations.Any(a => a.TrainingTypeId.Equals(item.Id))) { @("checked") } />
+                                            <span class="fa fa-check"></span>
+                                            @item.Name
+                                        </label>
+                                    }
+
+                                </td>
+                                <th>
+                                    躯干区域
+                                </th>
+                           
+                                <td>
+                                    @foreach (TrainingType item in ViewBag.TrainingType3)
+                                    {
+                                        <label class="checkbox-inline  c-checkbox">
+                                            <input id="@item.Id" name="TrainingTypeids" type="checkbox" value="@item.Id"
+                                                   @if (Model.TrainingRelations != null && Model.TrainingRelations.Any(a => a.TrainingTypeId.Equals(item.Id))) { @("checked") } />
+                                            <span class="fa fa-check"></span>
+                                            @item.Name
+                                        </label>
+                                    }
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("Button_Submit")
+    </div>
+}
