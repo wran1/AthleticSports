@@ -95,6 +95,13 @@ namespace Services.Migrations
                     ActionName = "Report",
                     SystemId = "007",
                     System = true
+                },
+                 new SysAction
+                {
+                    Name = "导入",
+                    ActionName = "Import",
+                    SystemId = "008",
+                    System = true
                 }
             };
             context.SysActions.AddOrUpdate(a => new {a.ActionName}, sysActions);
@@ -253,13 +260,43 @@ namespace Services.Migrations
                 //    Ico = "fa-list-ul"
                 //},
                 #endregion
-                #region 数据字典 300
+                #region 生理生化 300
+                new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "机能测试管理",
+                    ControllerName = "Index",
+                    SystemId = "300",
+                    Ico = "fa-globe",
+                    Display = true
+                },
+                new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "生理生化",
+                    ControllerName = "PeriodicTestResult",
+                    SystemId = "300100",
+                    Ico = "fa-globe",
+                    Display = true
+                },
+                new SysController
+                {
+                    SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
+                    Name = "体成分管理",
+                    ControllerName = "BodyComposition",
+                    SystemId = "300200",
+                    Ico = "fa-globe",
+                    Display = true
+                },
+                
+                 #endregion
+                #region 数据字典 800
                    new SysController
                 {
                     SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
                     Name = "数据字典",
                     ControllerName = "Index",
-                    SystemId = "300",
+                    SystemId = "800",
                     Ico = "fa-cog"
                 },
                 new SysController
@@ -267,7 +304,7 @@ namespace Services.Migrations
                     SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
                     Name = "专项管理",
                     ControllerName = "Train",
-                    SystemId = "300100",
+                    SystemId = "800100",
                     Ico = "fa-th-large"
                 },
                 #endregion
@@ -308,10 +345,10 @@ namespace Services.Migrations
                   new SysController
                 {
                     SysAreaId = sysAreas.Single(a => a.AreaName == "Platform").Id,
-                    Name = "用户管理",
+                    Name = "导出痕迹",
                     ControllerName = "ExportRecord",
                     SystemId = "900500",
-                    Ico = "fa-user-circle-o"
+                    Ico = "fa-building-o"
                 },
    
                

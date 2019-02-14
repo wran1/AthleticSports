@@ -41,7 +41,7 @@ namespace Web.Areas.Platform.Controllers
             var Depart = _iSysDepartmentSysUserService.GetAll(a => a.SysUserId == _iUserInfo.UserId).FirstOrDefault();
             if(Depart!=null)
             {
-                var DepartId = Depart.Id;
+                var DepartId = Depart.SysDepartmentId;
                
                 if (!string.IsNullOrEmpty(DepartId))
                 {
@@ -83,8 +83,8 @@ namespace Web.Areas.Platform.Controllers
             }
 
             await _unitOfWork.CommitAsync();
-            return View();
-          
+            return RedirectToAction("Edit");
+
 
         }
     }

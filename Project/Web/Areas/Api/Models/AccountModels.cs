@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.SysModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,12 +16,13 @@ namespace Web.Areas.Api.Models
         {
         }
 
-        public AccessTokenViewModel(string token, string tokenType, string userName, int expires_in)
+        public AccessTokenViewModel(string token, string tokenType, string userName, string roleName, int expires_in)
         {
             Access_Token = token;
             Token_Type = tokenType;
             UserName = userName;
             Expires_In = expires_in;
+            RoleName = roleName;
         }
         /// <summary>
         /// 返回的令牌
@@ -38,6 +40,10 @@ namespace Web.Areas.Api.Models
         /// 过期数字
         /// </summary>
         public int Expires_In { get; set; }
+        /// <summary>
+        /// 角色名
+        /// </summary>
+        public string RoleName { get; set; }
     }
     public class Paypassword
     {
@@ -56,64 +62,7 @@ namespace Web.Areas.Api.Models
         [Compare("PayPassword", ErrorMessage = "新密码和确认密码不匹配。")]
         public string ConfirmPassword { get; set; }
     }
-    /// <summary>
-    /// 所有密保问题
-    /// </summary>
-    public class SecurityQuestionModel
-    {
-        
-        [MaxLength(100)]
-        [Required]
-        public string Name { get; set; }
-        [MaxLength(3)]
-        [Required]
-        public string SystemId { get; set; }
-    }
-
-    /// <summary>
-    ///用户设置的密保问题
-    /// </summary>
-    public class SecurityAnswersModel
-    {
-        /// <summary>
-        /// 问题1
-        /// </summary>
-        [Display(Name = "问题1"), Required(ErrorMessage = "请选择密保问题")]
-        public string SecurityQuestionId { get; set; }
-        /// <summary>
-        /// 答案1
-        /// </summary>
-        [Display(Name = "答案")]
-        [Required(ErrorMessage = "请输入{0}")]
-        [StringLength(20, ErrorMessage = "{0}必须在{2}至{1}个字符。", MinimumLength = 6)]
-        public string Answer { get; set; }
-        /// <summary>
-        /// 问题2
-        /// </summary>
-        [Display(Name = "问题2"), Required(ErrorMessage = "请选择密保问题")]
-        public string SecurityQuestionIdII { get; set; }
-        /// <summary>
-        /// 答案2
-        /// </summary>
-        [Display(Name = "答案")]
-        [Required(ErrorMessage = "请输入{0}")]
-        [StringLength(20, ErrorMessage = "{0}必须在{2}至{1}个字符。", MinimumLength = 6)]
-        public string AnswerII { get; set; }
-
-        /// <summary>
-        /// 问题3
-        /// </summary>
-        [Display(Name = "问题3"), Required(ErrorMessage = "请选择密保问题")]
-        public string SecurityQuestionIdIII { get; set; }
-        /// <summary>
-        /// 答案3
-        /// </summary>
-        [Display(Name = "答案")]
-        [Required(ErrorMessage = "请输入{0}")]
-        [StringLength(20, ErrorMessage = "{0}必须在{2}至{1}个字符。", MinimumLength = 6)]
-        public string AnswerIII { get; set; }
-    }
-   
+    
     /// <summary>
     /// 注册绑定模型
     /// </summary>
@@ -123,17 +72,35 @@ namespace Web.Areas.Api.Models
         /// 手机号
         /// </summary>
         [Required]
-        [RegularExpression("1[34578][0-9]{9}", ErrorMessage = "请输入正确的手机号。")]
-        [Display(Name = "手机")]
-        public string PhoneNumber { get; set; }
+        //[RegularExpression("1[34578][0-9]{9}", ErrorMessage = "请输入正确的手机号。")]
+        [Display(Name = "用户名")]
+        public string UserName { get; set; }
 
+        [MaxLength(10)]
+        [Required]
+        public string Sex { get; set; }
         /// <summary>
-        /// 验证码(注册时该项为必填项、关联该字段不填)
+        /// 姓名
         /// </summary>
-        //[Required]
-        //[RegularExpression("[0-9]{6}", ErrorMessage = "验证码错误。")]
-        [Display(Name = "验证码")]
-        public string VerifyCode { get; set; }
+        [MaxLength(50)]
+        public string FullName { get; set; }
+
+        [MaxLength(10)]
+        public string Birthday { get; set; }
+
+        //运动等级
+        [Required]
+        public SportGrade SportGrade { get; set; }
+        [Required]
+        public string TrainId { get; set; }
+        //部门id
+        [Required]
+        public string SysDepartmentId { get; set; }
+        /// <summary>
+        /// 专训开始时间
+        /// </summary>
+        [MaxLength(10)]
+        public int Start4Training { get; set; }
         /// <summary>
         /// 密码
         /// </summary>
@@ -152,6 +119,7 @@ namespace Web.Areas.Api.Models
         public string ConfirmPassword { get; set; }
     }
 
+
     /// <summary>
     /// 登录绑定模型
     /// </summary>
@@ -161,7 +129,7 @@ namespace Web.Areas.Api.Models
         /// 用户 [用户名 / 手机号 / 邮箱]
         /// </summary>
         [Required]
-        [Display(Name = "用户", Description = "用户名 / 手机号 / 邮箱")]
+        [Display(Name = "用户", Description = "用户名")]
         public string UserName { get; set; }
 
         /// <summary>
@@ -174,88 +142,32 @@ namespace Web.Areas.Api.Models
 
     }
 
-    /// <summary>
-    /// 三方登录类型
-    /// </summary>
-    public static class OpenAuthCatalog
+    public class TrainModel
     {
         /// <summary>
-        /// 新浪微博
+        /// 名称
         /// </summary>
-        public static string Weibo = "WeiboAppLogin";
+        public string Id { get; set; }
         /// <summary>
-        /// 微信开放平台
+        /// 系统编号
         /// </summary>
-        public static string Wechat = "WechatAppLogin";
+        public string SystemId { get; set; }
         /// <summary>
-        /// QQ开放平台
+        /// 名称
         /// </summary>
-        public static string Qq = "QQAppLogin";
+        public string Name { get; set; }
     }
-    /// <summary>
-    /// 三方平台登录模型
-    /// </summary>
-    public class LoginByOpenIdBindModel
+    public class DepartmentModel
     {
         /// <summary>
-        /// OpenId所属平台 ["WeiboAppLogin"(新浪微博)|"WechatAppLogin"(微信开放平台)|"QQAppLogin"(QQ开放平台)]
+        /// 名称
         /// </summary>
-        [Required(ErrorMessage ="OpenId所属平台不能为空")]
-        public string OpenIdCatalog { get; set; }
+        public string Id { get; set; }
         /// <summary>
-        /// OpenId
+        /// 名称
         /// </summary>
-        [Required(ErrorMessage ="OpenId不能为空")]
-        public string OpenId { get; set; }
-        /// <summary>
-        /// 签名
-        /// </summary>
-        [Required(ErrorMessage ="签名不能为空")]
-        public string Signature { get; set; }
+        public string Name { get; set; }
     }
-    /// <summary>
-    /// 绑定三方平台模型
-    /// </summary>
-    public class BindingOpenIdBindModel
-    {
-        /// <summary>
-        /// OpenId所属平台 ["WeiboAppLogin"(新浪微博)|"WechatAppLogin"(微信开放平台)|"QQAppLogin"(QQ开放平台)]
-        /// </summary>
-        [Required(ErrorMessage ="平台类型不能为空")]
-        public string OpenIdCatalog { get; set; }
-        /// <summary>
-        /// OpenId
-        /// </summary>
-        [Required(ErrorMessage = "OpenId不能为空")]
-        public string OpenId { get; set; }
-        /// <summary>
-        /// 签名
-        /// </summary>
-        [Required(ErrorMessage = "签名不能为空")]
-        public string Signature { get; set; }
-        /// <summary>
-        /// 地址
-        /// </summary>
-        public string Location { get; set; }
-        /// <summary>
-        /// 头像网址
-        /// </summary>
-        public string Avatar { get; set; }
-        /// <summary>
-        /// 昵称
-        /// </summary>
-        public string NickName { get; set; }
-        /// <summary>
-        /// 性别 ["M"(男):"F(女)"]
-        /// </summary>
-        public string Gender { get; set; }
-
-        /// <summary>
-        /// 是否是刚注册用户
-        /// </summary>
-        public bool JustRegistered { get; set; }
-    }
-
     /// <summary>
     /// 用户名设置模型
     /// </summary>
@@ -305,155 +217,11 @@ namespace Web.Areas.Api.Models
     }
 
 
-    /// <summary>
-    /// 设置手机绑定模型
-    /// </summary>
-    public class SetPhoneBindModel
-    {
-
-    }
-
-    /// <summary>
-    /// 手机验证修改密码绑定模型
-    /// </summary>
-    public class ReSetPasswordByPhoneCodeBindModel
-    {
-        /// <summary>
-        /// 手机号
-        /// </summary>
-        [Required]
-        [RegularExpression("1[34578][0-9]{9}", ErrorMessage = "请输入正确的手机号。")]
-        [Display(Name = "手机")]
-        public string PhoneNumber { get; set; }
-
-        /// <summary>
-        /// 验证码
-        /// </summary>
-        [Required]
-        [RegularExpression("[0-9]{6}", ErrorMessage = "验证码错误。")]
-        [Display(Name = "验证码")]
-        public string VerifyCode { get; set; }
-        /// <summary>
-        /// 新密码
-        /// </summary>
-        [Required]
-        [StringLength(100, ErrorMessage = "{0}必须在{2}至{1}个字符。", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "密码")]
-        public string Password { get; set; }
-        /// <summary>
-        /// 确认新密码
-        /// </summary>
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "确认密码")]
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "密码和确认密码不匹配。")]
-        public string ConfirmPassword { get; set; }
-    }
-
-    /// <summary>
-    /// 邮件验证修改密码绑定模型
-    /// </summary>
-    public class ReSetPasswordByEmailCodeBindModel
-    {
-        /// <summary>
-        /// 邮箱
-        /// </summary>
-        [Required(ErrorMessage = "请输入邮箱")]
-        [Display(Name = "邮箱"), DataType(DataType.EmailAddress, ErrorMessage = "请输入正确的邮箱地址")]
-        public string Email { get; set; }
-
-        /// <summary>
-        /// 验证码
-        /// </summary>
-        [Required]
-        [RegularExpression("[0-9]{6}", ErrorMessage = "验证码错误。")]
-        [Display(Name = "验证码")]
-        public string VerifyCode { get; set; }
-        /// <summary>
-        /// 新密码
-        /// </summary>
-        [Required]
-        [StringLength(100, ErrorMessage = "{0}必须在{2}至{1}个字符。", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "密码")]
-        public string Password { get; set; }
-        /// <summary>
-        /// 确认新密码
-        /// </summary>
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "确认密码")]
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "密码和确认密码不匹配。")]
-        public string ConfirmPassword { get; set; }
-    }
-
-    /// <summary>
-    /// 身份验证方式视图模型
-    /// </summary>
-    public class PreVerifyProviderViewModel
-    {
-        /// <summary>
-        /// 验证方式名称列表
-        /// </summary>
-        public IList<string> ProviderNames { get; set; }
-    }
+ 
 
     #region 验证码
 
-    /// <summary>
-    /// 验证码缓存
-    /// </summary>
-    public class VerifyCodeCachingModel
-    {
-        /// <summary>
-        /// 验证码
-        /// </summary>
-        public string VerifyCode { get; set; }
-        /// <summary>
-        /// 验证码时间
-        /// </summary>
-        public DateTime VerifyCodeTime { get; set; }
-        /// <summary>
-        /// 验证手机或邮箱
-        /// </summary>
-        public string VerifyPhone { get; set; }
-    }
-    /// <summary>
-    /// 手机验证码登录绑定模型
-    /// </summary>
-    public class LoginByPhoneBindModel
-    {
-        /// <summary>
-        /// 手机号
-        /// </summary>
-        [Required]
-        [RegularExpression("1[34578][0-9]{9}", ErrorMessage = "请输入正确的手机号。")]
-        [Display(Name = "手机")]
-        public string PhoneNumber { get; set; }
-
-        /// <summary>
-        /// 验证码
-        /// </summary>
-        [Required]
-        [RegularExpression("[0-9]{6}", ErrorMessage = "验证码错误。")]
-        [Display(Name = "验证码")]
-        public string VerifyCode { get; set; }
-    }
-    
-    /// <summary>
-    /// 发送手机验证码用模型
-    /// </summary>
-    public class SendCode2PhoneBindModel
-    {
-        /// <summary>
-        /// 手机号
-        /// </summary>
-        [Required(ErrorMessage = "请输入手机号码")]
-        [RegularExpression("1[34578][0-9]{9}", ErrorMessage = "请输入正确的手机号。")]
-        [Display(Name = "手机")]
-        public string PhoneNumber { get; set; }
-    }
+   
     /// <summary>
     /// 手机验证码验证用绑定模型，设置绑定手机
     /// </summary>
@@ -486,20 +254,8 @@ namespace Web.Areas.Api.Models
         public int DelayMinutes { get; set; }
 
     }
-
     
-    /// <summary>
-    /// 发送邮箱验证码用模型
-    /// </summary>
-    public class SendCode2EmailBindModel
-    {
-        /// <summary>
-        /// 邮箱
-        /// </summary>
-        [Required(ErrorMessage = "请输入邮箱")]
-        [Display(Name = "邮箱"),DataType(DataType.EmailAddress,ErrorMessage = "请输入正确的邮箱地址")]
-        public string Email { get; set; }
-    }/// <summary>
+   /// <summary>
      /// 邮箱验证码验证用绑定模型
      /// </summary>
     public class VerifyCode4EmailBindModel

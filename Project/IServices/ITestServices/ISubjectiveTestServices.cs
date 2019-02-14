@@ -11,5 +11,8 @@ namespace IServices.ITestServices
     public interface ISubjectiveTestService : IRepository<SubjectiveTest>
     {
     }
-   
+    public interface IPainPointService : IRepository<PainPoint>
+    {
+    }
+
 }

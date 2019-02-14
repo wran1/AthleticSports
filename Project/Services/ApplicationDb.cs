@@ -99,6 +99,8 @@ namespace Services
         public DbSet<PeriodicTestResult> PeriodicTestResults { get; set; }
         public DbSet<DoctorRecord> DoctorRecords { get; set; }
         public DbSet<ExportRecord> ExportRecords { get; set; }
+        public DbSet<PainPoint> PainPoints { get; set; }
+        public DbSet<BodyComposition> BodyCompositions { get; set; }
         #endregion
 
 

@@ -14,16 +14,7 @@ namespace Models.TestModels
     /// </summary>
     public class PeriodicTestResult : DbSetBase
     {
-        //体脂率
-        public double BF { get; set; }
-        /// <summary>
-        /// 瘦体重
-        /// </summary>
-        public double LeanWeight { get; set; }
-        /// <summary>
-        /// 骨密度
-        /// </summary>
-        public double BoneDensity { get; set; }
+       
         /// <summary>
         /// 白细胞
         /// </summary>
@@ -66,6 +57,42 @@ namespace Models.TestModels
         /// </summary>
         public double Testosterone { get; set; }
 
+        ////用户标记
+        //public string Sign { get; set; }
+        /// <summary>
+        /// 测试时间
+        /// </summary>
+        public string Testdate { get; set; }
+
+        [ForeignKey("SysUser")]
+        [Required]
+        public string SysUserId { get; set; }
+
+        public virtual SysUser SysUser { get; set; }
+
+    }
+    public class BodyComposition : DbSetBase
+    {
+        //体脂率
+        public double BF { get; set; }
+        /// <summary>
+        /// 体重=肌肉+脂肪+骨矿物盐
+        /// </summary>
+        public double Weight { get; set; }
+        /// <summary>
+        /// 肌肉
+        /// </summary>
+        public double Muscle { get; set; }
+        /// <summary>
+        /// 脂肪
+        /// </summary>
+        public double Fat { get; set; }
+        /// <summary>
+        /// 骨矿物盐
+        /// </summary>
+        public double BoneMSalt { get; set; }
+        [DataType(DataType.DateTime)]
+        public string Testdate { get; set; }
 
         [ForeignKey("SysUser")]
         [Required]

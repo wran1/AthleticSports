@@ -215,6 +215,18 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="Senparc.Weixin, Version=4.12.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Senparc.Weixin.4.12.3\lib\net45\Senparc.Weixin.dll</HintPath>
     </Reference>
@@ -412,9 +424,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Api\Controllers\AccountController.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\TestController.cs" />
+    <Compile Include="Areas\Api\Controllers\UserInfoController.cs" />
     <Compile Include="Areas\Api\Models\AccountModels.cs" />
     <Compile Include="Areas\Api\Models\ApiCmsModels.cs" />
     <Compile Include="Areas\Api\Models\APIResult.cs" />
+    <Compile Include="Areas\Api\Models\TestModel.cs" />
+    <Compile Include="Areas\Api\Models\UserModels.cs" />
+    <Compile Include="Areas\Platform\Controllers\BodyCompositionController.cs" />
+    <Compile Include="Areas\Platform\Controllers\PeriodicTestResultController.cs" />
     <Compile Include="Areas\Platform\Controllers\Test\TrainingPeopleController.cs" />
     <Compile Include="Areas\Platform\Controllers\Test\TrainingTypeController.cs" />
     <Compile Include="Areas\Platform\Controllers\TrainController.cs" />
@@ -468,7 +486,6 @@
     <Compile Include="Areas\Platform\Helpers\EditSuccessResult.cs" />
     <Compile Include="Areas\Platform\Models\SysUserEditModel.cs" />
     <Compile Include="Areas\Platform\PlatformAreaRegistration.cs" />
-    <Compile Include="Areas\Api\Controllers\IndexController.cs" />
     <Compile Include="Areas\User\Controllers\IndexController.cs" />
     <Compile Include="Areas\User\Models\UserViewModels.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
@@ -1386,6 +1403,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientDialogs.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientReferences.cshtml" />
     <Content Include="Areas\Platform\Views\TrainingPeople\Edit.cshtml" />
+    <Content Include="Areas\Platform\Views\PeriodicTestResult\Index.cshtml" />
+    <Content Include="XmlDocument.xml" />
+    <Content Include="Areas\Platform\Views\BodyComposition\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\newbusinesscircles - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\newbusinesscircles - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\tradeteda - FTP.pubxml" />

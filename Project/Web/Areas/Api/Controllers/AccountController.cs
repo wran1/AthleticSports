@@ -33,18 +33,17 @@ using Web.SignalR;
 using System.Net;
 using System.IO;
 using System.Text;
+using IServices.IDictionaryServices;
+using Models.Dictionary;
 
 namespace Web.Areas.Api.Controllers
 {
-    /// <summary>
-    /// 账户操作
-    /// </summary>
     [Authorize]
     [RoutePrefix("API/Account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
-        private readonly DateTime _miniDataTime = new DateTime(2016,1,1,0,0,0,0);
+        //private readonly DateTime _miniDataTime = new DateTime(2016, 1, 1, 0, 0, 0, 0);
         private ApplicationUserManager _userManager;
         private ApplicationSignInManager _signInManager;
 
@@ -52,12 +51,20 @@ namespace Web.Areas.Api.Controllers
         private readonly IUnitOfWork _iUnitOfWork;
         private readonly ISysUserService _iSysUserService;
         private readonly EmailService _emailService;
-        public AccountController(ISysUserService iSysUserService,  IUnitOfWork iUnitOfWork, IUserInfo iUserInfo)
+        private readonly ISysDepartmentSysUserService _iSysDepartmentSysUserService;
+        private readonly ISysDepartmentService _iDepartmentService;
+        private readonly ITrainService _iTrainService;
+        private readonly ISysRoleService _isysRoleService;
+        public AccountController(ISysRoleService isysRoleService,ITrainService iTrainService,ISysUserService iSysUserService, IUnitOfWork iUnitOfWork, IUserInfo iUserInfo, ISysDepartmentService iDepartmentService, ISysDepartmentSysUserService iSysDepartmentSysUserService)
         {
             _iSysUserService = iSysUserService;
             _iUnitOfWork = iUnitOfWork;
             _iUserInfo = iUserInfo;
             _emailService = new EmailService();
+            _iSysDepartmentSysUserService = iSysDepartmentSysUserService;
+            _iDepartmentService = iDepartmentService;
+            _iTrainService = iTrainService;
+            _isysRoleService = isysRoleService;
         }
 
         public ApplicationUserManager UserManager
@@ -71,25 +78,55 @@ namespace Web.Areas.Api.Controllers
                 _userManager = value;
             }
         }
-        
+
         public ApplicationSignInManager SignInManager
         {
             get { return _signInManager ?? Request.GetOwinContext().Get<ApplicationSignInManager>(); }
             private set { _signInManager = value; }
         }
 
+        ///// <summary>
+        ///// 获取手机号注册状态
+        ///// </summary>
+        ///// <param name="phoneNumber"></param>
+        ///// <returns>true为已注册，false为未注册</returns>
+        //[AllowAnonymous,Route("PhoneResiterStatus")]
+        //public APIResult<bool> GetCheckPhoneExists(string phoneNumber)
+        //{
+        //    var user = _iSysUserService.GetAll().FirstOrDefault(u => u.PhoneNumber == phoneNumber);
+        //    if (user == null)
+        //        return new APIResult<bool>(false);
+        //    return new APIResult<bool>(true);
+        //}
         /// <summary>
-        /// 获取手机号注册状态
+        /// 获取所有教练(教练是两级，必须选择第二级)  
+        /// 客户端数据处理方式：一级获取Systemcityid长度是3位，下一级的是上一级的Systemcityid+3位长度
         /// </summary>
-        /// <param name="phoneNumber"></param>
-        /// <returns>true为已注册，false为未注册</returns>
-        [AllowAnonymous,Route("PhoneResiterStatus")]
-        public APIResult<bool> GetCheckPhoneExists(string phoneNumber)
+        /// <returns>True为已占用</returns>
+        [AllowAnonymous, Route("GetAllDepartment")]
+        public APIResult<List<DepartmentModel>> GetAllDepartment()
         {
-            var user = _iSysUserService.GetAll().FirstOrDefault(u => u.PhoneNumber == phoneNumber);
-            if (user == null)
-                return new APIResult<bool>(false);
-            return new APIResult<bool>(true);
+          var departList = _iDepartmentService.GetAll().Select(a=> new DepartmentModel {
+               Id=a.Id,
+               Name=a.Name
+          }).ToList();
+          return new APIResult<List<DepartmentModel>>(departList);
+        }
+        /// <summary>
+        /// 获取所有专项 
+        /// 客户端数据处理方式：一级获取Systemcityid长度是3位，下一级的是上一级的Systemcityid+3位长度
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns>True为已占用</returns>
+        [AllowAnonymous, Route("GetAllTrain")]
+        public APIResult<List<TrainModel>> GetAllTrain(string userName)
+        {
+            var trainList = _iTrainService.GetAll().OrderBy(d => d.SystemId).Select(d=>new TrainModel {
+                Id=d.Id,
+                SystemId=d.SystemId,
+                Name=d.Name
+            }).ToList();
+            return new APIResult<List<TrainModel>>(trainList);
         }
         /// <summary>
         /// 获取用户名是否已被占用
@@ -105,6 +142,70 @@ namespace Web.Areas.Api.Controllers
                 return new APIResult<bool>(true);
             }
             return new APIResult<bool>(false);
+        }
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="registerBindModel"></param>
+        /// <returns></returns>
+        [Route("Register")]
+        [AllowAnonymous]
+        public async Task<APIResult<AccessTokenViewModel>> Register(RegisterBindModel registerBindModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user =
+                        _iSysUserService.GetAll()
+                            .FirstOrDefault(u => u.UserName == registerBindModel.UserName);
+                
+                if(user == null)
+                {
+                    user = new SysUser
+                    {
+
+                        Id = Guid.NewGuid().ToString(),
+                        UserName = registerBindModel.UserName,
+                        Birthday= registerBindModel.Birthday,
+                        FullName= registerBindModel.FullName,
+                        Sex= registerBindModel.Sex,
+                        SportGrade= registerBindModel.SportGrade,
+                        TrainId= registerBindModel.TrainId,
+                        Start4Training= registerBindModel.Start4Training,
+                        TwoFactorEnabled = false,//不自动开启二次验证
+                        LockoutEnabled = true,
+                    };
+                    user.Email = Common.CommonCodeGenerator.GenerateEmail(user.UserName);
+                    IdentityResult result = await UserManager.CreateAsync(user, registerBindModel.Password);
+                    if (result.Succeeded)
+                    {
+                        
+                        if (!string.IsNullOrEmpty(registerBindModel.SysDepartmentId))
+                        {
+                            _iSysDepartmentSysUserService.Save(null,
+                                new SysDepartmentSysUser { SysDepartmentId = registerBindModel.SysDepartmentId, SysUserId = user.Id });
+
+                        }
+
+                        result = await UserManager.AddToRoleAsync(user.Id, "运动员"); 
+                    }
+                    if (!result.Succeeded)
+                    {
+                        SetModelState(result);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("UserName", "该用户名已经存在");
+                }
+                if (ModelState.IsValid)
+                {
+                   
+                    var data = await GetAccessToken(user); //登录
+                    if (data != null)
+                        return new APIResult<AccessTokenViewModel>(data, 0, "注册并登录成功");
+                }
+            }  
+            return new APIResult<AccessTokenViewModel>(null, 100, "注册失败", ModelState);
         }
         ///// <summary>
         ///// 手机注册
@@ -511,70 +612,70 @@ namespace Web.Areas.Api.Controllers
             }
             return new APIResult<bool>(false, 100, "修改密码失败", ModelState);
         }
-        /// <summary>
-        /// 通过手机验证重置密码 【开发完成】【最后发布日期 2016-10-29】
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [AllowAnonymous,Route("ReSetPasswordByPhoneCode")]
-        public async Task<APIResult<bool>> ReSetPasswordByPhoneCode(
-            ReSetPasswordByPhoneCodeBindModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user =
-                    _iSysUserService.GetAll()
-                        .FirstOrDefault(u => u.PhoneNumber == model.PhoneNumber);
-                if (user != null)
-                {
-                    await UserManager.RemovePasswordAsync(user.Id);
-                    var result = await UserManager.AddPasswordAsync(user.Id, model.Password);
-                    if (result.Succeeded)
-                    {
-                        return new APIResult<bool>(true);
-                    }
-                    SetModelState(result);
-                }
-                else
-                {
-                    ModelState.AddModelError("PhoneNumber", "未找该手机对应的账户");
-                }
-            }
-            return new APIResult<bool>(false, 100, "密码重置失败", ModelState);
-        }
+        ///// <summary>
+        ///// 通过手机验证重置密码 【开发完成】【最后发布日期 2016-10-29】
+        ///// </summary>
+        ///// <param name="model"></param>
+        ///// <returns></returns>
+        //[AllowAnonymous,Route("ReSetPasswordByPhoneCode")]
+        //public async Task<APIResult<bool>> ReSetPasswordByPhoneCode(
+        //    ReSetPasswordByPhoneCodeBindModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user =
+        //            _iSysUserService.GetAll()
+        //                .FirstOrDefault(u => u.PhoneNumber == model.PhoneNumber);
+        //        if (user != null)
+        //        {
+        //            await UserManager.RemovePasswordAsync(user.Id);
+        //            var result = await UserManager.AddPasswordAsync(user.Id, model.Password);
+        //            if (result.Succeeded)
+        //            {
+        //                return new APIResult<bool>(true);
+        //            }
+        //            SetModelState(result);
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("PhoneNumber", "未找该手机对应的账户");
+        //        }
+        //    }
+        //    return new APIResult<bool>(false, 100, "密码重置失败", ModelState);
+        //}
 
 
-        /// <summary>
-        /// 通过邮箱验证重置密码 【开发完成】【最后发布日期 2016-10-29】
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [AllowAnonymous, Route("ReSetPasswordByEmailCode")]
-        public async Task<APIResult<bool>> ReSetPasswordByEmailCode(
-            ReSetPasswordByEmailCodeBindModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user =
-                    _iSysUserService.GetAll()
-                        .FirstOrDefault(u => u.Email == model.Email);
-                if (user != null)
-                {
-                    await UserManager.RemovePasswordAsync(user.Id);//已设置过密码的用户需移除密码
-                    var result = await UserManager.AddPasswordAsync(user.Id, model.Password);
-                    if (result.Succeeded)
-                    {
-                        return new APIResult<bool>(true);
-                    }
-                    SetModelState(result);
-                }
-                else
-                {
-                    ModelState.AddModelError("Email", "未找到邮箱对应的账户");
-                }
-            }
-            return new APIResult<bool>(false, 100, "密码重置失败", ModelState);
-        }
+        ///// <summary>
+        ///// 通过邮箱验证重置密码 【开发完成】【最后发布日期 2016-10-29】
+        ///// </summary>
+        ///// <param name="model"></param>
+        ///// <returns></returns>
+        //[AllowAnonymous, Route("ReSetPasswordByEmailCode")]
+        //public async Task<APIResult<bool>> ReSetPasswordByEmailCode(
+        //    ReSetPasswordByEmailCodeBindModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user =
+        //            _iSysUserService.GetAll()
+        //                .FirstOrDefault(u => u.Email == model.Email);
+        //        if (user != null)
+        //        {
+        //            await UserManager.RemovePasswordAsync(user.Id);//已设置过密码的用户需移除密码
+        //            var result = await UserManager.AddPasswordAsync(user.Id, model.Password);
+        //            if (result.Succeeded)
+        //            {
+        //                return new APIResult<bool>(true);
+        //            }
+        //            SetModelState(result);
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("Email", "未找到邮箱对应的账户");
+        //        }
+        //    }
+        //    return new APIResult<bool>(false, 100, "密码重置失败", ModelState);
+        //}
         
 
         //#region 验证码
@@ -884,7 +985,9 @@ namespace Web.Areas.Api.Controllers
                 ticket.Properties.ExpiresUtc = currentUtc.Add(Startup.OAuthOptions.AccessTokenExpireTimeSpan);
                 var token = Startup.OAuthOptions.AccessTokenFormat.Protect(ticket);
                 var expirers = (Int32)Startup.OAuthOptions.AccessTokenExpireTimeSpan.TotalSeconds;
-                return new AccessTokenViewModel(token, "bearer", user.UserName, expirers - 1);
+                var roleid = user.Roles.FirstOrDefault().RoleId;
+                var rolename=_isysRoleService.GetById(roleid).Name;
+                return new AccessTokenViewModel(token, "bearer", user.UserName, rolename, expirers - 1);
                 //}
             }
             ModelState.AddModelError("", "无效的登录尝试");

@@ -17,5 +17,13 @@ namespace Services.TestServices
         {
         }
     }
-  
+    public class BodyCompositionService : RepositoryBase<BodyComposition>, IBodyCompositionService
+    {
+        public BodyCompositionService(IDatabaseFactory databaseFactory, IUserInfo userInfo)
+            : base(databaseFactory, userInfo)
+        {
+        }
+    }
+    
+
 }

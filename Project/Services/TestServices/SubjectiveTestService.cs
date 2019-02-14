@@ -17,5 +17,11 @@ namespace Services.TestServices
         {
         }
     }
-  
+    public class PainPointService : RepositoryBase<PainPoint>, IPainPointService
+    {
+        public PainPointService(IDatabaseFactory databaseFactory, IUserInfo userInfo)
+            : base(databaseFactory, userInfo)
+        {
+        }
+    }
 }

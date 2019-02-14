@@ -6,3 +6,11 @@ D:\代码\NewbusinessWeChat\Project\Resources\obj\Release\Resources.csproj.CoreC
 D:\代码\NewbusinessWeChat\Project\Resources\obj\Release\Resources.dll
 D:\代码\NewbusinessWeChat\Project\Resources\obj\Release\Resources.pdb
 D:\代码\NewbusinessWeChat\Project\Resources\obj\Release\Resources.csprojResolveAssemblyReference.cache
+D:\代码\wangxiao\AthleticSports\Project\Resources\bin\Release\Resources.dll
+D:\代码\wangxiao\AthleticSports\Project\Resources\bin\Release\Resources.pdb
+D:\代码\wangxiao\AthleticSports\Project\Resources\obj\Release\Resources.csprojResolveAssemblyReference.cache
+D:\代码\wangxiao\AthleticSports\Project\Resources\obj\Release\Resources.Lang.resources
+D:\代码\wangxiao\AthleticSports\Project\Resources\obj\Release\Resources.csproj.GenerateResource.Cache
+D:\代码\wangxiao\AthleticSports\Project\Resources\obj\Release\Resources.csproj.CoreCompileInputs.cache
+D:\代码\wangxiao\AthleticSports\Project\Resources\obj\Release\Resources.dll
+D:\代码\wangxiao\AthleticSports\Project\Resources\obj\Release\Resources.pdb

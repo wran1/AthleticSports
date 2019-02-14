@@ -11,5 +11,7 @@ namespace IServices.ITestServices
     public interface IPeriodicTestResultService : IRepository<PeriodicTestResult>
     {
     }
-   
+    public interface IBodyCompositionService : IRepository<BodyComposition>
+    {
+    }
 }

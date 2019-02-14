@@ -42,17 +42,59 @@ namespace Models.TestModels
         public int TrainStatus { get; set; }
         //自我感觉疲劳度
         public int Fatigue { get; set; }
-        //训练时间
-        public int Minute { get; set; }
+        //体能训练时长
+        public int FitnessMinute { get; set; }
+        //专项训练时长
+        public int SpecialMinute { get; set; }
+        //比赛时长
+        public int MatchMinute { get; set; }
         //训练强度
         public int TrainIntensity { get; set; }
         //教练评价
         public int Evaluate { get; set; }
+        //时间
+        public string Sign { get; set; }
 
         [ForeignKey("SysUser")]
         [Required]
         public string SysUserId { get; set; }
 
         public virtual SysUser SysUser { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual ICollection<PainPoint> PainPoints { get; set; }
+    }
+    public enum PointName
+    {
+        头,
+        肩,
+        胸,
+        腹部,
+        髋,
+        内收肌,
+        股四头肌,
+        膝,
+        小腿前部,
+        足,
+        颈,
+        上背部,
+        下背部,
+        臀部,
+        腘绳肌,
+        小腿后群,
+    }
+    public class PainPoint : DbSetBase
+    {
+        /// <summary>
+        /// 疼痛位置
+        /// </summary>
+        public PointName PointName { get; set; }
+
+        [ForeignKey("SubjectiveTest")]
+        [Required]
+        public string SubjectiveTestId { get; set; }
+
+        public virtual SubjectiveTest SubjectiveTest { get; set; }
+
     }
 }

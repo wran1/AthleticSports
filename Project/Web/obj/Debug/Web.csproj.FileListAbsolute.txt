@@ -250,10 +250,6 @@ D:\代码\NewbusinessWeChat\Project\Web\obj\Debug\Web.csprojResolveAssemblyRefer
 D:\代码\NewbusinessWeChat\Project\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 D:\代码\NewbusinessWeChat\Project\Web\obj\Debug\Web.dll
 D:\代码\NewbusinessWeChat\Project\Web\obj\Debug\Web.pdb
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\EntityFramework.xml
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Optimization.resources.dll
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Razor.resources.dll
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.WebPages.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\ApplicationInsights.config
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\roslyn\csc.exe
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\roslyn\csc.exe.config
@@ -440,6 +436,10 @@ D:\代码\wangxiao\AthleticSports\Project\Web\bin\Microsoft.WindowsAzure.Configu
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Microsoft.WindowsAzure.Storage.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Models.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Newtonsoft.Json.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\NPOI.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\NPOI.OOXML.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\NPOI.OpenXml4Net.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\NPOI.OpenXmlFormats.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Owin.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Senparc.Weixin.dll
@@ -513,6 +513,7 @@ D:\代码\wangxiao\AthleticSports\Project\Web\bin\Microsoft.WindowsAzure.Configu
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Microsoft.WindowsAzure.Storage.pdb
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Microsoft.WindowsAzure.Storage.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Newtonsoft.Json.xml
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\NPOI.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Senparc.Weixin.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Senparc.Weixin.MP.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Senparc.Weixin.QY.xml
@@ -527,6 +528,7 @@ D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Razor.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.WebPages.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.WebPages.Deployment.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.WebPages.Razor.xml
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\EntityFramework.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\EntityFramework.SqlServer.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Microsoft.AspNet.Identity.Core.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Microsoft.AspNet.Identity.Owin.xml
@@ -581,6 +583,9 @@ D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Helpers.res
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Http.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.WebPages.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\EntityFramework.resources.dll

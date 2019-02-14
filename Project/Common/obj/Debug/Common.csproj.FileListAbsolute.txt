@@ -22,7 +22,7 @@ D:\代码\wangxiao\AthleticSports\Project\Common\bin\Debug\EntityFramework.Exten
 D:\代码\wangxiao\AthleticSports\Project\Common\bin\Debug\EntityFramework.Extended.xml
 D:\代码\wangxiao\AthleticSports\Project\Common\bin\Debug\EntityFramework.Extended.dll.config
 D:\代码\wangxiao\AthleticSports\Project\Common\bin\Debug\zh-Hans\EntityFramework.resources.dll
-D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.dll
 D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.pdb
+D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

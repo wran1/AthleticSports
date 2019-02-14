@@ -4,17 +4,20 @@
         <name>Web</name>
     </assembly>
     <members>
-        <member name="T:Web.Areas.Api.Controllers.AccountController">
+        <member name="M:Web.Areas.Api.Controllers.AccountController.GetAllDepartment">
             <summary>
-            账户操作
+            获取所有教练(教练是两级，必须选择第二级)  
+            客户端数据处理方式：一级获取Systemcityid长度是3位，下一级的是上一级的Systemcityid+3位长度
             </summary>
+            <returns>True为已占用</returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.AccountController.GetCheckPhoneExists(System.String)">
+        <member name="M:Web.Areas.Api.Controllers.AccountController.GetAllTrain(System.String)">
             <summary>
-            获取手机号注册状态
+            获取所有专项 
+            客户端数据处理方式：一级获取Systemcityid长度是3位，下一级的是上一级的Systemcityid+3位长度
             </summary>
-            <param name="phoneNumber"></param>
-            <returns>true为已注册，false为未注册</returns>
+            <param name="userName"></param>
+            <returns>True为已占用</returns>
         </member>
         <member name="M:Web.Areas.Api.Controllers.AccountController.GetUserNameExists(System.String)">
             <summary>
@@ -22,6 +25,13 @@
             </summary>
             <param name="userName"></param>
             <returns>True为已占用</returns>
+        </member>
+        <member name="M:Web.Areas.Api.Controllers.AccountController.Register(Web.Areas.Api.Models.RegisterBindModel)">
+            <summary>
+            注册
+            </summary>
+            <param name="registerBindModel"></param>
+            <returns></returns>
         </member>
         <member name="M:Web.Areas.Api.Controllers.AccountController.Login(Web.Areas.Api.Models.LoginBindModel)">
             <summary>
@@ -55,20 +65,6 @@
             <param name="passwordBindModel"></param>
             <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.AccountController.ReSetPasswordByPhoneCode(Web.Areas.Api.Models.ReSetPasswordByPhoneCodeBindModel)">
-            <summary>
-            通过手机验证重置密码 【开发完成】【最后发布日期 2016-10-29】
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Web.Areas.Api.Controllers.AccountController.ReSetPasswordByEmailCode(Web.Areas.Api.Models.ReSetPasswordByEmailCodeBindModel)">
-            <summary>
-            通过邮箱验证重置密码 【开发完成】【最后发布日期 2016-10-29】
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
-        </member>
         <member name="M:Web.Areas.Api.Controllers.AccountController.HMACSHAsecret(System.String,System.String)">
             <summary>
             加密
@@ -84,66 +80,36 @@
             <param name="user"></param>
             <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.IndexController.GetFrontispiece(System.String,System.Boolean,System.Int32,System.Int32)">
+        <member name="M:Web.Areas.Api.Controllers.TestController.GetUserSubjective">
             <summary>
-            获取首页的数据或列表页
-            </summary>
-            <param name="Type">type为空是所有类型的置顶数据</param>
-            <param name="First">为true为首页数据</param>
-            <param name="pageindex">当前页</param>
-            <param name="pagesize">每页个数</param>
-            <returns></returns>
-        </member>
-        <member name="M:Web.Areas.Api.Controllers.IndexController.GetreviewList">
-            <summary>
-            往期回顾列表
+            获取当天运动员主观评测数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.IndexController.GetDetail(System.String)">
+        <member name="M:Web.Areas.Api.Controllers.TestController.SaveUserSubjective(Models.TestModels.SubjectiveTest,System.String)">
             <summary>
-            详情页
+            保存当天运动员主观评测数据
+            PointNames 如果选择了部位用英文逗号隔开, 最后逗号结尾
             </summary>
-            <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.IndexController.GetExclusive(System.String)">
+        <member name="M:Web.Areas.Api.Controllers.TestController.GetTrainName">
             <summary>
-            找服务和找合作下拉
+            获取当前用户的体能训练项目名称
             </summary>
-            <param name="Type">找服务/找合作</param>
             <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.IndexController.GetExclusiveList(System.String)">
+        <member name="M:Web.Areas.Api.Controllers.UserInfoController.GetUserInfo">
             <summary>
-            专属福利:找服务/找合作
+            获取用户信息 
             </summary>
-            <param name="Type">找服务/找合作</param>
             <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.IndexController.GetserviceCooperation(System.String,System.Int32,System.Int32)">
+        <member name="M:Web.Areas.Api.Controllers.UserInfoController.SaveUserInfo(Web.Areas.Api.Models.UserInfoModels)">
             <summary>
-            专属福利:找服务/找合作二级列表页
+            保存个人信息
             </summary>
-            <param name="Type">找服务/找合作</param>
-            <param name="pageindex">页码</param>
-            <param name="pagesize">页数</param>
-            <returns></returns>
-        </member>
-        <member name="M:Web.Areas.Api.Controllers.IndexController.GetSubColumnTop(System.String)">
-            <summary>
-            风尚：演出/书架/时尚 数字声音：数字/声音
-            </summary>
-            <param name="Type">风尚/数字声音（一级栏目名称）</param>
-            <returns></returns>
-        </member>
-        <member name="M:Web.Areas.Api.Controllers.IndexController.GetSubColumnList(System.String,System.Int32,System.Int32)">
-            <summary>
-            风尚：演出/书架/时尚 数字声音：数字/声音二级列表页
-            </summary>
-            <param name="Type">风尚/数字声音（一级栏目名称）</param>
-            <param name="pageindex">页码</param>
-            <param name="pagesize">页数</param>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="T:Web.Areas.Api.Models.AccessTokenViewModel">
@@ -171,44 +137,9 @@
             过期数字
             </summary>
         </member>
-        <member name="T:Web.Areas.Api.Models.SecurityQuestionModel">
+        <member name="P:Web.Areas.Api.Models.AccessTokenViewModel.RoleName">
             <summary>
-            所有密保问题
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.SecurityAnswersModel">
-             <summary>
-            用户设置的密保问题
-             </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.SecurityAnswersModel.SecurityQuestionId">
-            <summary>
-            问题1
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.SecurityAnswersModel.Answer">
-            <summary>
-            答案1
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.SecurityAnswersModel.SecurityQuestionIdII">
-            <summary>
-            问题2
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.SecurityAnswersModel.AnswerII">
-            <summary>
-            答案2
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.SecurityAnswersModel.SecurityQuestionIdIII">
-            <summary>
-            问题3
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.SecurityAnswersModel.AnswerIII">
-            <summary>
-            答案3
+            角色名
             </summary>
         </member>
         <member name="T:Web.Areas.Api.Models.RegisterBindModel">
@@ -216,14 +147,19 @@
             注册绑定模型
             </summary>
         </member>
-        <member name="P:Web.Areas.Api.Models.RegisterBindModel.PhoneNumber">
+        <member name="P:Web.Areas.Api.Models.RegisterBindModel.UserName">
             <summary>
             手机号
             </summary>
         </member>
-        <member name="P:Web.Areas.Api.Models.RegisterBindModel.VerifyCode">
+        <member name="P:Web.Areas.Api.Models.RegisterBindModel.FullName">
             <summary>
-            验证码(注册时该项为必填项、关联该字段不填)
+            姓名
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.RegisterBindModel.Start4Training">
+            <summary>
+            专训开始时间
             </summary>
         </member>
         <member name="P:Web.Areas.Api.Models.RegisterBindModel.Password">
@@ -251,89 +187,29 @@
             密码
             </summary>
         </member>
-        <member name="T:Web.Areas.Api.Models.OpenAuthCatalog">
+        <member name="P:Web.Areas.Api.Models.TrainModel.Id">
             <summary>
-            三方登录类型
+            名称
             </summary>
         </member>
-        <member name="F:Web.Areas.Api.Models.OpenAuthCatalog.Weibo">
+        <member name="P:Web.Areas.Api.Models.TrainModel.SystemId">
             <summary>
-            新浪微博
+            系统编号
             </summary>
         </member>
-        <member name="F:Web.Areas.Api.Models.OpenAuthCatalog.Wechat">
+        <member name="P:Web.Areas.Api.Models.TrainModel.Name">
             <summary>
-            微信开放平台
+            名称
             </summary>
         </member>
-        <member name="F:Web.Areas.Api.Models.OpenAuthCatalog.Qq">
+        <member name="P:Web.Areas.Api.Models.DepartmentModel.Id">
             <summary>
-            QQ开放平台
+            名称
             </summary>
         </member>
-        <member name="T:Web.Areas.Api.Models.LoginByOpenIdBindModel">
+        <member name="P:Web.Areas.Api.Models.DepartmentModel.Name">
             <summary>
-            三方平台登录模型
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.LoginByOpenIdBindModel.OpenIdCatalog">
-            <summary>
-            OpenId所属平台 ["WeiboAppLogin"(新浪微博)|"WechatAppLogin"(微信开放平台)|"QQAppLogin"(QQ开放平台)]
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.LoginByOpenIdBindModel.OpenId">
-            <summary>
-            OpenId
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.LoginByOpenIdBindModel.Signature">
-            <summary>
-            签名
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.BindingOpenIdBindModel">
-            <summary>
-            绑定三方平台模型
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.BindingOpenIdBindModel.OpenIdCatalog">
-            <summary>
-            OpenId所属平台 ["WeiboAppLogin"(新浪微博)|"WechatAppLogin"(微信开放平台)|"QQAppLogin"(QQ开放平台)]
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.BindingOpenIdBindModel.OpenId">
-            <summary>
-            OpenId
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.BindingOpenIdBindModel.Signature">
-            <summary>
-            签名
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.BindingOpenIdBindModel.Location">
-            <summary>
-            地址
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.BindingOpenIdBindModel.Avatar">
-            <summary>
-            头像网址
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.BindingOpenIdBindModel.NickName">
-            <summary>
-            昵称
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.BindingOpenIdBindModel.Gender">
-            <summary>
-            性别 ["M"(男):"F(女)"]
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.BindingOpenIdBindModel.JustRegistered">
-            <summary>
-            是否是刚注册用户
+            名称
             </summary>
         </member>
         <member name="T:Web.Areas.Api.Models.UserNameBindModel">
@@ -366,116 +242,6 @@
             确认新密码
             </summary>
         </member>
-        <member name="T:Web.Areas.Api.Models.SetPhoneBindModel">
-            <summary>
-            设置手机绑定模型
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.ReSetPasswordByPhoneCodeBindModel">
-            <summary>
-            手机验证修改密码绑定模型
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.ReSetPasswordByPhoneCodeBindModel.PhoneNumber">
-            <summary>
-            手机号
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.ReSetPasswordByPhoneCodeBindModel.VerifyCode">
-            <summary>
-            验证码
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.ReSetPasswordByPhoneCodeBindModel.Password">
-            <summary>
-            新密码
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.ReSetPasswordByPhoneCodeBindModel.ConfirmPassword">
-            <summary>
-            确认新密码
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.ReSetPasswordByEmailCodeBindModel">
-            <summary>
-            邮件验证修改密码绑定模型
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.ReSetPasswordByEmailCodeBindModel.Email">
-            <summary>
-            邮箱
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.ReSetPasswordByEmailCodeBindModel.VerifyCode">
-            <summary>
-            验证码
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.ReSetPasswordByEmailCodeBindModel.Password">
-            <summary>
-            新密码
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.ReSetPasswordByEmailCodeBindModel.ConfirmPassword">
-            <summary>
-            确认新密码
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.PreVerifyProviderViewModel">
-            <summary>
-            身份验证方式视图模型
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.PreVerifyProviderViewModel.ProviderNames">
-            <summary>
-            验证方式名称列表
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.VerifyCodeCachingModel">
-            <summary>
-            验证码缓存
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.VerifyCodeCachingModel.VerifyCode">
-            <summary>
-            验证码
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.VerifyCodeCachingModel.VerifyCodeTime">
-            <summary>
-            验证码时间
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.VerifyCodeCachingModel.VerifyPhone">
-            <summary>
-            验证手机或邮箱
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.LoginByPhoneBindModel">
-            <summary>
-            手机验证码登录绑定模型
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.LoginByPhoneBindModel.PhoneNumber">
-            <summary>
-            手机号
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.LoginByPhoneBindModel.VerifyCode">
-            <summary>
-            验证码
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.SendCode2PhoneBindModel">
-            <summary>
-            发送手机验证码用模型
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.SendCode2PhoneBindModel.PhoneNumber">
-            <summary>
-            手机号
-            </summary>
-        </member>
         <member name="T:Web.Areas.Api.Models.VerifyCode4PhoneBindModel">
             <summary>
             手机验证码验证用绑定模型，设置绑定手机
@@ -494,16 +260,6 @@
         <member name="P:Web.Areas.Api.Models.VerifyCode4PhoneBindModel.DelayMinutes">
             <summary>
             有效性延时分钟数，在分步验证操作中使用，比如先验证手机号点击下一步设置密码完成注册的操作，可能在最后一步验证码失效，需要设置有效性延时
-            </summary>
-        </member>
-        <member name="T:Web.Areas.Api.Models.SendCode2EmailBindModel">
-            <summary>
-            发送邮箱验证码用模型
-            </summary>
-        </member>
-        <member name="P:Web.Areas.Api.Models.SendCode2EmailBindModel.Email">
-            <summary>
-            邮箱
             </summary>
         </member>
         <member name="T:Web.Areas.Api.Models.VerifyCode4EmailBindModel">
@@ -786,6 +542,100 @@
             根据ModelState设置ErrorMessges
             </summary>
             <param name="modelState"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.MorPulse">
+            <summary>
+            晨脉
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.Weight">
+            <summary>
+            体重
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.SleepDuration">
+            <summary>
+            睡眠时间
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.SleepQuality">
+            <summary>
+            睡眠质量
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.Desire">
+            <summary>
+            饮食欲望
+            </summary>
+        </member>
+        <member name="T:Web.Areas.Api.Models.TrainNameModel">
+            <summary>
+            体能训练指标
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.FullName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.Sex">
+            <summary>
+            性别
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.Birthday">
+            <summary>
+            生日
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.SportGrade">
+            <summary>
+            运动等级
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.TrainId">
+            <summary>
+            专项id
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.TrainName">
+            <summary>
+            专项全称
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.DepartmentId">
+            <summary>
+            教练id
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.DepartmentName">
+             <summary>
+             教练名称
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.Start4Training">
+            <summary>
+            专训开始时间
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.UserInfoModels.Train4year">
+            <summary>
+            运动年限
+            </summary>
+        </member>
+        <member name="M:Web.Areas.Platform.Controllers.BodyCompositionController.GetCellValue(NPOI.SS.UserModel.ICell)">
+            <summary>
+            根据Excel列类型获取列的值
+            </summary>
+            <param name="cell">Excel列</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.Areas.Platform.Controllers.PeriodicTestResultController.GetCellValue(NPOI.SS.UserModel.ICell)">
+            <summary>
+            根据Excel列类型获取列的值
+            </summary>
+            <param name="cell">Excel列</param>
             <returns></returns>
         </member>
         <member name="T:Web.Areas.Platform.Controllers.CmsArticalController">

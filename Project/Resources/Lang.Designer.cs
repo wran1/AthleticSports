@@ -556,6 +556,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 体脂率 的本地化字符串。
+        /// </summary>
+        public static string BF {
+            get {
+                return ResourceManager.GetString("BF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 生日 的本地化字符串。
         /// </summary>
         public static string Birthday {
@@ -565,11 +574,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 血尿素 的本地化字符串。
+        /// </summary>
+        public static string BloodUrea {
+            get {
+                return ResourceManager.GetString("BloodUrea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 内容 的本地化字符串。
         /// </summary>
         public static string Boby {
             get {
                 return ResourceManager.GetString("Boby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 骨密度 的本地化字符串。
+        /// </summary>
+        public static string BoneDensity {
+            get {
+                return ResourceManager.GetString("BoneDensity", resourceCulture);
             }
         }
         
@@ -1231,6 +1258,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 皮质醇 的本地化字符串。
+        /// </summary>
+        public static string Cortisol {
+            get {
+                return ResourceManager.GetString("Cortisol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 总数 的本地化字符串。
         /// </summary>
         public static string Count {
@@ -1299,6 +1335,15 @@ namespace Resources {
         public static string CreatedDate {
             get {
                 return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 肌酸激酶 的本地化字符串。
+        /// </summary>
+        public static string CreatineKinase {
+            get {
+                return ResourceManager.GetString("CreatineKinase", resourceCulture);
             }
         }
         
@@ -1834,6 +1879,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 红细胞 的本地化字符串。
+        /// </summary>
+        public static string Erythrocyte {
+            get {
+                return ResourceManager.GetString("Erythrocyte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 评价 的本地化字符串。
         /// </summary>
         public static string Evaluate {
@@ -2217,6 +2271,24 @@ namespace Resources {
         public static string GroupName {
             get {
                 return ResourceManager.GetString("GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 血球压积 的本地化字符串。
+        /// </summary>
+        public static string Hematocrit {
+            get {
+                return ResourceManager.GetString("Hematocrit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 血红蛋白 的本地化字符串。
+        /// </summary>
+        public static string Hemoglobin {
+            get {
+                return ResourceManager.GetString("Hemoglobin", resourceCulture);
             }
         }
         
@@ -2770,6 +2842,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 瘦体重 的本地化字符串。
+        /// </summary>
+        public static string LeanWeight {
+            get {
+                return ResourceManager.GetString("LeanWeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 请假结束日期 的本地化字符串。
         /// </summary>
         public static string LeaveEndDate {
@@ -2842,6 +2923,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 白细胞 的本地化字符串。
+        /// </summary>
+        public static string Leukocyte {
+            get {
+                return ResourceManager.GetString("Leukocyte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 等级 的本地化字符串。
         /// </summary>
         public static string Level {
@@ -2901,6 +2991,15 @@ namespace Resources {
         public static string LogisticsService {
             get {
                 return ResourceManager.GetString("LogisticsService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 淋巴细胞 的本地化字符串。
+        /// </summary>
+        public static string Lymphocyte {
+            get {
+                return ResourceManager.GetString("Lymphocyte", resourceCulture);
             }
         }
         
@@ -3153,6 +3252,15 @@ namespace Resources {
         public static string NatureOfTheEnterprise {
             get {
                 return ResourceManager.GetString("NatureOfTheEnterprise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 中性粒细胞 的本地化字符串。
+        /// </summary>
+        public static string Neutrophils {
+            get {
+                return ResourceManager.GetString("Neutrophils", resourceCulture);
             }
         }
         
@@ -4714,6 +4822,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 测试时间 的本地化字符串。
+        /// </summary>
+        public static string Testdate {
+            get {
+                return ResourceManager.GetString("Testdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 睾酮 的本地化字符串。
+        /// </summary>
+        public static string Testosterone {
+            get {
+                return ResourceManager.GetString("Testosterone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 时间 的本地化字符串。
         /// </summary>
         public static string Time {
@@ -4845,6 +4971,24 @@ namespace Resources {
         public static string TradeType {
             get {
                 return ResourceManager.GetString("TradeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 训练全称 的本地化字符串。
+        /// </summary>
+        public static string TrainFullName {
+            get {
+                return ResourceManager.GetString("TrainFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 训练名称 的本地化字符串。
+        /// </summary>
+        public static string TrainName {
+            get {
+                return ResourceManager.GetString("TrainName", resourceCulture);
             }
         }
         

@@ -96,8 +96,8 @@ namespace Web.Models
         //[Remote("CheckUserAccountExists", "Account", ErrorMessage = "用户账号已存在")] // 远程验证（Ajax）
         public string UserName { get; set; }
 
-        [DataType("SystemId")]
-        [Display(Name = "Department")]
+        //[DataType("SystemId")]
+        //[Display(Name = "Department")]
         public string DepartmentId { get; set; }
 
         [Required]

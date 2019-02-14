@@ -55,7 +55,7 @@ var emptyTestClientModel =
         self.HttpMethod = ko.observable(data.HttpMethod);
         self.UriPathTemplate = data.UriPathTemplate;
         self.UriPath = ko.observable(self.UriPathTemplate);
-
+        
         self.UriParameters = new Array();
         for (var i in data.UriParameters) {
             var uriParameter = data.UriParameters[i];

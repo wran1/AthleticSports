@@ -32,8 +32,8 @@ namespace Web.Areas.Platform.Controllers
                                      a =>
                                      new
                                      {
-                                         CityName = a.Name,
-                                         CityFullName = a.FullName,
+                                         TrainName = a.Name,
+                                         TrainFullName = a.FullName,
                                          a.SystemId,
                                          a.CreatedDate,
                                          a.Remark,

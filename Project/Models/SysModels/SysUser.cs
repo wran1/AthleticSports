@@ -20,6 +20,19 @@ namespace Models.SysModels
         后台管理账户 = 0,
         企业账户 = 1,
     }
+    //public enum Sex
+    //{
+    //    男=1,
+    //    女=2
+    //}
+    public enum SportGrade
+    {
+        国际级运动健将,
+        运动健将,
+        一级运动员,
+        二级运动员,
+        三级运动员,
+    }
 
     // 可以通过向 ApplicationUser 类添加更多属性来为用户添加配置文件数据。若要了解详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=317594。
     public class SysUser : IdentityUser, IDbSetBase
@@ -29,6 +42,8 @@ namespace Models.SysModels
             CreatedDate = DateTimeLocal.Now;
             Deleted = false;
             AccountType = 0;
+           
+            SportGrade = SportGrade.三级运动员;
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<SysUser> manager)
@@ -44,9 +59,10 @@ namespace Models.SysModels
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             return userIdentity;
         }
-
-        [MaxLength(100)]
+        //姓名
+        [MaxLength(50)]
         public string FullName { get; set; }
+        //用户标记
         public string Sign { get; set; }
         /// <summary>
         /// 头像URL
@@ -57,6 +73,25 @@ namespace Models.SysModels
         [MaxLength(10)]
         public string Sex { get; set; }
 
+        [MaxLength(10)]
+        public string Birthday { get; set; }
+
+        //运动等级
+        public SportGrade SportGrade { get; set; }
+
+        [MaxLength(128)]
+        [ForeignKey("Train")]
+        //[Display(Name = "Train"), DataType("CitySelectList")]
+        public string TrainId { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual Train Train { get; set; }
+
+        /// <summary>
+        /// 专训开始时间
+        /// </summary>
+        public int Start4Training { get; set; }
+        
         [Editable(false)]
         [DataType(DataType.DateTime)]
         [MaxLength(50)]

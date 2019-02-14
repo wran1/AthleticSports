@@ -1845,4 +1845,52 @@
   <data name="Externallinks" xml:space="preserve">
     <value>外链</value>
   </data>
+  <data name="BF" xml:space="preserve">
+    <value>体脂率</value>
+  </data>
+  <data name="BloodUrea" xml:space="preserve">
+    <value>血尿素</value>
+  </data>
+  <data name="BoneDensity" xml:space="preserve">
+    <value>骨密度</value>
+  </data>
+  <data name="Cortisol" xml:space="preserve">
+    <value>皮质醇</value>
+  </data>
+  <data name="CreatineKinase" xml:space="preserve">
+    <value>肌酸激酶</value>
+  </data>
+  <data name="Erythrocyte" xml:space="preserve">
+    <value>红细胞</value>
+  </data>
+  <data name="Hematocrit" xml:space="preserve">
+    <value>血球压积</value>
+  </data>
+  <data name="Hemoglobin" xml:space="preserve">
+    <value>血红蛋白</value>
+  </data>
+  <data name="LeanWeight" xml:space="preserve">
+    <value>瘦体重</value>
+  </data>
+  <data name="Leukocyte" xml:space="preserve">
+    <value>白细胞</value>
+  </data>
+  <data name="Lymphocyte" xml:space="preserve">
+    <value>淋巴细胞</value>
+  </data>
+  <data name="Neutrophils" xml:space="preserve">
+    <value>中性粒细胞</value>
+  </data>
+  <data name="Testosterone" xml:space="preserve">
+    <value>睾酮</value>
+  </data>
+  <data name="Testdate" xml:space="preserve">
+    <value>测试时间</value>
+  </data>
+  <data name="TrainFullName" xml:space="preserve">
+    <value>训练全称</value>
+  </data>
+  <data name="TrainName" xml:space="preserve">
+    <value>训练名称</value>
+  </data>
 </root>
