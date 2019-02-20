@@ -12,10 +12,10 @@
 <div class="content-heading">
     <div class="row">
         <div class="col-xs-6">
-            @if (Model.VisibleProperties().Any(a => a.Name == "Id") && Html.CheckControllerAction("Create"))
+            @*@if (Model.VisibleProperties().Any(a => a.Name == "Id") && Html.CheckControllerAction("Create"))
             {
                 @Html.Partial("Button_Create", new { })
-            }
+            }*@
 
             @if (Html.CheckControllerAction("Import"))
             {

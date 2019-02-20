@@ -605,3 +605,5 @@ D:\代码\wangxiao\AthleticSports\Project\Web\obj\Debug\Web.csprojResolveAssembl
 D:\代码\wangxiao\AthleticSports\Project\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 D:\代码\wangxiao\AthleticSports\Project\Web\obj\Debug\Web.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\obj\Debug\Web.pdb
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Net.Http.Formatting.xml
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Net.Http.Formatting.resources.dll

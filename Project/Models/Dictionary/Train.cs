@@ -21,6 +21,7 @@ namespace Models.Dictionary
 
       
         [MaxLength(40)]
+        [Display(Name = "TrainFullName")]
         public string FullName { get; set; }
 
         [MaxLength(30)]

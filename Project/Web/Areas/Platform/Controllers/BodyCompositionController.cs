@@ -39,7 +39,7 @@ namespace Web.Areas.Platform.Controllers
                                        {
                                            a.SysUser.FullName,
                                            a.BF,
-                                           a.Weight,
+                                           a.TotalMass,
                                            a.Muscle,
                                            a.Fat,
                                            a.BoneMSalt,
@@ -109,7 +109,7 @@ namespace Web.Areas.Platform.Controllers
                                     {
                                         model.BoneMSalt = double.Parse(GetCellValue(row.GetCell(5)));
                                     }
-                                    model.Weight = model.Muscle + model.Fat + model.BoneMSalt;
+                                    model.TotalMass = model.Muscle + model.Fat + model.BoneMSalt;
                                     _bodyCompositionService.Save(null, model);
 
                                 }

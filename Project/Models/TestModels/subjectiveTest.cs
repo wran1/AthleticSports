@@ -52,8 +52,13 @@ namespace Models.TestModels
         public int TrainIntensity { get; set; }
         //教练评价
         public int Evaluate { get; set; }
-        //时间
-        public string Sign { get; set; }
+        /// <summary>
+        /// 队医记录
+        /// </summary>
+        public string DoctorRecord { get; set; }
+        
+        //时间()
+        public string DateSign { get; set; }
 
         [ForeignKey("SysUser")]
         [Required]

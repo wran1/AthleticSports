@@ -76,9 +76,9 @@ namespace Models.TestModels
         //体脂率
         public double BF { get; set; }
         /// <summary>
-        /// 体重=肌肉+脂肪+骨矿物盐
+        /// 总质量=肌肉+脂肪+骨矿物盐
         /// </summary>
-        public double Weight { get; set; }
+        public double TotalMass { get; set; }
         /// <summary>
         /// 肌肉
         /// </summary>

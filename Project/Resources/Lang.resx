@@ -1893,4 +1893,19 @@
   <data name="TrainName" xml:space="preserve">
     <value>训练名称</value>
   </data>
+  <data name="BoneMSalt" xml:space="preserve">
+    <value>骨矿物盐</value>
+  </data>
+  <data name="Fat" xml:space="preserve">
+    <value>脂肪</value>
+  </data>
+  <data name="Muscle" xml:space="preserve">
+    <value>肌肉</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>体重</value>
+  </data>
+  <data name="TotalMass" xml:space="preserve">
+    <value>总质量</value>
+  </data>
 </root>

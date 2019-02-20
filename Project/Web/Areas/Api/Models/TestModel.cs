@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -49,5 +50,68 @@ namespace Web.Areas.Api.Models
     {
         public string TrainId { get; set; }
         public string Name { get; set; }
+    }
+    public class TrainResultModel
+    {
+        /// <summary>
+        /// 项目id
+        /// </summary>
+        public string TrainId { get; set; }
+        /// <summary>
+        /// 项目值
+        /// </summary>
+        public string Value { get; set; }
+        /// <summary>
+        /// 评测时间
+        /// </summary>
+        [DataType(DataType.DateTime)]
+        public string TestDate { get; set; }
+
+    }
+    public class PointNames
+    {
+        public string PointName { get; set; }
+    }
+    public class PointList
+    {
+        /// <summary>
+        /// 时间
+        /// </summary>
+        public string DateSign { get; set; }
+        /// <summary>
+        /// 主观评测id
+        /// </summary>
+        public string SubjectiveTestId { get; set; }
+        /// <summary>
+        /// 疼痛部位
+        /// </summary>
+
+        public virtual ICollection<PointNames> PointNames { get; set; }
+    }
+    public class DoctorRecordModel
+    {
+        public string Record { get; set; }
+        public string Date { get; set; }
+    }
+    /// <summary>
+    /// 体能测试Model
+    /// </summary>
+    public class AllTrainModel
+    {
+        /// <summary>
+        /// 测试项目
+        /// </summary>
+        public string TypeName { get; set; }
+        /// <summary>
+        /// 测试值
+        /// </summary>
+        public string Value { get; set; }
+
+        /// <summary>
+        /// 测试日期
+        /// </summary>
+        [DataType(DataType.DateTime)]
+        public string TestDate { get; set; }
+
     }
 }

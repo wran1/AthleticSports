@@ -141,7 +141,17 @@ namespace Web.Areas.Api.Models
         public string Password { get; set; }
 
     }
-
+    public class SportManModel
+    {
+        /// <summary>
+        /// 运动员Id
+        /// </summary>
+        public string UserId { get; set; }
+        /// <summary>
+        /// 运动员姓名
+        /// </summary>
+        public string FullName { get; set; }
+    }
     public class TrainModel
     {
         /// <summary>

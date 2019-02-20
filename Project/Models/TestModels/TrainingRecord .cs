@@ -72,7 +72,19 @@ namespace Models.TestModels
         [ScaffoldColumn(false)]
         public virtual TrainingType TrainingType { get; set; }
 
-        public double Value { get; set; }
+        [ForeignKey("SysUser")]
+        [Required]
+        public string SysUserId { get; set; }
+
+        public virtual SysUser SysUser { get; set; }
+
+        public string Value { get; set; }
+
+        /// <summary>
+        /// 测试日期
+        /// </summary>
+        [DataType(DataType.DateTime)]
+        public string TestDate { get; set; }
 
     }
 }

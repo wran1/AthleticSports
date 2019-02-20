@@ -601,6 +601,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 骨矿物盐 的本地化字符串。
+        /// </summary>
+        public static string BoneMSalt {
+            get {
+                return ResourceManager.GetString("BoneMSalt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 品牌 的本地化字符串。
         /// </summary>
         public static string Brand {
@@ -1987,6 +1996,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 脂肪 的本地化字符串。
+        /// </summary>
+        public static string Fat {
+            get {
+                return ResourceManager.GetString("Fat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 传真 的本地化字符串。
         /// </summary>
         public static string Fax {
@@ -3225,6 +3243,15 @@ namespace Resources {
         public static string MonolayerArea {
             get {
                 return ResourceManager.GetString("MonolayerArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 肌肉 的本地化字符串。
+        /// </summary>
+        public static string Muscle {
+            get {
+                return ResourceManager.GetString("Muscle", resourceCulture);
             }
         }
         
@@ -4939,6 +4966,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查找类似 总质量 的本地化字符串。
+        /// </summary>
+        public static string TotalMass {
+            get {
+                return ResourceManager.GetString("TotalMass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 员工总数 的本地化字符串。
         /// </summary>
         public static string TotalStaff {
@@ -5331,6 +5367,15 @@ namespace Resources {
         public static string VoiceAttachFile {
             get {
                 return ResourceManager.GetString("VoiceAttachFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 体重 的本地化字符串。
+        /// </summary>
+        public static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
             }
         }
         
