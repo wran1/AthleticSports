@@ -384,7 +384,8 @@ namespace Web.Areas.Api.Controllers
                 var expirers = (Int32)Startup.OAuthOptions.AccessTokenExpireTimeSpan.TotalSeconds;
                 var roleid = user.Roles.FirstOrDefault().RoleId;
                 var rolename=_isysRoleService.GetById(roleid).Name;
-                return new AccessTokenViewModel(token, "bearer", user.UserName, rolename, expirers - 1);
+                var picture = user.Picture;
+                return new AccessTokenViewModel(token, "bearer", user.UserName, rolename, picture, expirers - 1);
                 //}
             }
             ModelState.AddModelError("", "无效的登录尝试");

@@ -34,23 +34,47 @@ namespace Models.TestModels
         /// 饮食欲望
         /// </summary>
         public int Desire { get; set; }
-        //酸痛指数
+        /// <summary>
+        /// 酸痛指数
+        /// </summary>     
         public int SorenessLevel { get; set; }
         //伤病疼痛指数
+        /// <summary>
+        /// 伤病疼痛指数
+        /// </summary>
         public int FatigueLevel { get; set; }
         //训练状态评价
+        /// <summary>
+        /// 训练状态评价
+        /// </summary>
         public int TrainStatus { get; set; }
-        //自我感觉疲劳度
+
+        /// <summary>
+        /// 自我感觉疲劳度
+        /// </summary>
         public int Fatigue { get; set; }
-        //体能训练时长
+        /// <summary>
+        /// 体能训练时长
+        /// </summary>
         public int FitnessMinute { get; set; }
-        //专项训练时长
+        /// <summary>
+        /// 专项训练时长
+        /// </summary>
         public int SpecialMinute { get; set; }
         //比赛时长
+        /// <summary>
+        /// 比赛时长
+        /// </summary>
         public int MatchMinute { get; set; }
         //训练强度
+        /// <summary>
+        /// 训练强度
+        /// </summary>
         public int TrainIntensity { get; set; }
         //教练评价
+        /// <summary>
+        /// 教练评价
+        /// </summary>
         public int Evaluate { get; set; }
         /// <summary>
         /// 队医记录

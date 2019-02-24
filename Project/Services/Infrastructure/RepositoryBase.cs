@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Dynamic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Common;
 using IServices.ISysServices;
 using Models;
 using Models.Infrastructure;
+using Common;
 
 namespace Services.Infrastructure
 {
@@ -35,7 +35,7 @@ namespace Services.Infrastructure
             if (dbSetBase != null)
             {
                 dbSetBase.CreatedBy = _userInfo.UserId;
-                dbSetBase.CreatedDate = DateTimeLocal.Now;
+                dbSetBase.CreatedDate = DateTime.Now.ToString();
 
                 entity = dbSetBase as T;
             }
@@ -67,7 +67,7 @@ namespace Services.Infrastructure
                 dbSetBase.CreatedBy = databaseValues.GetValue<string>("CreatedBy");
                 dbSetBase.CreatedDate = databaseValues.GetValue<string>("CreatedDate");
 
-                dbSetBase.UpdatedDate = DateTimeLocal.Now;
+                dbSetBase.UpdatedDate = DateTime.Now.ToString();
                 dbSetBase.UpdatedBy = _userInfo.UserId;
 
                 entity = dbSetBase as T;

@@ -115,6 +115,36 @@
             <param name="AEnd">结束日期</param> 
             <returns>返回个数</returns> 
         </member>
+        <member name="M:Web.Areas.Api.Controllers.ExcelreportController.SubjectiveExport(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            主观评测导出
+            </summary>
+            <param name="starttime">开始时间</param>
+            <param name="endtime">结束时间</param>
+            <param name="userid">选择运动员id （英文逗号隔开）</param>
+            <param name="projectName">选择的中文项目（英文逗号隔开）</param>
+            <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和英文保持一致）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.Areas.Api.Controllers.ExcelreportController.PeriodicTestExport(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            生理生化导出
+            </summary>
+            <param name="starttime">开始时间</param>
+            <param name="endtime">结束时间</param>
+            <param name="userid">选择运动员id （英文逗号隔开）</param>
+            <param name="projectName">选择的中文项目（英文逗号隔开）</param>
+            <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和英文保持一致）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.Areas.Api.Controllers.ExcelreportController.ToDataTable``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            LINQ返回DataTable类型
+            </summary>
+            <typeparam name="T"> </typeparam>
+            <param name="varlist"> </param>
+            <returns> </returns>
+        </member>
         <member name="M:Web.Areas.Api.Controllers.TestController.GetUserSubjective">
             <summary>
             获取当天运动员主观评测数据
@@ -179,9 +209,21 @@
             <param name="pageindex">>app不需要传1就行</param>
             <returns></returns>
         </member>
+        <member name="M:Web.Areas.Api.Controllers.TestController.GetAllTrainNames">
+             <summary>
+            APP教练 获取所有的体能训练项目名称
+             </summary>
+             <returns></returns>
+        </member>
         <member name="M:Web.Areas.Api.Controllers.TestController.GetTrainName">
              <summary>
             PC/APP 获取当前用户的体能训练项目名称
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Web.Areas.Api.Controllers.TestController.SaveTrainNames(System.Collections.Generic.List{System.String})">
+             <summary>
+            APP教练权限 保存配置体能训练项目
              </summary>
              <returns></returns>
         </member>
@@ -266,6 +308,11 @@
         <member name="P:Web.Areas.Api.Models.AccessTokenViewModel.RoleName">
             <summary>
             角色名
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.AccessTokenViewModel.Picture">
+            <summary>
+            头像
             </summary>
         </member>
         <member name="T:Web.Areas.Api.Models.RegisterBindModel">

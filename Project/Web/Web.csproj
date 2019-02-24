@@ -419,12 +419,14 @@
     <Compile Include="Areas\Api\Controllers\AccountController.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\AnalysisController.cs" />
+    <Compile Include="Areas\Api\Controllers\ExcelreportController.cs" />
     <Compile Include="Areas\Api\Controllers\TestController.cs" />
     <Compile Include="Areas\Api\Controllers\UserInfoController.cs" />
     <Compile Include="Areas\Api\Models\AccountModels.cs" />
     <Compile Include="Areas\Api\Models\Analysis.cs" />
     <Compile Include="Areas\Api\Models\ApiCmsModels.cs" />
     <Compile Include="Areas\Api\Models\APIResult.cs" />
+    <Compile Include="Areas\Api\Models\ExportModels.cs" />
     <Compile Include="Areas\Api\Models\TestModel.cs" />
     <Compile Include="Areas\Api\Models\UserModels.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />

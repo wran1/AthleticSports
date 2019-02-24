@@ -26,8 +26,10 @@ namespace Web.Areas.Api.Controllers
         private readonly ITrainingRelationService _iTrainingRelationService;
         private readonly ITrainingPeopleService _iTrainingPeopleService;
         private readonly IPeriodicTestResultService _iPeriodicTestResultService;
+        private readonly ITrainingTypeService _trainingTypeService;
         
-        public TestController(IPeriodicTestResultService iPeriodicTestResultService,ITrainingPeopleService iTrainingPeopleService,ITrainingRelationService iTrainingRelationService, ISysDepartmentSysUserService iSysDepartmentSysUserService, IPainPointService ipainPointService,IUserInfo iUserInfo, IUnitOfWork iUnitOfWork, ISubjectiveTestService isubjectiveTestService)
+        
+        public TestController(ITrainingTypeService trainingTypeService,IPeriodicTestResultService iPeriodicTestResultService,ITrainingPeopleService iTrainingPeopleService,ITrainingRelationService iTrainingRelationService, ISysDepartmentSysUserService iSysDepartmentSysUserService, IPainPointService ipainPointService,IUserInfo iUserInfo, IUnitOfWork iUnitOfWork, ISubjectiveTestService isubjectiveTestService)
         {
             _iUnitOfWork = iUnitOfWork;
             _iUserInfo = iUserInfo;
@@ -37,6 +39,7 @@ namespace Web.Areas.Api.Controllers
             _iTrainingRelationService = iTrainingRelationService;
             _iTrainingPeopleService = iTrainingPeopleService;
             _iPeriodicTestResultService = iPeriodicTestResultService;
+            _trainingTypeService = trainingTypeService;
         }
         /// <summary>
         /// 获取当天运动员主观评测数据
@@ -213,6 +216,22 @@ namespace Web.Areas.Api.Controllers
             return new APIResult<List<SubjectiveTest>>(null,100,"时间选择有误");
         }
         /// <summary>
+        ///APP教练 获取所有的体能训练项目名称
+        /// </summary>
+        /// <returns></returns>
+        [Route("GetAllTrainNames")]
+        public APIResult<List<TrainNameModel>> GetAllTrainNames()
+        {
+            var model=_trainingTypeService.GetAll().OrderBy(a=>a.Position).Select(a=>
+             new TrainNameModel
+             {
+                 TrainId = a.Id,
+                 Name = a.Name,
+             }).ToList();
+            return new APIResult<List<TrainNameModel>>(model);
+        }
+
+        /// <summary>
         ///PC/APP 获取当前用户的体能训练项目名称
         /// </summary>
         /// <returns></returns>
@@ -228,7 +247,34 @@ namespace Web.Areas.Api.Controllers
              }).ToList();
             return new APIResult<List<TrainNameModel>>(result);
         }
-
+        /// <summary>
+        ///APP教练权限 保存配置体能训练项目
+        /// </summary>
+        /// <returns></returns>
+        [Route("GetTrainName")]
+        public async Task<APIResult<bool>> SaveTrainNames(List<string> TrainingTypeids)
+        {
+            var DepartId = _iSysDepartmentSysUserService.GetAll(a => a.SysUserId == _iUserInfo.UserId).FirstOrDefault().SysDepartmentId;
+            if (!string.IsNullOrEmpty(DepartId))
+            {
+                //清除原有数据
+                _iTrainingRelationService.Delete(a => a.SysDepartmentId.Equals(DepartId));
+            }
+            //_iSysRoleService.Save(id, collection);
+            if (TrainingTypeids != null)
+            {
+                foreach (var item in TrainingTypeids)
+                {
+                    _iTrainingRelationService.Save(null, new TrainingRelation
+                    {
+                        SysDepartmentId = DepartId,
+                        TrainingTypeId = item
+                    });
+                }
+            }
+            await _iUnitOfWork.CommitAsync();
+            return new APIResult<bool>(true);
+        }
         /// <summary>
         ///PC/APP 保存体能训练
         /// </summary>
@@ -341,5 +387,7 @@ namespace Web.Areas.Api.Controllers
             }
             return new APIResult<List<PeriodicTestResult>>(null);
         }
+
+
     }
 }

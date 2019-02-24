@@ -25,3 +25,4 @@ D:\代码\wangxiao\AthleticSports\Project\Common\bin\Debug\zh-Hans\EntityFramewo
 D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.dll
 D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.pdb
+D:\代码\wangxiao\AthleticSports\Project\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

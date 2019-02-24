@@ -97,18 +97,18 @@ namespace Web.Areas.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [Route("SetUserHead")]
-        public async Task<APIResult<bool>> SaveUserInfo()
+        public async Task<APIResult<string>> SaveUserInfo()
         {
             var file = HttpContext.Current.Request.Files[0];
             if (file == null)
             {
-                return new APIResult<bool>(false, 100, "上传的文件不能为空");
+                return new APIResult<string>("", 100, "上传的文件不能为空");
     
             }
             var contentType = file.ContentType.ToLower();
             if (!(contentType == "image/png" || contentType == "image/jpg" || contentType == "image/jpeg"))
             {
-                return new APIResult<bool>(false, 100, "不支持的图片格式");
+                return new APIResult<string>("", 100, "不支持的图片格式");
             }
             var extName = Path.GetExtension(file.FileName);
             var filename = Guid.NewGuid() + extName;
@@ -147,10 +147,10 @@ namespace Web.Areas.Api.Controllers
                     user.Picture = url + filename;
                     _iSysUserService.Save(user.Id, user);
                     await _iUnitOfWork.CommitAsync();
-                    return new APIResult<bool>(true);
+                    return new APIResult<string>(url + filename);
                 }
             }
-            return new APIResult<bool>(false, 100, "上传失败");
+            return new APIResult<string>("", 100, "上传失败");
 
         }
 

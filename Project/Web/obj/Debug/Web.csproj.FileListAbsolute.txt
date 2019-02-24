@@ -517,17 +517,18 @@ D:\代码\wangxiao\AthleticSports\Project\Web\bin\NPOI.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Senparc.Weixin.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Senparc.Weixin.MP.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Senparc.Weixin.QY.xml
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Net.Http.Formatting.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Spatial.xml
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Http.Cors.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Helpers.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Http.xml
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Http.Cors.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Http.WebHost.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Mvc.xml
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Optimization.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Razor.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.WebPages.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.WebPages.Deployment.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.WebPages.Razor.xml
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Web.Optimization.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\EntityFramework.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\EntityFramework.SqlServer.xml
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\Microsoft.AspNet.Identity.Core.xml
@@ -570,6 +571,7 @@ D:\代码\wangxiao\AthleticSports\Project\Web\bin\ko\Microsoft.Data.Services.Cli
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\ru\Microsoft.Data.Services.Client.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\de\System.Spatial.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\es\System.Spatial.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\fr\System.Spatial.resources.dll
@@ -583,11 +585,11 @@ D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Helpers.res
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Http.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Mvc.resources.dll
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Optimization.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Razor.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.WebPages.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Web.Optimization.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\EntityFramework.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
@@ -605,5 +607,3 @@ D:\代码\wangxiao\AthleticSports\Project\Web\obj\Debug\Web.csprojResolveAssembl
 D:\代码\wangxiao\AthleticSports\Project\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 D:\代码\wangxiao\AthleticSports\Project\Web\obj\Debug\Web.dll
 D:\代码\wangxiao\AthleticSports\Project\Web\obj\Debug\Web.pdb
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\System.Net.Http.Formatting.xml
-D:\代码\wangxiao\AthleticSports\Project\Web\bin\zh-Hans\System.Net.Http.Formatting.resources.dll

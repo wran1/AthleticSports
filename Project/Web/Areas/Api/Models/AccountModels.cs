@@ -16,13 +16,14 @@ namespace Web.Areas.Api.Models
         {
         }
 
-        public AccessTokenViewModel(string token, string tokenType, string userName, string roleName, int expires_in)
+        public AccessTokenViewModel(string token, string tokenType, string userName, string roleName, string picture, int expires_in)
         {
             Access_Token = token;
             Token_Type = tokenType;
             UserName = userName;
             Expires_In = expires_in;
             RoleName = roleName;
+            Picture = picture;
         }
         /// <summary>
         /// 返回的令牌
@@ -44,6 +45,11 @@ namespace Web.Areas.Api.Models
         /// 角色名
         /// </summary>
         public string RoleName { get; set; }
+        /// <summary>
+        /// 头像
+        /// </summary>
+        public string Picture { get; set; }
+        
     }
     public class Paypassword
     {
