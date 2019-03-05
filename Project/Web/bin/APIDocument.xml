@@ -123,7 +123,7 @@
             <param name="endtime">结束时间</param>
             <param name="userid">选择运动员id （英文逗号隔开）</param>
             <param name="projectName">选择的中文项目（英文逗号隔开）</param>
-            <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和英文保持一致）</param>
+            <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和中文保持一致）</param>
             <returns></returns>
         </member>
         <member name="M:Web.Areas.Api.Controllers.ExcelreportController.PeriodicTestExport(System.String,System.String,System.String,System.String,System.String)">
@@ -134,7 +134,28 @@
             <param name="endtime">结束时间</param>
             <param name="userid">选择运动员id （英文逗号隔开）</param>
             <param name="projectName">选择的中文项目（英文逗号隔开）</param>
-            <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和英文保持一致）</param>
+            <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和中文保持一致）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.Areas.Api.Controllers.ExcelreportController.BodyCompositionExport(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            体成分导出
+            </summary>
+            <param name="starttime">开始时间</param>
+            <param name="endtime">结束时间</param>
+            <param name="userid">选择运动员id （英文逗号隔开）</param>
+            <param name="projectName">选择的中文项目（英文逗号隔开）</param>
+            <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和中文保持一致）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.Areas.Api.Controllers.ExcelreportController.TrainingPeopleExport(System.String,System.String,System.String,System.String)">
+            <summary>
+            体能数据导出
+            </summary>
+            <param name="starttime"></param>
+            <param name="endtime"></param>
+            <param name="userid"></param>
+            <param name="projectValue">传体能项的id（英文逗号隔开，顺序要完全和中文保持一致）</param>
             <returns></returns>
         </member>
         <member name="M:Web.Areas.Api.Controllers.ExcelreportController.ToDataTable``1(System.Collections.Generic.IEnumerable{``0})">
@@ -145,10 +166,11 @@
             <param name="varlist"> </param>
             <returns> </returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.TestController.GetUserSubjective">
+        <member name="M:Web.Areas.Api.Controllers.TestController.GetUserSubjective(System.String)">
             <summary>
-            获取当天运动员主观评测数据
+            获取当天运动员主观评测数据  添加day传参
             </summary>
+            <param name="day">传选择的日期，不传默认当天时间 时间格式（yyyy-MM-dd）</param>
             <returns></returns>
         </member>
         <member name="M:Web.Areas.Api.Controllers.TestController.GetPaintNames(System.String)">
@@ -166,9 +188,9 @@
             <param name="pageindex">页数</param>
             <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.TestController.SaveUserSubjective(Models.TestModels.SubjectiveTest,System.String)">
+        <member name="M:Web.Areas.Api.Controllers.TestController.SaveUserSubjective(Web.Areas.Api.Models.SubjectTestModel,System.String)">
             <summary>
-            APP 保存当天运动员主观评测数据
+            APP 保存运动员主观评测数据（如果是新增数据 Id传null或不传，如果是修改数据Id传需要修改的Id）
             PointNames 如果选择了部位用英文逗号隔开, 最后逗号结尾
             </summary>
             <returns></returns>
@@ -233,11 +255,12 @@
              </summary>
              <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.TestController.GetNewTrainResult">
-             <summary>
-            PC/APP 获取最新体能训练数据
-             </summary>
-             <returns></returns>
+        <member name="M:Web.Areas.Api.Controllers.TestController.GetNewTrainResult(System.String)">
+            <summary>
+            PC/APP 获取最新体能训练数据(date不传为最新的数据)
+            </summary>
+            <param name="date">获取某一天的数据（格式为yyyy-MM-dd）</param>
+            <returns></returns>
         </member>
         <member name="M:Web.Areas.Api.Controllers.TestController.GetAllTrainResult(System.String,System.String,System.String,System.Int32,System.Int32)">
             <summary>
@@ -263,13 +286,13 @@
         </member>
         <member name="M:Web.Areas.Api.Controllers.UserInfoController.GetUserInfo">
             <summary>
-            获取用户信息 
+            获取用户信息 【测试完成】
             </summary>
             <returns></returns>
         </member>
         <member name="M:Web.Areas.Api.Controllers.UserInfoController.SaveUserInfo(Web.Areas.Api.Models.UserInfoModels)">
             <summary>
-            保存个人信息
+            保存个人信息 【测试完成】
             </summary>
             <param name="model"></param>
             <returns></returns>
@@ -322,12 +345,22 @@
         </member>
         <member name="P:Web.Areas.Api.Models.RegisterBindModel.UserName">
             <summary>
-            手机号
+            用户名
             </summary>
         </member>
         <member name="P:Web.Areas.Api.Models.RegisterBindModel.FullName">
             <summary>
             姓名
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.RegisterBindModel.SportGrade">
+            <summary>
+            运动等级
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.RegisterBindModel.SysDepartmentId">
+            <summary>
+            部门id
             </summary>
         </member>
         <member name="P:Web.Areas.Api.Models.RegisterBindModel.Start4Training">
@@ -820,6 +853,51 @@
         <member name="P:Web.Areas.Api.Models.SubjectTestModel.Desire">
             <summary>
             饮食欲望
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.SorenessLevel">
+            <summary>
+            酸痛指数
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.FatigueLevel">
+            <summary>
+            伤病疼痛指数
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.TrainStatus">
+            <summary>
+            训练状态评价
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.Fatigue">
+            <summary>
+            自我感觉疲劳度
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.FitnessMinute">
+            <summary>
+            体能训练时长
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.SpecialMinute">
+            <summary>
+            专项训练时长
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.MatchMinute">
+            <summary>
+            比赛时长
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.Evaluate">
+            <summary>
+            教练评价
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.DoctorRecord">
+            <summary>
+            队医记录
             </summary>
         </member>
         <member name="T:Web.Areas.Api.Models.TrainNameModel">

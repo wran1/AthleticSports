@@ -1567,6 +1567,7 @@
     <Folder Include="Areas\Platform\Views\TrainingType\" />
     <Folder Include="Areas\Platform\Views\Train\" />
     <Folder Include="Scripts\ckeditor\skins\moono\images\hidpi\" />
+    <Folder Include="Upload\" />
     <Folder Include="Views\Capital\" />
     <Folder Include="Views\GetDatas\" />
   </ItemGroup>

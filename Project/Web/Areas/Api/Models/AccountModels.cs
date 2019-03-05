@@ -75,10 +75,9 @@ namespace Web.Areas.Api.Models
     public class RegisterBindModel
     {
         /// <summary>
-        /// 手机号
+        /// 用户名
         /// </summary>
         [Required]
-        //[RegularExpression("1[34578][0-9]{9}", ErrorMessage = "请输入正确的手机号。")]
         [Display(Name = "用户名")]
         public string UserName { get; set; }
 
@@ -95,17 +94,23 @@ namespace Web.Areas.Api.Models
         public string Birthday { get; set; }
 
         //运动等级
+        /// <summary>
+        /// 运动等级
+        /// </summary>
         [Required]
         public SportGrade SportGrade { get; set; }
         [Required]
         public string TrainId { get; set; }
         //部门id
+        /// <summary>
+        /// 部门id
+        /// </summary>
         [Required]
         public string SysDepartmentId { get; set; }
         /// <summary>
         /// 专训开始时间
         /// </summary>
-        [MaxLength(10)]
+        
         public int Start4Training { get; set; }
         /// <summary>
         /// 密码
@@ -118,14 +123,12 @@ namespace Web.Areas.Api.Models
         /// <summary>
         /// 确认密码(注册时该项为必填项、关联该字段不填)
         /// </summary>
-        //[Required]
-        //[DataType(DataType.Password)]
         [Display(Name = "确认密码")]
+        [DataType(DataType.Password)]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "密码和确认密码不匹配。")]
         public string ConfirmPassword { get; set; }
     }
-
-
+    
     /// <summary>
     /// 登录绑定模型
     /// </summary>

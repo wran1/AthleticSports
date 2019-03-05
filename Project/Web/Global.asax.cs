@@ -21,7 +21,7 @@ namespace Web
 
         protected void Application_Start()
         {
-          
+
             // 更新数据库到最新的版本
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Services.Migrations.Configuration>());
 
@@ -35,7 +35,7 @@ namespace Web
             // mvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             Bootstrapper.Run();
 
             // Replace cache provider with Memcached provider

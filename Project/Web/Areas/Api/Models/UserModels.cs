@@ -37,6 +37,7 @@ namespace Web.Areas.Api.Models
         /// <summary>
         /// 专项全称
         /// </summary>
+        
         public string TrainName { get; set; }
         /// <summary>
         /// 教练id
@@ -46,6 +47,7 @@ namespace Web.Areas.Api.Models
         /// <summary>
         /// 教练名称
         ///</summary>
+       
         public string DepartmentName { get; set; }
         /// <summary>
         /// 专训开始时间
@@ -55,6 +57,7 @@ namespace Web.Areas.Api.Models
         /// <summary>
         /// 运动年限
         /// </summary>
+       
         public int Train4year { get; set; }
     }
 }

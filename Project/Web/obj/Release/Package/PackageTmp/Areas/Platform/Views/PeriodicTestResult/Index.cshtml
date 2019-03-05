@@ -13,19 +13,22 @@
     <div class="row">
         <div class="col-xs-6">
             @*@if (Model.VisibleProperties().Any(a => a.Name == "Id") && Html.CheckControllerAction("Create"))
-            {
-                @Html.Partial("Button_Create", new { })
-            }*@
+        {
+            @Html.Partial("Button_Create", new { })
+        }*@
 
             @if (Html.CheckControllerAction("Import"))
             {
                 @Html.Partial("Button_Import", new { })
-            }
+             }
 
+            <a class="btn btn-default" href="../../../../Upload/生理生化模板.xls">
+                下载模板
+            </a>
             @*@if (Html.CheckControllerAction("Report"))
-            {
-                @Html.Partial("Button_Export", new { report = true, ordering = Request["ordering"], keyword = Request["keyword"] })
-            }*@
+        {
+            @Html.Partial("Button_Export", new { report = true, ordering = Request["ordering"], keyword = Request["keyword"] })
+        }*@
         </div>
 
         <div class="col-xs-6">

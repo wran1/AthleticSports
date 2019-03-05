@@ -31,7 +31,7 @@ namespace Web.Areas.Api.Controllers
             _iSysDepartmentSysUserService = iSysDepartmentSysUserService;
         }
         /// <summary>
-        /// 获取用户信息 
+        /// 获取用户信息 【测试完成】
         /// </summary>
         /// <returns></returns>
         [Route("GetUserInfo")]
@@ -46,10 +46,10 @@ namespace Web.Areas.Api.Controllers
                     Birthday = user.Birthday,
                     Sex = user.Sex,
                     SportGrade = user.SportGrade,
-                    DepartmentId = user.SysDepartmentSysUsers.FirstOrDefault().SysDepartmentId,
-                    DepartmentName = user.SysDepartmentSysUsers.FirstOrDefault().SysDepartment.Name,
+                    DepartmentId = user.SysDepartmentSysUsers?.FirstOrDefault()?.SysDepartmentId,
+                    DepartmentName = user.SysDepartmentSysUsers?.FirstOrDefault()?.SysDepartment?.Name,
                     TrainId = user.TrainId,
-                    TrainName = user.Train.Name,
+                    TrainName = user.Train?.Name,
                     Start4Training = user.Start4Training,
                     Train4year = DateTime.Now.Year - user.Start4Training,
                 };
@@ -58,7 +58,7 @@ namespace Web.Areas.Api.Controllers
            return new APIResult<UserInfoModels>(null);
         }
         /// <summary>
-        /// 保存个人信息
+        /// 保存个人信息 【测试完成】
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

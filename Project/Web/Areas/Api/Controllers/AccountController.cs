@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Caching;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -181,7 +178,7 @@ namespace Web.Areas.Api.Controllers
                         TwoFactorEnabled = false,//不自动开启二次验证
                         LockoutEnabled = true,
                     };
-                    user.Email = Common.CommonCodeGenerator.GenerateEmail(user.UserName);
+                    user.Email = Common.CommonCodeGenerator.GenerateEmail(registerBindModel.UserName);
                     IdentityResult result = await UserManager.CreateAsync(user, registerBindModel.Password);
                     if (result.Succeeded)
                     {
@@ -193,7 +190,8 @@ namespace Web.Areas.Api.Controllers
 
                         }
 
-                        result = await UserManager.AddToRoleAsync(user.Id, "运动员"); 
+                        result = await UserManager.AddToRoleAsync(user.Id, "运动员");
+                        await _iUnitOfWork.CommitAsync();
                     }
                     if (!result.Succeeded)
                     {
@@ -214,7 +212,7 @@ namespace Web.Areas.Api.Controllers
             }  
             return new APIResult<AccessTokenViewModel>(null, 100, "注册失败", ModelState);
         }
-   
+      
         /// <summary>
         /// 通过密码登录
         /// </summary>

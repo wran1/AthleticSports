@@ -137,6 +137,17 @@
             <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和英文保持一致）</param>
             <returns></returns>
         </member>
+        <member name="M:Web.Areas.Api.Controllers.ExcelreportController.BodyCompositionExport(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            体成分导出
+            </summary>
+            <param name="starttime">开始时间</param>
+            <param name="endtime">结束时间</param>
+            <param name="userid">选择运动员id （英文逗号隔开）</param>
+            <param name="projectName">选择的中文项目（英文逗号隔开）</param>
+            <param name="projectValue">选择的英文文项目（英文逗号隔开，顺序要完全和英文保持一致）</param>
+            <returns></returns>
+        </member>
         <member name="M:Web.Areas.Api.Controllers.ExcelreportController.ToDataTable``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             LINQ返回DataTable类型
@@ -166,7 +177,7 @@
             <param name="pageindex">页数</param>
             <returns></returns>
         </member>
-        <member name="M:Web.Areas.Api.Controllers.TestController.SaveUserSubjective(Models.TestModels.SubjectiveTest,System.String)">
+        <member name="M:Web.Areas.Api.Controllers.TestController.SaveUserSubjective(Web.Areas.Api.Models.SubjectTestModel,System.String)">
             <summary>
             APP 保存当天运动员主观评测数据
             PointNames 如果选择了部位用英文逗号隔开, 最后逗号结尾
@@ -322,7 +333,7 @@
         </member>
         <member name="P:Web.Areas.Api.Models.RegisterBindModel.UserName">
             <summary>
-            手机号
+            用户名
             </summary>
         </member>
         <member name="P:Web.Areas.Api.Models.RegisterBindModel.FullName">
@@ -820,6 +831,41 @@
         <member name="P:Web.Areas.Api.Models.SubjectTestModel.Desire">
             <summary>
             饮食欲望
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.SorenessLevel">
+            <summary>
+            酸痛指数
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.FatigueLevel">
+            <summary>
+            伤病疼痛指数
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.TrainStatus">
+            <summary>
+            训练状态评价
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.Fatigue">
+            <summary>
+            自我感觉疲劳度
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.FitnessMinute">
+            <summary>
+            体能训练时长
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.SpecialMinute">
+            <summary>
+            专项训练时长
+            </summary>
+        </member>
+        <member name="P:Web.Areas.Api.Models.SubjectTestModel.MatchMinute">
+            <summary>
+            比赛时长
             </summary>
         </member>
         <member name="T:Web.Areas.Api.Models.TrainNameModel">

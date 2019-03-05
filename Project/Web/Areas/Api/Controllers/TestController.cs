@@ -1,4 +1,5 @@
-﻿using IServices.Infrastructure;
+﻿using AutoMapper;
+using IServices.Infrastructure;
 using IServices.ISysServices;
 using IServices.ITestServices;
 using Models.TestModels;
@@ -42,25 +43,49 @@ namespace Web.Areas.Api.Controllers
             _trainingTypeService = trainingTypeService;
         }
         /// <summary>
-        /// 获取当天运动员主观评测数据
+        /// 获取当天运动员主观评测数据  添加day传参
         /// </summary>
+        /// <param name="day">传选择的日期，不传默认当天时间 时间格式（yyyy-MM-dd）</param>
         /// <returns></returns>
         [Route("GetUserSubjective")]
-        public APIResult<SubjectiveTest> GetUserSubjective()
+        public APIResult<SubjectTestModel> GetUserSubjective(string day)
         {
-            var day = DateTime.Now.ToString("yyyy-MM-dd");
-           var model=  _isubjectiveTestService.GetAll(a => a.SysUserId == _iUserInfo.UserId).Where(a=> a.DateSign==day).FirstOrDefault();
+            if(string.IsNullOrEmpty(day))
+            {
+                day = DateTime.Now.ToString("yyyy-MM-dd");
+            }
+            //var day = DateTime.Now.ToString("yyyy-MM-dd");
+           var model=  _isubjectiveTestService.GetAll(a => a.SysUserId == _iUserInfo.UserId).Where(a=> a.DateSign==day);
             if(model!=null)
             {
-                return new APIResult<SubjectiveTest>(model);
+                var result = model.Select(a=> new SubjectTestModel {
+                    Id = a.Id,
+                    DateSign = a.DateSign,
+                    Desire = a.Desire,
+                    Evaluate = a.Evaluate,
+                    Fatigue = a.Fatigue,
+                    FatigueLevel = a.FatigueLevel,
+                    FitnessMinute = a.FitnessMinute,
+                    MatchMinute = a.MatchMinute,
+                    MorPulse = a.MorPulse,
+                    SleepDuration = a.SleepDuration,
+                    SleepQuality = a.SleepQuality,
+                    SorenessLevel = a.SorenessLevel,
+                    SpecialMinute = a.SpecialMinute,
+                    TrainIntensity = a.TrainIntensity,
+                    TrainStatus = a.TrainStatus,
+                    Weight = a.Weight,
+                     DoctorRecord=a.DoctorRecord,
+                }).FirstOrDefault();
+                return new APIResult<SubjectTestModel>(result);
             }
-            return new APIResult<SubjectiveTest>(null);
+            return new APIResult<SubjectTestModel>(null);
         }
         /// <summary>
         ///APP运动员权限 获取运动员的疼痛部位
         /// </summary>
         /// <returns></returns>
-        [Route("GetUserSubjective")]
+        [Route("GetPaintNames")]
         public APIResult<List<PointNames>> GetPaintNames(string id)
         {
            var point=  _ipainPointService.GetAll(a=>a.SubjectiveTestId==id).Select(a=> new PointNames { PointName= a.PointName.ToString() }).ToList();
@@ -86,32 +111,38 @@ namespace Web.Areas.Api.Controllers
             return new APIResult<List<PointList>>(model);
         }
         /// <summary>
-        /// APP 保存当天运动员主观评测数据
+        /// APP 保存运动员主观评测数据（如果是新增数据 Id传null或不传，如果是修改数据Id传需要修改的Id）
         /// PointNames 如果选择了部位用英文逗号隔开, 最后逗号结尾
         /// </summary>
         /// <returns></returns>
         [Route("SaveUserSubjective")]
-        public async Task<APIResult<bool>> SaveUserSubjective(SubjectiveTest collect,string PointNames)
+        public async Task<APIResult<string>> SaveUserSubjective(SubjectTestModel collect,string PointNames)
         {
             if (ModelState.IsValid)
             {
                 var pointid = "";
-                collect.DateSign = DateTime.Now.ToString("yyyy-MM-dd");
+                if (string.IsNullOrEmpty(collect.DateSign))
+                {
+                    collect.DateSign = DateTime.Now.ToString("yyyy-MM-dd");
+                }
+                var config = new MapperConfiguration(a => a.CreateMap<SubjectTestModel, SubjectiveTest>());
+                var sb = config.CreateMapper().Map<SubjectiveTest>(collect);
+                sb.SysUserId = _iUserInfo.UserId;
                 if (!string.IsNullOrEmpty(collect.Id))
                 {
-                    _isubjectiveTestService.Delete(collect.Id);
+                    //_isubjectiveTestService.Delete(collect.Id);
                     pointid = collect.Id;
-                    _isubjectiveTestService.Save(collect.Id, collect);
+                    _isubjectiveTestService.Save(collect.Id, sb);
                 }
                 else
                 {
-                    collect.SysUserId = _iUserInfo.UserId;
+                    sb.SysUserId = _iUserInfo.UserId;
                     pointid = Guid.NewGuid().ToString();
-                    collect.Id = pointid;
-                    _isubjectiveTestService.Save(null, collect);
+                    sb.Id = pointid;
+                    _isubjectiveTestService.Save(null, sb);
                 }
                 await _iUnitOfWork.CommitAsync();
-                if(!string.IsNullOrEmpty(PointNames) && !string.IsNullOrEmpty(collect.Id))
+                if(!string.IsNullOrEmpty(PointNames))
                 {
                     PointNames = PointNames.Substring(0, PointNames.Length - 1);
                     string[] sArray = PointNames.Split(',');
@@ -130,9 +161,9 @@ namespace Web.Areas.Api.Controllers
                     }
                     await _iUnitOfWork.CommitAsync();
                 }
-                return new APIResult<bool>(true);
+                return new APIResult<string>(pointid);
             }
-            return new APIResult<bool>(false, 100, "操作失败");
+            return new APIResult<string>("", 100, "操作失败",ModelState);
         }
         /// <summary>
         /// APP 保存教练评价
@@ -160,7 +191,7 @@ namespace Web.Areas.Api.Controllers
         /// <param name="id">主观评测id</param>
         /// <param name="record">队医记录</param>
         /// <returns></returns>
-        [Route("SaveEvaluate")]
+        [Route("SaveDoctorRecord")]
         public async Task<APIResult<bool>> SaveDoctorRecord(string id, string record)
         {
             if (!string.IsNullOrEmpty(id))
@@ -188,6 +219,7 @@ namespace Web.Areas.Api.Controllers
             {
               var result=  _isubjectiveTestService.GetAll(a=>a.SysUserId== userid).Select(a=> new DoctorRecordModel
               {
+                  Id=a.Id,
                    Record=a.DoctorRecord,
                    Date=a.DateSign
               }).OrderByDescending(a=>a.Date).Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
@@ -205,15 +237,34 @@ namespace Web.Areas.Api.Controllers
         /// <param name="pageindex">>app不需要传1就行</param>
         /// <returns></returns>
         [Route("GetAllUserSubjective")]
-        public APIResult<List<SubjectiveTest>> GetAllUserSubjective(string sportuserid,string starttime,string endtime,int pagesize = 1, int pageindex = 1)
+        public APIResult<List<SubjectTestModel>> GetAllUserSubjective(string sportuserid,string starttime,string endtime,int pagesize = 1, int pageindex = 1)
         {
             var list = _isubjectiveTestService.GetAll(a=>a.SysUserId== sportuserid);
             if(!string.IsNullOrEmpty(starttime)&& !string.IsNullOrEmpty(endtime))
             {
-                var result = list.Where(a=>a.DateSign.CompareTo(starttime)>=0 && a.DateSign.CompareTo(endtime) <= 0).OrderBy(a=>a.DateSign).Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
-                return new APIResult<List<SubjectiveTest>>(result);
+                var result = list.Where(a=>a.DateSign.CompareTo(starttime)>=0 && a.DateSign.CompareTo(endtime) <= 0).OrderBy(a=>a.DateSign).Select(a=>new SubjectTestModel
+                {
+                    Id=a.Id,
+                    DateSign=a.DateSign,
+                    Desire=a.Desire,
+                    Evaluate=a.Evaluate,
+                    Fatigue=a.Fatigue,
+                    FatigueLevel=a.FatigueLevel,
+                    FitnessMinute=a.FitnessMinute,
+                    MatchMinute=a.MatchMinute,
+                    MorPulse=a.MorPulse,
+                    SleepDuration=a.SleepDuration,
+                    SleepQuality=a.SleepQuality,
+                    SorenessLevel=a.SorenessLevel,
+                    SpecialMinute=a.SpecialMinute,
+                    TrainIntensity=a.TrainIntensity,
+                    TrainStatus=a.TrainStatus,
+                    Weight=a.Weight,
+                }).Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+
+                return new APIResult<List<SubjectTestModel>>(result);
             }
-            return new APIResult<List<SubjectiveTest>>(null,100,"时间选择有误");
+            return new APIResult<List<SubjectTestModel>>(null,100,"时间选择有误");
         }
         /// <summary>
         ///APP教练 获取所有的体能训练项目名称
@@ -251,7 +302,7 @@ namespace Web.Areas.Api.Controllers
         ///APP教练权限 保存配置体能训练项目
         /// </summary>
         /// <returns></returns>
-        [Route("GetTrainName")]
+        [Route("SaveTrainNames")]
         public async Task<APIResult<bool>> SaveTrainNames(List<string> TrainingTypeids)
         {
             var DepartId = _iSysDepartmentSysUserService.GetAll(a => a.SysUserId == _iUserInfo.UserId).FirstOrDefault().SysDepartmentId;
@@ -302,27 +353,52 @@ namespace Web.Areas.Api.Controllers
             return new APIResult<bool>(true);
         }
         /// <summary>
-        ///PC/APP 获取最新体能训练数据
+        /// PC/APP 获取最新体能训练数据(date不传为最新的数据)
         /// </summary>
+        /// <param name="date">获取某一天的数据（格式为yyyy-MM-dd）</param>
         /// <returns></returns>
         [Route("GetNewTrainResult")]
-        public APIResult<List<TrainResultModel>> GetNewTrainResult()
+        public APIResult<List<TrainResultModel>> GetNewTrainResult(string date)
         {
             var DepartId = _iSysDepartmentSysUserService.GetAll(a => a.SysUserId == _iUserInfo.UserId).FirstOrDefault().Id;
             var trainresults = _iTrainingRelationService.GetAll(a => a.SysDepartmentId == DepartId).Select(a => a.TrainingTypeId).ToList();
             var result = new List<TrainResultModel>();
-            foreach (var item in trainresults)
+            if(trainresults.Count()>0)
             {
-                var model = _iTrainingPeopleService.GetAll(a => a.TrainingTypeId == item).OrderByDescending(a => a.TestDate).Select(a => new TrainResultModel
+                if (string.IsNullOrEmpty(date))
                 {
-                    TrainId = a.TrainingTypeId,
-                    Value=a.Value,
-                    TestDate=a.TestDate
-                    
-                }).FirstOrDefault();
-                result.Add(model);
+                    foreach (var item in trainresults)
+                    {
+                        var model = _iTrainingPeopleService.GetAll(a => a.TrainingTypeId == item).OrderByDescending(a => a.TestDate).Select(a => new TrainResultModel
+                        {
+                            TrainId = a.TrainingTypeId,
+                            Value = a.Value,
+                            TestDate = a.TestDate
+
+                        }).FirstOrDefault();
+                        result.Add(model);
+                    }
+                    return new APIResult<List<TrainResultModel>>(result);
+                }
+                else
+                {
+                    foreach (var item in trainresults)
+                    {
+                        var model = _iTrainingPeopleService.GetAll(a => a.TrainingTypeId == item).Where(a => a.TestDate == date).OrderByDescending(a => a.CreatedDate).Select(a => new TrainResultModel
+                        {
+                            TrainId = a.TrainingTypeId,
+                            Value = a.Value,
+                            TestDate = a.TestDate
+
+                        }).FirstOrDefault();
+                        result.Add(model);
+                    }
+                    return new APIResult<List<TrainResultModel>>(result);
+                }
             }
-            return new APIResult<List<TrainResultModel>>(result);
+            return new APIResult<List<TrainResultModel>>(null,100,"该运动员还未配置体能项目");
+
+
 
         }
         /// <summary>
